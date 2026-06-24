@@ -1,0 +1,4 @@
+service-account.json
+processed_matches.db
+__pycache__/
+*.db

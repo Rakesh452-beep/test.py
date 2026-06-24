@@ -1,0 +1,231 @@
+2026-06-23 16:15:22,796 [INFO] 
+2026-06-23 16:15:22,796 [INFO] 
+2026-06-23 16:15:22,796 [INFO] ============================================================
+2026-06-23 16:15:22,796 [INFO] AUTO UPDATE PIPELINE — 2026-06-23 16:15:22
+2026-06-23 16:15:22,796 [INFO] ============================================================
+2026-06-23 16:15:22,796 [INFO] ============================================================
+2026-06-23 16:15:22,796 [INFO] START: Player Stats (batting + bowling)
+2026-06-23 16:15:22,796 [INFO] ============================================================
+2026-06-23 16:15:25,362 [INFO] Found 61 teams
+2026-06-23 16:16:00,866 [INFO] Batting records: 1087, Bowling records: 654
+2026-06-23 16:16:07,190 [INFO] FINISH: Player Stats (batting + bowling) — OK
+2026-06-23 16:16:07,191 [INFO] ============================================================
+2026-06-23 16:16:07,191 [INFO] PIPELINE COMPLETE
+2026-06-23 16:16:07,191 [INFO] Log saved to: reports/auto_update_20260623.log
+2026-06-23 16:16:07,191 [INFO] ============================================================
+2026-06-23 16:16:07,799 [INFO] 
+2026-06-23 16:16:07,799 [INFO] 
+2026-06-23 16:16:07,799 [INFO] ============================================================
+2026-06-23 16:16:07,799 [INFO] AUTO UPDATE PIPELINE — 2026-06-23 16:16:07
+2026-06-23 16:16:07,799 [INFO] Mode: TODAY'S MATCHES ONLY
+2026-06-23 16:16:07,799 [INFO] ============================================================
+2026-06-23 16:16:07,799 [INFO] ============================================================
+2026-06-23 16:16:07,799 [INFO] START: Keeper Stats (local export)
+2026-06-23 16:16:07,799 [INFO] ============================================================
+2026-06-23 16:16:20,796 [INFO] Appended 5 keeper rows to reports/WicketKeepers_latest.xlsx
+2026-06-23 16:16:20,796 [INFO] FINISH: Keeper Stats (local export) — OK
+2026-06-23 16:16:20,796 [INFO] ============================================================
+2026-06-23 16:16:20,796 [INFO] START: Keeper Stats (Google Sheets upload)
+2026-06-23 16:16:20,796 [INFO] ============================================================
+2026-06-23 16:16:39,846 [INFO] Uploaded keeper data. Total processed matches: 19
+2026-06-23 16:16:39,846 [INFO] FINISH: Keeper Stats (Google Sheets upload) — OK
+2026-06-23 16:16:39,846 [INFO] ============================================================
+2026-06-23 16:16:39,846 [INFO] PIPELINE COMPLETE
+2026-06-23 16:16:39,846 [INFO] Log saved to: reports/auto_update_20260623.log
+2026-06-23 16:16:39,846 [INFO] ============================================================
+2026-06-23 20:58:34,087 [INFO] 
+2026-06-23 20:58:34,098 [INFO] 
+2026-06-23 20:58:34,098 [INFO] ============================================================
+2026-06-23 20:58:34,098 [INFO] AUTO UPDATE PIPELINE — 2026-06-23 20:58:34
+2026-06-23 20:58:34,106 [INFO] ============================================================
+2026-06-23 20:58:34,106 [INFO] ============================================================
+2026-06-23 20:58:34,106 [INFO] START: Player Stats (batting + bowling)
+2026-06-23 20:58:34,106 [INFO] ============================================================
+2026-06-23 20:58:59,218 [INFO] Found 61 teams
+2026-06-23 21:00:11,483 [INFO] 
+2026-06-23 21:00:11,483 [INFO] 
+2026-06-23 21:00:11,485 [INFO] ============================================================
+2026-06-23 21:00:11,485 [INFO] AUTO UPDATE PIPELINE — 2026-06-23 21:00:11
+2026-06-23 21:00:11,489 [INFO] ============================================================
+2026-06-23 21:00:11,489 [INFO] ============================================================
+2026-06-23 21:00:11,489 [INFO] START: Player Stats (batting + bowling)
+2026-06-23 21:00:11,489 [INFO] ============================================================
+2026-06-23 21:00:27,246 [INFO] Found 61 teams
+2026-06-23 21:01:18,925 [INFO] Batting records: 1165, Bowling records: 696
+2026-06-23 21:01:33,743 [INFO] 
+2026-06-23 21:01:33,743 [INFO] 
+2026-06-23 21:01:33,743 [INFO] ============================================================
+2026-06-23 21:01:33,743 [INFO] AUTO UPDATE PIPELINE — 2026-06-23 21:01:33
+2026-06-23 21:01:33,743 [INFO] Mode: TODAY'S MATCHES ONLY
+2026-06-23 21:01:33,748 [INFO] ============================================================
+2026-06-23 21:01:33,748 [INFO] ============================================================
+2026-06-23 21:01:33,748 [INFO] START: Keeper Stats (local export)
+2026-06-23 21:01:33,751 [INFO] ============================================================
+2026-06-23 21:02:30,884 [INFO] Batting records: 1187, Bowling records: 708
+2026-06-23 21:02:49,562 [INFO] FINISH: Player Stats (batting + bowling) — OK
+2026-06-23 21:02:49,564 [INFO] ============================================================
+2026-06-23 21:02:49,564 [INFO] PIPELINE COMPLETE
+2026-06-23 21:02:49,564 [INFO] Log saved to: reports/auto_update_20260623.log
+2026-06-23 21:02:49,564 [INFO] ============================================================
+2026-06-23 21:02:50,439 [INFO] 
+2026-06-23 21:02:50,439 [INFO] 
+2026-06-23 21:02:50,441 [INFO] ============================================================
+2026-06-23 21:02:50,441 [INFO] AUTO UPDATE PIPELINE — 2026-06-23 21:02:50
+2026-06-23 21:02:50,441 [INFO] Mode: TODAY'S MATCHES ONLY
+2026-06-23 21:02:50,441 [INFO] ============================================================
+2026-06-23 21:02:50,441 [INFO] ============================================================
+2026-06-23 21:02:50,441 [INFO] START: Keeper Stats (local export)
+2026-06-23 21:02:50,441 [INFO] ============================================================
+2026-06-23 21:05:19,007 [INFO] Appended 22 keeper rows to reports/WicketKeepers_latest.xlsx
+2026-06-23 21:05:19,007 [INFO] FINISH: Keeper Stats (local export) — OK
+2026-06-23 21:05:19,007 [INFO] ============================================================
+2026-06-23 21:05:19,007 [INFO] START: Keeper Stats (Google Sheets upload)
+2026-06-23 21:05:19,007 [INFO] ============================================================
+2026-06-23 21:05:37,982 [ERROR] FAIL: Keeper Stats (Google Sheets upload) — HTTPSConnectionPool(host='d27i8b90nps4in.cloudfront.net', port=443): Read timed out.
+2026-06-23 21:05:38,780 [ERROR] Traceback (most recent call last):
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\urllib3\response.py", line 905, in _error_catcher
+    yield
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\urllib3\response.py", line 1022, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\urllib3\response.py", line 1005, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\http\client.py", line 473, in read
+    s = self.fp.read(amt)
+        ^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\ssl.py", line 1314, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\ssl.py", line 1166, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\urllib3\response.py", line 1267, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\urllib3\response.py", line 1110, in read
+    data = self._raw_read(amt)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\urllib3\response.py", line 1021, in _raw_read
+    with self._error_catcher():
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\urllib3\response.py", line 910, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.") from e  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='d27i8b90nps4in.cloudfront.net', port=443): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\Desktop\test.py\auto_update.py", line 28, in run_step
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Desktop\test.py\auto_update.py", line 71, in step_keeper_upload
+    rows = extract_keepers(COMPETITION_ID, today_only=today_only)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Desktop\test.py\keeper_stats.py", line 340, in extract_keepers
+    schedule_data = fetch_match_schedule(competition_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Desktop\test.py\keeper_stats.py", line 123, in fetch_match_schedule
+    text = download(url)
+           ^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Desktop\test.py\downloader.py", line 10, in download
+    response = requests.get(url, timeout=REQUEST_TIMEOUT)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\requests\api.py", line 87, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\requests\api.py", line 71, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\requests\sessions.py", line 827, in send
+    r.content
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\requests\models.py", line 1042, in content
+    self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\requests\models.py", line 943, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='d27i8b90nps4in.cloudfront.net', port=443): Read timed out.
+
+2026-06-23 21:05:38,788 [INFO] ============================================================
+2026-06-23 21:05:38,788 [INFO] PIPELINE COMPLETE
+2026-06-23 21:05:38,788 [INFO] Log saved to: reports/auto_update_20260623.log
+2026-06-23 21:05:38,788 [INFO] ============================================================
+2026-06-23 21:30:05,108 [INFO] 
+2026-06-23 21:30:05,108 [INFO] 
+2026-06-23 21:30:05,108 [INFO] ============================================================
+2026-06-23 21:30:05,113 [INFO] AUTO UPDATE PIPELINE — 2026-06-23 21:30:05
+2026-06-23 21:30:05,113 [INFO] Mode: TODAY'S MATCHES ONLY
+2026-06-23 21:30:05,113 [INFO] ============================================================
+2026-06-23 21:30:05,113 [INFO] ============================================================
+2026-06-23 21:30:05,115 [INFO] START: Keeper Stats (local export)
+2026-06-23 21:30:05,115 [INFO] ============================================================
+2026-06-23 21:30:47,079 [INFO] Appended 22 keeper rows to reports/WicketKeepers_latest.xlsx
+2026-06-23 21:30:47,079 [INFO] FINISH: Keeper Stats (local export) — OK
+2026-06-23 21:30:47,079 [INFO] ============================================================
+2026-06-23 21:30:47,081 [INFO] START: Keeper Stats (Google Sheets upload)
+2026-06-23 21:30:47,081 [INFO] ============================================================
+2026-06-23 21:31:24,837 [INFO] Uploaded keeper data. Total processed matches: 27
+2026-06-23 21:31:24,839 [INFO] FINISH: Keeper Stats (Google Sheets upload) — OK
+2026-06-23 21:31:24,839 [INFO] ============================================================
+2026-06-23 21:31:24,839 [INFO] START: Email daily report
+2026-06-23 21:31:24,839 [INFO] ============================================================
+2026-06-23 21:31:37,328 [INFO] Deleted 1 old sent email(s)
+2026-06-23 21:31:44,487 [INFO] Email sent to Sureshkutam@gmail.com
+2026-06-23 21:31:44,487 [INFO] FINISH: Email daily report — OK
+2026-06-23 21:31:44,487 [INFO] ============================================================
+2026-06-23 21:31:44,487 [INFO] PIPELINE COMPLETE
+2026-06-23 21:31:44,487 [INFO] Log saved to: reports/auto_update_20260623.log
+2026-06-23 21:31:44,487 [INFO] ============================================================
+2026-06-23 21:31:44,531 [INFO] Opened: C:\Users\Lenovo\Desktop\test.py\reports\WicketKeepers_latest.xlsx
+2026-06-23 21:31:44,557 [INFO] Opened: C:\Users\Lenovo\Desktop\test.py\reports\AllTeams_Stats_latest.xlsx
+2026-06-23 21:37:59,093 [INFO] 
+2026-06-23 21:37:59,096 [INFO] 
+2026-06-23 21:37:59,096 [INFO] ============================================================
+2026-06-23 21:37:59,096 [INFO] AUTO UPDATE PIPELINE — 2026-06-23 21:37:59
+2026-06-23 21:37:59,096 [INFO] Mode: TODAY'S MATCHES ONLY
+2026-06-23 21:37:59,096 [INFO] ============================================================
+2026-06-23 21:37:59,096 [INFO] ============================================================
+2026-06-23 21:37:59,096 [INFO] START: Player Stats (batting + bowling)
+2026-06-23 21:37:59,096 [INFO] ============================================================
+2026-06-23 21:38:02,426 [INFO] Found 61 teams
+2026-06-23 21:38:46,513 [INFO] Batting records: 1187, Bowling records: 708
+2026-06-23 21:39:00,296 [INFO] FINISH: Player Stats (batting + bowling) — OK
+2026-06-23 21:39:00,296 [INFO] ============================================================
+2026-06-23 21:39:00,296 [INFO] START: Keeper Stats (local export)
+2026-06-23 21:39:00,296 [INFO] ============================================================
+2026-06-23 21:39:29,183 [INFO] Appended 22 keeper rows to reports/WicketKeepers_latest.xlsx
+2026-06-23 21:39:29,183 [INFO] FINISH: Keeper Stats (local export) — OK
+2026-06-23 21:39:29,183 [INFO] ============================================================
+2026-06-23 21:39:29,183 [INFO] START: Keeper Stats (Google Sheets upload)
+2026-06-23 21:39:29,183 [INFO] ============================================================
+2026-06-23 21:39:58,815 [INFO] Uploaded keeper data. Total processed matches: 27
+2026-06-23 21:39:58,815 [INFO] FINISH: Keeper Stats (Google Sheets upload) — OK
+2026-06-23 21:39:58,815 [INFO] ============================================================
+2026-06-23 21:39:58,815 [INFO] START: Google Sheet sync
+2026-06-23 21:39:58,815 [INFO] ============================================================
+2026-06-23 21:40:05,044 [INFO] Google Sheet synced (174 unique players)
+2026-06-23 21:40:05,044 [INFO] FINISH: Google Sheet sync — OK
+2026-06-23 21:40:05,044 [INFO] ============================================================
+2026-06-23 21:40:05,044 [INFO] START: Email daily report
+2026-06-23 21:40:05,044 [INFO] ============================================================
+2026-06-23 21:40:14,345 [INFO] Email sent to Sureshkutam@gmail.com
+2026-06-23 21:40:14,345 [INFO] FINISH: Email daily report — OK
+2026-06-23 21:40:14,347 [INFO] ============================================================
+2026-06-23 21:40:14,347 [INFO] PIPELINE COMPLETE
+2026-06-23 21:40:14,347 [INFO] Log saved to: reports/auto_update_20260623.log
+2026-06-23 21:40:14,347 [INFO] ============================================================
