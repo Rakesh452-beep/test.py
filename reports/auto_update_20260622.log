@@ -1,0 +1,127 @@
+2026-06-22 21:30:03,253 [INFO] 
+2026-06-22 21:30:03,253 [INFO] 
+2026-06-22 21:30:03,253 [INFO] ============================================================
+2026-06-22 21:30:03,253 [INFO] AUTO UPDATE PIPELINE — 2026-06-22 21:30:03
+2026-06-22 21:30:03,253 [INFO] Mode: TODAY'S MATCHES ONLY
+2026-06-22 21:30:03,253 [INFO] ============================================================
+2026-06-22 21:30:03,253 [INFO] ============================================================
+2026-06-22 21:30:03,253 [INFO] START: Keeper Stats (local export)
+2026-06-22 21:30:03,253 [INFO] ============================================================
+2026-06-22 21:30:39,524 [ERROR] FAIL: Keeper Stats (local export) — [Errno 13] Permission denied: 'reports/WicketKeepers_latest.xlsx'
+2026-06-22 21:30:39,778 [ERROR] Traceback (most recent call last):
+  File "C:\Users\Lenovo\Desktop\test.py\auto_update.py", line 28, in run_step
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Desktop\test.py\auto_update.py", line 59, in step_keeper_stats
+    path = export_append_keeper(rows)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\Desktop\test.py\excel_export.py", line 326, in export_append_keeper
+    with pd.ExcelWriter(master_path, engine="openpyxl") as writer:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\pandas\io\excel\_openpyxl.py", line 62, in __init__
+    super().__init__(
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\pandas\io\excel\_base.py", line 1281, in __init__
+    self._handles = get_handle(
+                    ^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Roaming\Python\Python311\site-packages\pandas\io\common.py", line 939, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'reports/WicketKeepers_latest.xlsx'
+
+2026-06-22 21:30:39,778 [INFO] ============================================================
+2026-06-22 21:30:39,778 [INFO] START: Keeper Stats (Google Sheets upload)
+2026-06-22 21:30:39,778 [INFO] ============================================================
+2026-06-22 21:31:10,707 [INFO] Uploaded keeper data. Total processed matches: 16
+2026-06-22 21:31:10,707 [INFO] FINISH: Keeper Stats (Google Sheets upload) — OK
+2026-06-22 21:31:10,707 [INFO] ============================================================
+2026-06-22 21:31:10,707 [INFO] START: Email daily report
+2026-06-22 21:31:10,707 [INFO] ============================================================
+2026-06-22 21:31:15,060 [INFO] Deleted 1 old sent email(s)
+2026-06-22 21:31:21,946 [INFO] Email sent to Sureshkutam@gmail.com
+2026-06-22 21:31:21,946 [INFO] FINISH: Email daily report — OK
+2026-06-22 21:31:21,946 [INFO] ============================================================
+2026-06-22 21:31:21,946 [INFO] PIPELINE COMPLETE
+2026-06-22 21:31:21,946 [INFO] Log saved to: reports/auto_update_20260622.log
+2026-06-22 21:31:21,946 [INFO] ============================================================
+2026-06-22 21:31:21,982 [INFO] Opened: C:\Users\Lenovo\Desktop\test.py\reports\WicketKeepers_latest.xlsx
+2026-06-22 21:37:38,111 [INFO] 
+2026-06-22 21:37:38,111 [INFO] 
+2026-06-22 21:37:38,111 [INFO] ============================================================
+2026-06-22 21:37:38,111 [INFO] AUTO UPDATE PIPELINE — 2026-06-22 21:37:38
+2026-06-22 21:37:38,111 [INFO] Mode: TODAY'S MATCHES ONLY
+2026-06-22 21:37:38,111 [INFO] ============================================================
+2026-06-22 21:37:38,111 [INFO] ============================================================
+2026-06-22 21:37:38,111 [INFO] START: Keeper Stats (local export)
+2026-06-22 21:37:38,111 [INFO] ============================================================
+2026-06-22 21:38:03,213 [INFO] Appended 24 keeper rows to reports/WicketKeepers_latest.xlsx
+2026-06-22 21:38:03,213 [INFO] FINISH: Keeper Stats (local export) — OK
+2026-06-22 21:38:03,213 [INFO] ============================================================
+2026-06-22 21:38:03,219 [INFO] START: Keeper Stats (Google Sheets upload)
+2026-06-22 21:38:03,219 [INFO] ============================================================
+2026-06-22 21:38:30,538 [INFO] Uploaded keeper data. Total processed matches: 16
+2026-06-22 21:38:30,538 [INFO] FINISH: Keeper Stats (Google Sheets upload) — OK
+2026-06-22 21:38:30,538 [INFO] ============================================================
+2026-06-22 21:38:30,538 [INFO] START: Email daily report
+2026-06-22 21:38:30,538 [INFO] ============================================================
+2026-06-22 21:38:34,062 [INFO] Deleted 1 old sent email(s)
+2026-06-22 21:38:39,700 [INFO] Email sent to Sureshkutam@gmail.com
+2026-06-22 21:38:39,700 [INFO] FINISH: Email daily report — OK
+2026-06-22 21:38:39,700 [INFO] ============================================================
+2026-06-22 21:38:39,700 [INFO] PIPELINE COMPLETE
+2026-06-22 21:38:39,700 [INFO] Log saved to: reports/auto_update_20260622.log
+2026-06-22 21:38:39,706 [INFO] ============================================================
+2026-06-22 21:38:39,763 [INFO] Opened: C:\Users\Lenovo\Desktop\test.py\reports\WicketKeepers_latest.xlsx
+2026-06-22 21:44:42,507 [INFO] 
+2026-06-22 21:44:42,507 [INFO] 
+2026-06-22 21:44:42,507 [INFO] ============================================================
+2026-06-22 21:44:42,517 [INFO] AUTO UPDATE PIPELINE — 2026-06-22 21:44:42
+2026-06-22 21:44:42,517 [INFO] Mode: TODAY'S MATCHES ONLY
+2026-06-22 21:44:42,517 [INFO] ============================================================
+2026-06-22 21:44:42,517 [INFO] ============================================================
+2026-06-22 21:44:42,517 [INFO] START: Keeper Stats (local export)
+2026-06-22 21:44:42,517 [INFO] ============================================================
+2026-06-22 21:45:09,791 [INFO] Appended 24 keeper rows to reports/WicketKeepers_latest.xlsx
+2026-06-22 21:45:09,791 [INFO] FINISH: Keeper Stats (local export) — OK
+2026-06-22 21:45:09,791 [INFO] ============================================================
+2026-06-22 21:45:09,791 [INFO] START: Keeper Stats (Google Sheets upload)
+2026-06-22 21:45:09,791 [INFO] ============================================================
+2026-06-22 21:45:36,389 [INFO] Uploaded keeper data. Total processed matches: 16
+2026-06-22 21:45:36,389 [INFO] FINISH: Keeper Stats (Google Sheets upload) — OK
+2026-06-22 21:45:36,389 [INFO] ============================================================
+2026-06-22 21:45:36,389 [INFO] START: Email daily report
+2026-06-22 21:45:36,389 [INFO] ============================================================
+2026-06-22 21:45:39,949 [INFO] Deleted 1 old sent email(s)
+2026-06-22 21:45:45,685 [INFO] Email sent to Sureshkutam@gmail.com
+2026-06-22 21:45:45,685 [INFO] FINISH: Email daily report — OK
+2026-06-22 21:45:45,693 [INFO] ============================================================
+2026-06-22 21:45:45,693 [INFO] PIPELINE COMPLETE
+2026-06-22 21:45:45,693 [INFO] Log saved to: reports/auto_update_20260622.log
+2026-06-22 21:45:45,693 [INFO] ============================================================
+2026-06-22 21:45:45,716 [INFO] Opened: C:\Users\Lenovo\Desktop\test.py\reports\WicketKeepers_latest.xlsx
+2026-06-22 21:51:46,017 [INFO] 
+2026-06-22 21:51:46,021 [INFO] 
+2026-06-22 21:51:46,021 [INFO] ============================================================
+2026-06-22 21:51:46,021 [INFO] AUTO UPDATE PIPELINE — 2026-06-22 21:51:46
+2026-06-22 21:51:46,021 [INFO] Mode: TODAY'S MATCHES ONLY
+2026-06-22 21:51:46,021 [INFO] ============================================================
+2026-06-22 21:51:46,021 [INFO] ============================================================
+2026-06-22 21:51:46,021 [INFO] START: Keeper Stats (local export)
+2026-06-22 21:51:46,021 [INFO] ============================================================
+2026-06-22 21:52:11,538 [INFO] Appended 24 keeper rows to reports/WicketKeepers_latest.xlsx
+2026-06-22 21:52:11,538 [INFO] FINISH: Keeper Stats (local export) — OK
+2026-06-22 21:52:11,538 [INFO] ============================================================
+2026-06-22 21:52:11,538 [INFO] START: Keeper Stats (Google Sheets upload)
+2026-06-22 21:52:11,538 [INFO] ============================================================
+2026-06-22 21:52:37,164 [INFO] Uploaded keeper data. Total processed matches: 16
+2026-06-22 21:52:37,164 [INFO] FINISH: Keeper Stats (Google Sheets upload) — OK
+2026-06-22 21:52:37,164 [INFO] ============================================================
+2026-06-22 21:52:37,164 [INFO] START: Email daily report
+2026-06-22 21:52:37,164 [INFO] ============================================================
+2026-06-22 21:52:40,663 [INFO] Deleted 1 old sent email(s)
+2026-06-22 21:52:45,655 [INFO] Email sent to Sureshkutam@gmail.com
+2026-06-22 21:52:45,655 [INFO] FINISH: Email daily report — OK
+2026-06-22 21:52:45,655 [INFO] ============================================================
+2026-06-22 21:52:45,655 [INFO] PIPELINE COMPLETE
+2026-06-22 21:52:45,655 [INFO] Log saved to: reports/auto_update_20260622.log
+2026-06-22 21:52:45,655 [INFO] ============================================================
+2026-06-22 21:52:45,672 [INFO] Opened: C:\Users\Lenovo\Desktop\test.py\reports\WicketKeepers_latest.xlsx
