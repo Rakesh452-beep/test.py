@@ -2,7 +2,7 @@ Param(
     [string]$TaskName = "KSCA_DailyUpdate",
     [string]$ScriptPath = "$(Join-Path $PWD 'auto_update.py')",
     [string]$PythonExe = "python",
-    [string]$TriggerTime = "21:30",
+    [string]$TriggerTime = "21:25",
     [switch]$StatsOnly,
     [switch]$KeeperOnly,
     [switch]$Help

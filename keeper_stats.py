@@ -228,6 +228,17 @@ def build_all_rows(matches, competition_id, team_name_map=None, max_matches=0, t
             date_str = summary.get("MatchDate", match_date_raw)
             first_bat_team = summary.get("FirstBattingTeam", "")
             second_bat_team = summary.get("SecondBattingTeam", "")
+            if team_name_map:
+                raw_fbt = str(first_bat_team).strip()
+                raw_sbt = str(second_bat_team).strip()
+                if raw_fbt in team_name_map:
+                    first_bat_team = team_name_map[raw_fbt]
+                elif raw_fbt.isdigit() and raw_fbt in team_name_map:
+                    first_bat_team = team_name_map[raw_fbt]
+                if raw_sbt in team_name_map:
+                    second_bat_team = team_name_map[raw_sbt]
+                elif raw_sbt.isdigit() and raw_sbt in team_name_map:
+                    second_bat_team = team_name_map[raw_sbt]
             score1 = summary.get("1Summary", "")
             score2 = summary.get("2Summary", "")
             is_match_end = summary.get("IsMatchEnd", is_match_end)

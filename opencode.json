@@ -1,0 +1,18 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "@playwright/mcp@latest"],
+      "enabled": true
+    },
+    "stitch": {
+      "type": "local",
+      "command": ["npx", "@_davideast/stitch-mcp", "proxy"],
+      "enabled": true,
+      "environment": {
+        "GOOGLE_CLOUD_PROJECT": "windy-container-459706-h9"
+      }
+    }
+  }
+}
