@@ -1,0 +1,28 @@
+2026-06-24 21:24:01,357 [INFO] 
+2026-06-24 21:24:01,357 [INFO] 
+2026-06-24 21:24:01,357 [INFO] ============================================================
+2026-06-24 21:24:01,357 [INFO] AUTO UPDATE PIPELINE — 2026-06-24 21:24:01
+2026-06-24 21:24:01,361 [INFO] Mode: TODAY'S MATCHES ONLY
+2026-06-24 21:24:01,361 [INFO] ============================================================
+2026-06-24 21:24:01,361 [INFO] ============================================================
+2026-06-24 21:24:01,361 [INFO] START: Keeper Stats (local export)
+2026-06-24 21:24:01,361 [INFO] ============================================================
+2026-06-24 21:24:39,447 [INFO] Appended 22 keeper rows to reports/WicketKeepers_latest.xlsx
+2026-06-24 21:24:39,447 [INFO] FINISH: Keeper Stats (local export) — OK
+2026-06-24 21:24:39,447 [INFO] ============================================================
+2026-06-24 21:24:39,447 [INFO] START: Keeper Stats (Google Sheets upload)
+2026-06-24 21:24:39,448 [INFO] ============================================================
+2026-06-24 21:25:18,931 [INFO] Uploaded keeper data. Total processed matches: 38
+2026-06-24 21:25:18,931 [INFO] FINISH: Keeper Stats (Google Sheets upload) — OK
+2026-06-24 21:25:18,931 [INFO] ============================================================
+2026-06-24 21:25:18,931 [INFO] START: Email daily report
+2026-06-24 21:25:18,931 [INFO] ============================================================
+2026-06-24 21:25:22,954 [INFO] Deleted 1 old sent email(s)
+2026-06-24 21:25:27,463 [INFO] Email sent to Sureshkutam@gmail.com
+2026-06-24 21:25:27,463 [INFO] FINISH: Email daily report — OK
+2026-06-24 21:25:27,463 [INFO] ============================================================
+2026-06-24 21:25:27,470 [INFO] PIPELINE COMPLETE
+2026-06-24 21:25:27,470 [INFO] Log saved to: reports/auto_update_20260624.log
+2026-06-24 21:25:27,470 [INFO] ============================================================
+2026-06-24 21:25:27,521 [INFO] Opened: C:\Users\Lenovo\Desktop\test.py\reports\WicketKeepers_latest.xlsx
+2026-06-24 21:25:27,531 [INFO] Opened: C:\Users\Lenovo\Desktop\test.py\reports\AllTeams_Stats_latest.xlsx

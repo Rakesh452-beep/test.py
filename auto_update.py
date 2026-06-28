@@ -49,36 +49,26 @@ def step_player_stats():
     export_combined(all_batting, all_bowling)
 
 
-def step_keeper_stats(today_only=False):
+def step_keeper_pipeline(today_only=False):
     from config import COMPETITION_ID
     from keeper_stats import extract_keepers
     from excel_export import export_append_keeper
+    from sheets_writer import upload_keeper_data
+    from database import mark_processed, get_processed_count
 
     rows = extract_keepers(COMPETITION_ID, today_only=today_only)
     if rows:
         path = export_append_keeper(rows)
         log.info(f"Appended {len(rows)} keeper rows to {path}")
+        upload_keeper_data(rows)
+        for r in rows:
+            match_id = r.get("_match_id")
+            if match_id:
+                mark_processed(match_id, COMPETITION_ID)
+        processed = get_processed_count(COMPETITION_ID)
+        log.info(f"Uploaded keeper data. Total processed matches: {processed}")
     else:
         log.info("No keeper rows found")
-
-
-def step_keeper_upload(today_only=False):
-    from config import COMPETITION_ID
-    from keeper_stats import extract_keepers
-    from sheets_writer import upload_keeper_data
-    from database import mark_processed, get_processed_count
-
-    rows = extract_keepers(COMPETITION_ID, today_only=today_only)
-    if not rows:
-        log.info("No keeper rows to upload")
-        return
-    upload_keeper_data(rows)
-    for r in rows:
-        match_id = r.get("_match_id")
-        if match_id:
-            mark_processed(match_id, COMPETITION_ID)
-    processed = get_processed_count(COMPETITION_ID)
-    log.info(f"Uploaded keeper data. Total processed matches: {processed}")
 
 
 def step_google_sync():
@@ -136,6 +126,7 @@ def main():
     parser.add_argument("--stats-only", action="store_true", help="Run player stats only")
     parser.add_argument("--keeper-only", action="store_true", help="Run keeper stats only")
     parser.add_argument("--today", action="store_true", help="Only process today's completed matches")
+    parser.add_argument("--nightly", action="store_true", help="Nightly scheduled run (enables email + Excel open)")
     args = parser.parse_args()
 
     log.info("")
@@ -153,34 +144,43 @@ def main():
     if args.stats_only:
         run_step("Player Stats (batting + bowling)", step_player_stats)
     elif args.keeper_only:
-        run_step("Keeper Stats (local export)", step_keeper_stats, **kwargs)
-        run_step("Keeper Stats (Google Sheets upload)", step_keeper_upload, **kwargs)
+        run_step("Keeper Stats (pipeline)", step_keeper_pipeline, **kwargs)
     else:
         run_step("Player Stats (batting + bowling)", step_player_stats)
-        run_step("Keeper Stats (local export)", step_keeper_stats, **kwargs)
-        run_step("Keeper Stats (Google Sheets upload)", step_keeper_upload, **kwargs)
+        run_step("Keeper Stats (pipeline)", step_keeper_pipeline, **kwargs)
         run_step("Google Sheet sync", step_google_sync)
 
-    run_step("Email daily report", step_email_report)
+    if args.nightly:
+        run_step("Email daily report", step_email_report)
 
     log.info("=" * 60)
     log.info("PIPELINE COMPLETE")
     log.info(f"Log saved to: {LOG_FILE}")
     log.info("=" * 60)
 
-    import subprocess
-    reports_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
-    files_to_open = [
-        os.path.join(reports_dir, "WicketKeepers_latest.xlsx"),
-        os.path.join(reports_dir, "AllTeams_Stats_latest.xlsx"),
-    ]
-    for f in files_to_open:
-        if os.path.exists(f):
-            try:
-                subprocess.Popen(["start", "", f], shell=True)
-                log.info(f"Opened: {f}")
-            except Exception as e:
-                log.warning(f"Could not open {f}: {e}")
+    if args.nightly:
+        try:
+            reports_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
+            fp = os.path.join(reports_dir, "WicketKeepers_latest.xlsx")
+            if os.path.exists(fp):
+                import subprocess
+                import winreg
+                try:
+                    key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\EXCEL.EXE")
+                    excel_path = winreg.QueryValue(key, None)
+                    winreg.CloseKey(key)
+                except Exception:
+                    excel_path = None
+                if excel_path:
+                    subprocess.Popen([excel_path, fp])
+                    log.info(f"Opened Excel: {fp}")
+                else:
+                    os.startfile(fp)
+                    log.info(f"Opened via startfile: {fp}")
+            else:
+                log.warning(f"Excel not found: {fp}")
+        except Exception as e:
+            log.warning(f"Could not open Excel: {e}")
 
 
 if __name__ == "__main__":

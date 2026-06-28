@@ -258,31 +258,49 @@ def rows_to_daily_dataframe(rows):
 
 def _write_summary_sheet(wb, df):
     import pandas as pd
-    from openpyxl.styles import Font
+    from openpyxl.styles import Font, PatternFill, Alignment
+    from openpyxl.utils import get_column_letter
     num_cols = ["Score", "Balls Faced", "Catches", "Stumps"]
     for c in num_cols:
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors="coerce").fillna(0)
 
-    bold = Font(bold=True)
+    bold = Font(bold=True, color="FFFFFF")
+    header_fill = PatternFill(start_color="1A1A1A", end_color="1A1A1A", fill_type="solid")
+    citron_fill = PatternFill(start_color="D4FF3C", end_color="D4FF3C", fill_type="solid")
+    citron_font = Font(bold=True, color="0A0A0A")
 
     if "Summary" in [s.title for s in wb.sheetnames]:
         del wb["Summary"]
     ws = wb.create_sheet("Summary")
 
-    headers = ["Club Name", "Name of Keeper", "Vs Team", "Date", "Score", "Balls Faced", "Catches", "Stumps", "Out/Not out"]
+    headers = ["Date", "Club Name", "Name of Keeper", "Vs Team", "Score", "Balls Faced", "Catches", "Stumps", "Out/Not out"]
     for col_idx, col_name in enumerate(headers, 1):
-        ws.cell(row=1, column=col_idx, value=col_name)
-        ws.cell(row=1, column=col_idx).font = bold
+        cell = ws.cell(row=1, column=col_idx, value=col_name)
+        cell.font = bold
+        cell.fill = header_fill
+        cell.alignment = Alignment(horizontal="center")
 
-    df_sorted = df.sort_values("Score", ascending=False).reset_index(drop=True)
+    if "Date" in df.columns:
+        df["_sort_date"] = pd.to_datetime(df["Date"], format="%d %b %Y", errors="coerce")
+        df_sorted = df.sort_values(["_sort_date", "Score"], ascending=[False, False]).reset_index(drop=True)
+    else:
+        df_sorted = df.sort_values("Score", ascending=False).reset_index(drop=True)
+
+    top_score_per_date = {}
+    for _, row in df_sorted.iterrows():
+        d = row.get("Date", "")
+        if d and d not in top_score_per_date:
+            top_score_per_date[d] = (row.get("Name of Keeper", ""), row.get("Club Name", ""), int(row["Score"]) if pd.notna(row.get("Score")) else 0)
 
     for row_idx, (_, row) in enumerate(df_sorted.iterrows(), 2):
+        date_val = row.get("Date", "")
+        is_top = top_score_per_date.get(date_val) and top_score_per_date[date_val][0] == row.get("Name of Keeper", "")
         vals = [
+            date_val,
             row.get("Club Name", ""),
             row.get("Name of Keeper", ""),
             row.get("Vs Team", ""),
-            row.get("Date", ""),
             int(row["Score"]) if pd.notna(row["Score"]) else 0,
             int(row["Balls Faced"]) if pd.notna(row["Balls Faced"]) else 0,
             int(row["Catches"]) if pd.notna(row["Catches"]) else 0,
@@ -290,14 +308,23 @@ def _write_summary_sheet(wb, df):
             row.get("Out/Not out", ""),
         ]
         for ci, val in enumerate(vals, 1):
-            ws.cell(row=row_idx, column=ci, value=val)
+            cell = ws.cell(row=row_idx, column=ci, value=val)
+            if is_top:
+                cell.fill = citron_fill
+                cell.font = citron_font
 
-    ws.column_dimensions["A"].width = 40
-    ws.column_dimensions["B"].width = 35
+    ws.column_dimensions["A"].width = 14
+    ws.column_dimensions["B"].width = 40
     ws.column_dimensions["C"].width = 35
-    ws.column_dimensions["D"].width = 14
-    for c in "EFGHI":
-        ws.column_dimensions[c].width = 14
+    ws.column_dimensions["D"].width = 35
+    ws.column_dimensions["E"].width = 10
+    ws.column_dimensions["F"].width = 12
+    ws.column_dimensions["G"].width = 10
+    ws.column_dimensions["H"].width = 10
+    ws.column_dimensions["I"].width = 14
+
+    ws.freeze_panes = "A2"
+    ws.auto_filter.ref = f"A1:I{len(df_sorted) + 1}"
 
 
 def export_append_keeper(rows):
@@ -327,7 +354,10 @@ def export_append_keeper(rows):
 
     if "Date" in df_out.columns:
         df_out["_sort_date"] = pd.to_datetime(df_out["Date"], format="%d %b %Y", errors="coerce")
-        df_out = df_out.sort_values("_sort_date", na_position="last").drop(columns=["_sort_date"]).reset_index(drop=True)
+        sort_cols = ["_sort_date"]
+        if "_match_id" in df_out.columns:
+            sort_cols.append("_match_id")
+        df_out = df_out.sort_values(sort_cols, na_position="last").drop(columns=["_sort_date"]).reset_index(drop=True)
 
     save_cols = [c for c in df_out.columns if c != "_match_id"] + ["_match_id"]
     df_out = df_out[[c for c in save_cols if c in df_out.columns]]
@@ -348,8 +378,7 @@ def export_append_keeper(rows):
     for s in ["Summary", "Club Summary"]:
         if s in wb.sheetnames:
             del wb[s]
-    new_display = new_df.drop(columns=["_match_id"], errors="ignore")
-    _write_summary_sheet(wb, new_display.copy())
+    _write_summary_sheet(wb, df_out.drop(columns=["_match_id"], errors="ignore"))
     wb.save(master_path)
     wb.close()
 
