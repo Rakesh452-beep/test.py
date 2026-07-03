@@ -1,0 +1,35 @@
+2026-07-01 21:25:04,041 [INFO] 
+2026-07-01 21:25:04,042 [INFO] 
+2026-07-01 21:25:04,042 [INFO] ============================================================
+2026-07-01 21:25:04,042 [INFO] AUTO UPDATE PIPELINE — 2026-07-01 21:25:04
+2026-07-01 21:25:04,042 [INFO] ============================================================
+2026-07-01 21:25:04,042 [INFO] ============================================================
+2026-07-01 21:25:04,042 [INFO] START: Player Stats (batting + bowling)
+2026-07-01 21:25:04,042 [INFO] ============================================================
+2026-07-01 21:25:22,623 [INFO] Found 61 teams
+2026-07-01 21:25:40,092 [INFO] Batting records: 1503, Bowling records: 930
+2026-07-01 21:25:48,742 [INFO] FINISH: Player Stats (batting + bowling) — OK
+2026-07-01 21:25:48,742 [INFO] ============================================================
+2026-07-01 21:25:48,742 [INFO] START: Keeper Stats (pipeline)
+2026-07-01 21:25:48,742 [INFO] ============================================================
+2026-07-01 21:30:35,749 [WARNING] Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='d27i8b90nps4in.cloudfront.net', port=443): Read timed out. (read timeout=30)")': /feed/14529-Innings2.js?callback=onScoring
+2026-07-01 21:30:51,868 [WARNING] Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='d27i8b90nps4in.cloudfront.net', port=443): Failed to establish a new connection: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions")': /feed/14536-matchsummary.js?callback=onScoringMatchsummary
+2026-07-01 21:30:55,888 [WARNING] Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPSConnection(host='d27i8b90nps4in.cloudfront.net', port=443): Failed to establish a new connection: [WinError 10013] An attempt was made to access a socket in a way forbidden by its access permissions")': /feed/14536-matchsummary.js?callback=onScoringMatchsummary
+2026-07-01 21:43:38,018 [INFO] Appended 239 keeper rows to reports/WicketKeepers_latest.xlsx
+2026-07-01 21:43:47,410 [INFO] Uploaded keeper data. Total processed matches: 121
+2026-07-01 21:43:47,410 [INFO] FINISH: Keeper Stats (pipeline) — OK
+2026-07-01 21:43:47,410 [INFO] ============================================================
+2026-07-01 21:43:47,410 [INFO] START: Google Sheet sync
+2026-07-01 21:43:47,410 [INFO] ============================================================
+2026-07-01 21:43:53,863 [INFO] Google Sheet synced (391 unique players)
+2026-07-01 21:43:53,863 [INFO] FINISH: Google Sheet sync — OK
+2026-07-01 21:43:53,863 [INFO] ============================================================
+2026-07-01 21:43:53,865 [INFO] START: Email daily report
+2026-07-01 21:43:53,865 [INFO] ============================================================
+2026-07-01 21:44:01,008 [INFO] Email sent to Sureshkutam@gmail.com
+2026-07-01 21:44:01,008 [INFO] FINISH: Email daily report — OK
+2026-07-01 21:44:01,008 [INFO] ============================================================
+2026-07-01 21:44:01,008 [INFO] PIPELINE COMPLETE
+2026-07-01 21:44:01,008 [INFO] Log saved to: reports/auto_update_20260701.log
+2026-07-01 21:44:01,008 [INFO] ============================================================
+2026-07-01 21:44:01,083 [INFO] Opened Excel: C:\Users\Lenovo\Desktop\test.py\reports\WicketKeepers_latest.xlsx
