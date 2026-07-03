@@ -1,5 +1,5 @@
 # KSCA Auto-Update — Session Context
-## Last updated: 25 Jun 2026
+## Last updated: 30 Jun 2026
 
 ### What's set up
 - Daily scheduled task `KSCA_DailyUpdate` runs at **9:25 PM IST**
@@ -125,3 +125,109 @@
   - **Data density**: More compact padding, optimized table column widths
 
 - **`web/app.py`** — Added `app.mount("/static", ...)` to serve `styles.css` and future static assets
+
+### Session — Website Integration Planning (30 Jun 2026)
+
+#### Discussion summary:
+- Goal: Integrate existing KSCA automation into a website
+- Decided stack: **Next.js (frontend)** + **FastAPI / api.py** + existing Python backend
+- Existing `.py` files: **No changes needed** — they work as-is
+- New file needed: **`api.py`** (~80 lines) — FastAPI wrapper exposing existing functions as web endpoints
+
+#### Architecture:
+```
+Next.js (port 3000)  →  FastAPI / api.py (port 8000)  →  existing .py files
+                                                             ↓
+                                                     Cricket API, Google Sheets, Gmail, SQLite
+```
+
+#### API endpoints planned (in api.py):
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /teams | List teams |
+| GET | /competitions | List competitions |
+| GET | /players | Batting + bowling stats |
+| GET | /keeper/rows?today_only= | Wicketkeeper stats |
+| GET | /keeper/report | Download keeper Excel |
+| GET | /reports | List report files |
+| GET | /db/processed | Processed match count |
+| POST | /pipeline/players | Run player stats (background) |
+| POST | /pipeline/keeper | Run keeper pipeline (background) |
+| POST | /pipeline/email | Send email report |
+
+#### Frontend requirements:
+- Power BI-style dashboard with:
+  - KPI cards, bar charts (Recharts), sortable/filterable tables
+  - Team filter dropdown, player search box
+- Complete **full-stack** app after frontend is built (frontend + api.py + existing backend)
+
+#### Deployment:
+- Backend: `uvicorn api:app --reload --host 0.0.0.0 --port 8000`
+- Frontend: `npm run dev` (Next.js)
+- FastAPI auto-docs at: http://localhost:8000/docs
+
+#### Next task:
+- Build `api.py` (FastAPI wrapper), then build Next.js dashboard
+
+### Session — 3 Jul 2026
+
+#### Architecture decision (final):
+After evaluating options, decided on:
+- **Frontend**: Next.js deployed on **Vercel** (free)
+- **Backend data layer**: **Supabase** (free tier, 500MB) — data pushed from pipeline
+- **API**: FastAPI `api.py` still created for on-demand operations, but website reads from Supabase directly
+- **Existing pipeline**: Unchanged — still runs at 9:25 PM daily, updates Excel + also pushes data to Supabase
+
+#### Why not local-only / tunnel:
+- Desktop sleeping would take site down
+- Users need 24/7 access
+
+#### Final architecture:
+```
+Desktop (daily pipeline)                    Cloud (always-on, $0)
+┌──────────────────────┐                    ┌──────────────────────┐
+│  auto_update.py      │  after pipeline    │  Supabase DB         │
+│  (9:25 PM daily)     │───push data────→   │  (free)              │
+│                      │                    │                      │
+│  Updates Excel files │                    │  Next.js on Vercel   │
+│  (+ Google Sheets)   │                    │  (free)              │
+│  (+ Email)           │                    │  ┌─────────────────┐ │
+│                      │                    │  │ Batting stats   │ │
+│                      │                    │  │ Bowling stats   │ │
+│                      │                    │  │ Keeper stats    │ │
+│                      │                    │  │ Charts/filters  │ │
+│                      │                    │  └─────────────────┘ │
+└──────────────────────┘                    └──────────────────────┘
+                                                    ↑
+                                              Users visit
+                                          your-app.vercel.app
+```
+
+#### User requirements confirmed:
+1. Public website mirroring Excel data (batting, bowling, wicketkeeper)
+2. Player data analysis with charts, filters, search
+3. Auto-updates daily as matches end (same pipeline)
+4. Working public URL — **$0 hosting**
+5. Existing `.py` automation unchanged
+
+#### What user needs to do:
+- Sign up at https://supabase.com (free, no credit card)
+- Sign up at https://vercel.com (free, login with GitHub)
+- Push code to GitHub repo
+- Share Supabase project URL + anon key
+- Share GitHub repo URL
+
+#### What I will build (next session):
+1. Supabase tables SQL schema
+2. Add push-to-Supabase step in `auto_update.py`
+3. Create `api.py` (FastAPI wrapper)
+4. Scaffold Next.js app with all dashboard pages
+5. Deploy to Vercel for public URL
+6. Test full data flow: pipeline → Supabase → website
+
+#### Files that stay unchanged:
+- `players.py`, `keeper_stats.py`, `excel_export.py`, `email_sender.py`, `sheets_writer.py`
+- `downloader.py`, `parser.py`, `config.py`, `database.py`
+- `teams.py`, `competition.py`, `main.py`, `main_helpers.py`
+- All existing Excel files in `reports/`
+- Scheduled task `KSCA_DailyUpdate`
