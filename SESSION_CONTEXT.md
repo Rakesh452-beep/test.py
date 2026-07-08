@@ -231,3 +231,81 @@ Desktop (daily pipeline)                    Cloud (always-on, $0)
 - `teams.py`, `competition.py`, `main.py`, `main_helpers.py`
 - All existing Excel files in `reports/`
 - Scheduled task `KSCA_DailyUpdate`
+
+### Session — 8 Jul 2026
+
+#### Summary:
+Scaffolded full **Next.js 16** premium dashboard and created **project plan** splitting work among 3 team members.
+
+#### What was built:
+
+1. **`web/` — Next.js app scaffolded** (App Router, TypeScript, Tailwind v4):
+   - `npm create-next-app` + installed `framer-motion`, `recharts`, `lucide-react`, `@supabase/supabase-js`, `clsx`, `tailwind-merge`
+
+2. **Pages (6 total):**
+   - `/` — Landing page with animated hero, gradient mesh background, KPI counters (total runs, wickets, catches, stumpings), nav cards, top 5 batters & bowlers with animated bars
+   - `/batting` — 4 stat cards, top 10 run scorers bar chart (Recharts), team batting breakdown with animated bars, sortable/searchable/paginated table
+   - `/bowling` — 4 stat cards, top 10 wicket takers bar chart, team bowling breakdown, sortable table
+   - `/keepers` — 4 stat cards, keeper batting performance bar chart, catches vs stumpings pie chart, keeper dismissals comparison grouped bar chart, match log table
+   - `/keeper-summary` — Grand Total hero card (runs/catches/stumps/clubs), per-club grid with mini stat cards
+   - `/daily` — Date navigation, per-match cards showing keepers + batters + bowlers tables
+
+3. **Components:**
+   - `Navbar.tsx` — Desktop sidebar + mobile drawer with Framer Motion active indicator, lucide icons
+   - `StatCard.tsx` — Animated count-up numbers with cubic-bezier easing
+   - `DataTable.tsx` — Sortable, searchable, paginated with row animations
+   - `ChartCard.tsx` — Glassmorphism chart wrapper
+   - `TeamFilter.tsx` — Animated dropdown
+   - `LoadingSkeleton.tsx` — Skeleton shimmer variants
+   - `PageTransition.tsx` — Framer Motion page wrapper
+   - `PlayerProfile.tsx` — Modal: click player name → glass card with avatar initials, team, role badge, 8 stat grid, animated open/close (built for Tejaswini to wire up)
+
+4. **Design:**
+   - Palette: deep navy `#0a0e27` + amber `#f59e0b` + gold `#ffd700`
+   - Glassmorphism cards with `backdrop-filter: blur()`
+   - CSS custom properties via `@theme` directive
+   - Fonts: Inter, JetBrains Mono, Playfair Display (via next/font)
+   - Animated gradients, hero grid pattern, glow effects, shimmer skeletons
+   - Responsive: sidebar on desktop, drawer on mobile, 2-col → 1-col grids
+
+5. **Real data integration:**
+   - Extracted real player data from `AllTeams_Stats_20260708_221443.xlsx` via Python script
+   - 50 batters, 30 bowlers, 267 keeper rows, 33 teams — all real KSCA U-19 names
+   - `mock-data.ts` populated with pipeline Excel data (placeholder until Supabase is connected)
+
+6. **`PROJECT_PLAN.md`** — Created structured work division:
+
+   | Person | Tasks | Files |
+   |--------|-------|-------|
+   | **Yasawini** | Supabase setup, SQL schema, pipeline push step, Vercel deploy | `auto_update.py`, `database.py`, `supabase-schema.sql` |
+   | **Janardhan** | Batting, Bowling, Daily pages + Supabase wiring | `batting/page.tsx`, `bowling/page.tsx`, `daily/page.tsx` |
+   | **Tejaswini** | Landing, Keepers, Club Summary, Player Profile, Navbar, all components, styles | `page.tsx`, `keepers/page.tsx`, `keeper-summary/page.tsx`, all `components/*` |
+
+7. **Temp files created & used:**
+   - `extract_data.py` — reads Excel, outputs JSON
+   - `generate_ts_data.py` — converts JSON → TypeScript `mock-data.ts`
+   - `reports/_extracted_data.json` — intermediate data cache
+
+#### Architecture (final):
+```
+Desktop (daily pipeline)                    Cloud (always-on, $0)
+┌──────────────────────┐                    ┌──────────────────────┐
+│  auto_update.py      │  after pipeline    │  Supabase DB         │
+│  (9:25 PM daily)     │───push data────→   │  (free)              │
+│                      │                    │                      │
+│  Updates Excel files │                    │  Next.js on Vercel   │
+│  (+ Google Sheets)   │                    │  (free)              │
+│  (+ Email)           │                    │  ┌─────────────────┐ │
+│                      │                    │  │ 6 pages +       │ │
+│                      │                    │  │ glassmorphism   │ │
+│                      │                    │  │ charts/tables   │ │
+│                      │                    │  └─────────────────┘ │
+└──────────────────────┘                    └──────────────────────┘
+```
+
+#### Pending / Next:
+1. Yasawini: Create Supabase project + run SQL schema
+2. Yasawini: Add `step_push_to_supabase()` in `auto_update.py`
+3. Janardhan: Wire batting/bowling/daily pages to Supabase
+4. Tejaswini: Wire PlayerProfile into batting/bowling pages
+5. All 3: Push to GitHub, deploy to Vercel
