@@ -2,3 +2,8 @@ service-account.json
 processed_matches.db
 __pycache__/
 *.db
+opencode.json
+node_modules/
+web/public/*.jpeg
+web/public/*.jpg
+web/public/*.png

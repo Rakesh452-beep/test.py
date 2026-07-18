@@ -1,27 +1,29 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
+import { Space_Grotesk, Bebas_Neue, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+});
+
+const bebasNeue = Bebas_Neue({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-display",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-});
-
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
+  weight: ["400", "500", "700"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
-  title: "KSCA U-19 | Cricket Analytics Dashboard",
-  description: "Premium cricket analytics dashboard for KSCA U-19 Inter Club Tournament — batting, bowling & wicketkeeper statistics with real-time insights",
-  keywords: ["KSCA", "cricket", "U-19", "tournament", "analytics", "dashboard"],
+  title: "KSCA U-19 | Cricket Analytics",
+  description: "Cricket analytics dashboard for KSCA U-19 Inter Club Tournament",
 };
 
 export default function RootLayout({
@@ -31,9 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} ${playfairDisplay.variable} font-sans antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${bebasNeue.variable} ${jetbrainsMono.variable} font-body antialiased`}>
         <Navbar />
-        <main className="min-h-screen pt-16 lg:pt-0 lg:pl-64">
+        <main className="min-h-screen">
           {children}
         </main>
       </body>

@@ -4801,3 +4801,112 @@ export function getTopScorers(limit = 5) {
 export function getTopWicketTakers(limit = 5) {
   return getBowlerStats().slice(0, limit);
 }
+
+export function getTopStrikeRates(limit = 5) {
+  return [...MOCK_BATTERS].sort((a, b) => b.StrikeRate - a.StrikeRate).slice(0, limit);
+}
+
+export function getTopAverages(limit = 5) {
+  return [...MOCK_BATTERS].filter(b => b.Runs > 0).sort((a, b) => b.BattingAverage - a.BattingAverage).slice(0, limit);
+}
+
+export function getBestEconomy(limit = 5) {
+  return [...MOCK_BOWLERS].filter(b => b.Wickets > 0).sort((a, b) => a.Economy - b.Economy).slice(0, limit);
+}
+
+export function getBestBowlingFigures(limit = 5) {
+  return [...MOCK_BOWLERS]
+    .filter(b => b.BestBowling)
+    .sort((a, b) => {
+      const aW = parseInt(a.BestBowling!.split("/")[0]);
+      const bW = parseInt(b.BestBowling!.split("/")[0]);
+      return bW - aW;
+    })
+    .slice(0, limit);
+}
+
+function deterministicStyle(name: string): "RHB" | "LHB" {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = ((hash << 5) - hash + name.charCodeAt(i)) | 0;
+  }
+  return hash % 5 === 0 ? "LHB" : "RHB";
+}
+
+export interface UnifiedPlayer {
+  name: string;
+  team: string;
+  role: "Batsman" | "Bowler";
+  battingStyle: "RHB" | "LHB";
+  runs?: number;
+  wickets?: number;
+  battingAverage?: number;
+  bowlingAverage?: number;
+  strikeRate?: number;
+  economy?: number;
+  highestScore?: number;
+  hundreds?: number;
+  fifties?: number;
+  fours?: number;
+  sixes?: number;
+  overs?: number;
+  maidens?: number;
+  fiveWickets?: number;
+  innings?: number;
+  notOuts?: number;
+  balls?: number;
+  runsConceded?: number;
+}
+
+export function getAllPlayers(): UnifiedPlayer[] {
+  const batters: UnifiedPlayer[] = MOCK_BATTERS.map((b) => ({
+    name: b.PlayerName.trim(),
+    team: b.TeamName,
+    role: "Batsman" as const,
+    battingStyle: deterministicStyle(b.PlayerName),
+    runs: b.Runs,
+    battingAverage: b.BattingAverage,
+    strikeRate: b.StrikeRate,
+    highestScore: b.HighestScore,
+    hundreds: b.Hundreds,
+    fifties: b.Fifties,
+    fours: b.Fours,
+    sixes: b.Sixes,
+    innings: b.Innings,
+    notOuts: b.NotOuts,
+    balls: b.Balls,
+  }));
+
+  const bowlers: UnifiedPlayer[] = MOCK_BOWLERS.map((b) => ({
+    name: b.PlayerName.trim(),
+    team: b.TeamName,
+    role: "Bowler" as const,
+    battingStyle: deterministicStyle(b.PlayerName),
+    wickets: b.Wickets,
+    bowlingAverage: b.BowlingAverage,
+    strikeRate: b.StrikeRate,
+    economy: b.Economy,
+    overs: b.Overs,
+    maidens: b.Maidens,
+    fiveWickets: b.FiveWickets,
+    runsConceded: b.Runs,
+    innings: b.Innings,
+  }));
+
+  return [...batters, ...bowlers].sort((a, b) => {
+    const aKey = (a.runs ?? 0) + (a.wickets ?? 0) * 10;
+    const bKey = (b.runs ?? 0) + (b.wickets ?? 0) * 10;
+    return bKey - aKey;
+  });
+}
+
+export function getAllTeams() {
+  const teamSet = new Set<string>();
+  MOCK_BATTERS.forEach((b) => teamSet.add(b.TeamName));
+  MOCK_BOWLERS.forEach((b) => teamSet.add(b.TeamName));
+  MOCK_KEEPERS.forEach((k) => {
+    teamSet.add(k.club);
+    teamSet.add(k.vs_team);
+  });
+  return Array.from(teamSet).sort();
+}

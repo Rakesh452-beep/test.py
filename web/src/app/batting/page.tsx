@@ -15,16 +15,16 @@ import type { Column } from "@/components/DataTable";
 
 const columns: Column<(Batter & { _rank?: number })>[] = [
   { key: "rank", label: "#", render: (item) => (
-    <span className="font-mono text-gray-500">{item._rank}</span>
+    <span className="font-mono text-[#525252]">{item._rank}</span>
   ), className: "w-10" },
   { key: "PlayerName", label: "Player", sortable: true, render: (item: Batter) => (
-    <span className="font-medium text-white">{item.PlayerName}</span>
+    <span className="font-bold text-white">{item.PlayerName}</span>
   ) },
   { key: "TeamName", label: "Team", sortable: true, render: (item: Batter) => (
-    <span className="text-gray-400 text-xs">{item.TeamName}</span>
+    <span className="text-[#525252] text-xs">{item.TeamName}</span>
   ), hideOnMobile: true },
   { key: "Runs", label: "Runs", sortable: true, render: (item: Batter) => (
-    <span className="font-bold font-mono text-amber">{item.Runs}</span>
+    <span className="font-display text-[#FEDF4B]">{item.Runs}</span>
   ), className: "text-right font-mono" },
   { key: "Balls", label: "Balls", sortable: true, hideOnMobile: true, className: "text-right font-mono" },
   { key: "StrikeRate", label: "SR", sortable: true, render: (item: Batter) => (
@@ -73,10 +73,10 @@ export default function BattingPage() {
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload?.length) {
       return (
-        <div className="glass rounded-xl p-3 border border-border text-xs font-mono">
+        <div className="card-flat rounded-xl p-3.5 text-xs font-mono border border-white/[0.06]">
           <p className="text-white font-bold text-sm">{payload[0].payload.name}</p>
-          <p className="text-amber mt-1">Runs: {payload[0].value}</p>
-          <p className="text-gray-400">SR: {payload[0].payload.sr}</p>
+          <p className="text-[#FEDF4B] mt-1">Runs: {payload[0].value}</p>
+          <p className="text-[#525252]">SR: {payload[0].payload.sr}</p>
         </div>
       );
     }
@@ -85,59 +85,64 @@ export default function BattingPage() {
 
   return (
     <PageTransition>
-      <div className="px-4 sm:px-6 lg:px-8 py-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
+      <div className="relative px-5 sm:px-8 py-10 overflow-hidden bg-[#111111]">
+        <div className="absolute inset-0 pointer-events-none opacity-[0.02]" style={{
+          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(254,223,75,0.4) 1px, transparent 0)",
+          backgroundSize: "40px 40px",
+        }} />
+
+        <div className="relative z-10 max-w-[1400px] mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8"
+            className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-10"
           >
             <div>
-              <h1 className="font-display text-3xl font-bold text-white">Batting Stats</h1>
-              <p className="text-sm font-mono text-gray-500 mt-1">
+              <span className="section-label mb-4 inline-block">Statistics</span>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white mt-3">
+                Batting Stats
+              </h1>
+              <p className="text-sm text-[#525252] mt-3 font-bold uppercase tracking-wider">
                 Complete batting statistics across all teams
               </p>
             </div>
-            <TeamFilter teams={MOCK_TEAMS} value={teamFilter} onChange={setTeamFilter} className="w-full sm:w-56" />
+            <TeamFilter teams={MOCK_TEAMS} value={teamFilter} onChange={setTeamFilter} className="w-full sm:w-72" />
           </motion.div>
 
-          {/* Stat Cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <StatCard title="Total Runs" value={totalRuns} icon={<BarChart3 size={18} />} subtitle="Tournament total" trend="up" delay={0} />
-            <StatCard title="Avg Strike Rate" value={parseFloat(avgStrikeRate)} format="rate" icon={<Eye size={18} />} subtitle="Across all players" trend="up" delay={0.1} />
-            <StatCard title="Highest Score" value={topScore} prefix="" icon={<Medal size={18} />} subtitle="Individual best" trend="up" delay={0.2} />
-            <StatCard title="Total Boundaries" value={totalBoundaries} icon={<BarChart3 size={18} />} subtitle="Fours + Sixes" trend="up" delay={0.3} />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <StatCard title="Total Runs" value={totalRuns} icon={<BarChart3 size={20} />} subtitle="Tournament total" trend="up" delay={0} />
+            <StatCard title="Avg Strike Rate" value={parseFloat(avgStrikeRate)} format="rate" icon={<Eye size={20} />} subtitle="Across all players" trend="up" delay={0.1} />
+            <StatCard title="Highest Score" value={topScore} prefix="" icon={<Medal size={20} />} subtitle="Individual best" trend="up" delay={0.2} />
+            <StatCard title="Total Boundaries" value={totalBoundaries} icon={<BarChart3 size={20} />} subtitle="Fours + Sixes" trend="up" delay={0.3} />
           </div>
 
-          {/* Chart + Breakdown */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
             <ChartCard title="Top 10 Run Scorers" subtitle="Leading batsmen by total runs" delay={0.1} className="lg:col-span-2">
-              <ResponsiveContainer width="100%" height={320}>
+              <ResponsiveContainer width="100%" height={340}>
                 <BarChart data={chartData} margin={{ top: 10, right: 10, left: -10, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
-                  <XAxis dataKey="name" tick={{ fill: "#6b7280", fontSize: 11 }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "#6b7280", fontSize: 11 }} axisLine={false} tickLine={false} />
-                  <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(255,255,255,0.03)" }} />
-                  <Bar dataKey="runs" fill="#f59e0b" radius={[4, 4, 0, 0]} maxBarSize={40} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(254,223,75,0.06)" />
+                  <XAxis dataKey="name" tick={{ fill: "#525252", fontSize: 11 }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "#525252", fontSize: 11 }} axisLine={false} tickLine={false} />
+                  <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(254,223,75,0.05)" }} />
+                  <Bar dataKey="runs" fill="#FEDF4B" radius={[6, 6, 0, 0]} maxBarSize={45} />
                 </BarChart>
               </ResponsiveContainer>
             </ChartCard>
 
             <ChartCard title="Team Batting Breakdown" subtitle="Total runs per team" delay={0.2}>
-              <div className="space-y-3 pt-2">
+              <div className="space-y-4 pt-3">
                 {teamBreakdown.slice(0, 8).map((team, i) => (
                   <div key={team.team}>
-                    <div className="flex justify-between text-xs font-mono mb-1">
-                      <span className="text-gray-400 truncate">{team.team}</span>
-                      <span className="text-amber font-bold">{team.runs.toLocaleString()}</span>
+                    <div className="flex justify-between text-xs font-mono mb-2">
+                      <span className="text-[#525252] truncate">{team.team}</span>
+                      <span className="text-[#FEDF4B] font-bold">{team.runs.toLocaleString()}</span>
                     </div>
-                    <div className="h-1.5 rounded-full bg-obsidian overflow-hidden">
+                    <div className="progress-track">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${team.percentage}%` }}
-                        transition={{ duration: 0.8, delay: i * 0.05 }}
-                        className="h-full rounded-full bg-gradient-to-r from-amber to-amber-light"
+                        transition={{ duration: 1, delay: i * 0.05, ease: "easeOut" }}
+                        className="progress-fill-yellow"
                       />
                     </div>
                   </div>
@@ -146,7 +151,6 @@ export default function BattingPage() {
             </ChartCard>
           </div>
 
-          {/* Data Table */}
           <DataTable
             columns={columns}
             data={enriched}

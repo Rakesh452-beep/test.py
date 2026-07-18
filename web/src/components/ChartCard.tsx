@@ -15,21 +15,21 @@ interface ChartCardProps {
 export function ChartCard({ title, subtitle, children, className, delay = 0, action }: ChartCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      className={cn("glass rounded-2xl p-5 gradient-border", className)}
+      transition={{ duration: 0.45, delay, ease: "easeOut" }}
+      className={cn("card-flat p-5", className)}
     >
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="font-display text-base font-bold text-white">{title}</h3>
+          <h3 className="font-display text-base font-extrabold uppercase text-white">{title}</h3>
           {subtitle && (
-            <p className="text-xs font-mono text-gray-500 mt-0.5">{subtitle}</p>
+            <p className="text-xs text-[#525252] mt-1">{subtitle}</p>
           )}
         </div>
         {action && <div>{action}</div>}
       </div>
-      <div className="text-gray-300">
+      <div className="text-[#a3a3a3]">
         {children}
       </div>
     </motion.div>

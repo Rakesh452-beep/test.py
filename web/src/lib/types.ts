@@ -17,6 +17,8 @@ export interface Batter {
   Matches?: number;
   Innings?: number;
   NotOuts?: number;
+  BattingStyle?: "RHB" | "LHB";
+  Role?: string;
 }
 
 export interface Bowler {
@@ -36,6 +38,30 @@ export interface Bowler {
   BestBowling?: string;
   Matches?: number;
   Innings?: number;
+  BattingStyle?: "RHB" | "LHB";
+  Role?: string;
+}
+
+export interface PlayerProfileData {
+  name: string;
+  team: string;
+  role: "Batsman" | "Bowler";
+  battingStyle: "RHB" | "LHB";
+  totalRuns?: number;
+  totalWickets?: number;
+  battingAverage?: number;
+  bowlingAverage?: number;
+  strikeRate?: number;
+  economy?: number;
+  highestScore?: number;
+  hundreds?: number;
+  fifties?: number;
+  fours?: number;
+  sixes?: number;
+  overs?: number;
+  maidens?: number;
+  fiveWickets?: number;
+  innings?: number;
 }
 
 export interface KeeperRow {

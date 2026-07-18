@@ -1,141 +1,314 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Shield, Crosshair, Target, Eye, Trophy, Medal, BarChart3, Zap, TrendingUp, Users } from "lucide-react";
+import {
+  X,
+  BarChart3,
+  Target,
+  TrendingUp,
+  Zap,
+  Medal,
+  Shield,
+  Eye,
+  Users,
+  Trophy,
+  User,
+  Hand,
+} from "lucide-react";
 import type { Batter, Bowler } from "@/lib/types";
+import type { UnifiedPlayer } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
 interface PlayerProfileProps {
   batter?: Batter | null;
   bowler?: Bowler | null;
+  player?: UnifiedPlayer | null;
   open: boolean;
   onClose: () => void;
 }
 
-export function PlayerProfile({ batter, bowler, open, onClose }: PlayerProfileProps) {
-  const player = batter || bowler;
-  if (!player) return null;
+export function PlayerProfile({
+  batter,
+  bowler,
+  player: unifiedPlayer,
+  open,
+  onClose,
+}: PlayerProfileProps) {
+  const isUnified = !!unifiedPlayer;
+  const playerName = isUnified
+    ? unifiedPlayer!.name
+    : batter
+    ? batter!.PlayerName
+    : bowler
+    ? bowler!.PlayerName
+    : "";
+  const teamName = isUnified
+    ? unifiedPlayer!.team
+    : batter
+    ? batter!.TeamName
+    : bowler
+    ? bowler!.TeamName
+    : "";
+  const role = isUnified
+    ? unifiedPlayer!.role
+    : batter
+    ? "Batsman"
+    : "Bowler";
+  const battingStyle = isUnified
+    ? unifiedPlayer!.battingStyle
+    : "RHB";
+  const rank = isUnified ? undefined : batter?._rank ?? bowler?._rank;
 
-  const isBatter = !!batter;
-  const initials = player.PlayerName.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+  if (!playerName) return null;
 
-  const statCards = isBatter
+  const initials = playerName
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
+  const isBatter = role === "Batsman";
+
+  const statCards = isUnified
+    ? unifiedPlayer!.role === "Batsman"
+      ? [
+          { label: "Total Runs", value: unifiedPlayer!.runs ?? 0, icon: BarChart3, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10" },
+          { label: "Innings", value: unifiedPlayer!.innings ?? 0, icon: Trophy, colorClass: "text-white", bgClass: "bg-white/[0.06]" },
+          { label: "Average", value: (unifiedPlayer!.battingAverage ?? 0).toFixed(2), icon: TrendingUp, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10", isDecimal: true },
+          { label: "Strike Rate", value: (unifiedPlayer!.strikeRate ?? 0).toFixed(1), icon: Zap, colorClass: "text-white", bgClass: "bg-white/[0.06]", isDecimal: true },
+          { label: "Highest Score", value: unifiedPlayer!.highestScore ?? 0, icon: Medal, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10" },
+          { label: "100s / 50s", value: `${unifiedPlayer!.hundreds ?? 0} / ${unifiedPlayer!.fifties ?? 0}`, icon: Target, colorClass: "text-white", bgClass: "bg-white/[0.06]" },
+          { label: "Fours / Sixes", value: `${unifiedPlayer!.fours ?? 0} / ${unifiedPlayer!.sixes ?? 0}`, icon: Eye, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10" },
+          { label: "Not Outs", value: unifiedPlayer!.notOuts ?? 0, icon: Users, colorClass: "text-[#525252]", bgClass: "bg-white/[0.03]" },
+        ]
+      : [
+          { label: "Total Wickets", value: unifiedPlayer!.wickets ?? 0, icon: Target, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10" },
+          { label: "Innings", value: unifiedPlayer!.innings ?? 0, icon: Trophy, colorClass: "text-white", bgClass: "bg-white/[0.06]" },
+          { label: "Average", value: (unifiedPlayer!.bowlingAverage ?? 0).toFixed(2), icon: TrendingUp, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10", isDecimal: true },
+          { label: "Economy", value: (unifiedPlayer!.economy ?? 0).toFixed(2), icon: Zap, colorClass: "text-white", bgClass: "bg-white/[0.06]", isDecimal: true },
+          { label: "Strike Rate", value: (unifiedPlayer!.strikeRate ?? 0).toFixed(1), icon: Shield, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10", isDecimal: true },
+          { label: "Overs", value: (unifiedPlayer!.overs ?? 0).toFixed(1), icon: Eye, colorClass: "text-white", bgClass: "bg-white/[0.06]", isDecimal: true },
+          { label: "Runs Given", value: unifiedPlayer!.runsConceded ?? 0, icon: BarChart3, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10" },
+          { label: "5-wicket Hauls", value: unifiedPlayer!.fiveWickets ?? 0, icon: Medal, colorClass: "text-white", bgClass: "bg-white/[0.06]" },
+        ]
+    : isBatter
     ? [
-        { label: "Total Runs", value: (player as Batter).Runs, icon: BarChart3, color: "text-amber", bg: "bg-amber/10" },
-        { label: "Innings", value: (player as Batter).Innings || 0, icon: Trophy, color: "text-blue-400", bg: "bg-blue-500/10" },
-        { label: "Average", value: (player as Batter).BattingAverage.toFixed(2), icon: TrendingUp, color: "text-green-400", bg: "bg-green-500/10", isDecimal: true },
-        { label: "Strike Rate", value: (player as Batter).StrikeRate.toFixed(1), icon: Zap, color: "text-purple-400", bg: "bg-purple-500/10", isDecimal: true },
-        { label: "Highest Score", value: (player as Batter).HighestScore, icon: Medal, color: "text-amber", bg: "bg-amber/10" },
-        { label: "100s / 50s", value: `${(player as Batter).Hundreds} / ${(player as Batter).Fifties}`, icon: Target, color: "text-orange-400", bg: "bg-orange-500/10" },
-        { label: "Fours / Sixes", value: `${(player as Batter).Fours} / ${(player as Batter).Sixes}`, icon: Eye, color: "text-cyan-400", bg: "bg-cyan-500/10" },
-        { label: "Not Outs", value: (player as Batter).NotOuts || 0, icon: Users, color: "text-gray-400", bg: "bg-surface" },
+        { label: "Total Runs", value: (batter!.Runs), icon: BarChart3, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10" },
+        { label: "Innings", value: (batter!.Innings || 0), icon: Trophy, colorClass: "text-white", bgClass: "bg-white/[0.06]" },
+        { label: "Average", value: (batter!.BattingAverage).toFixed(2), icon: TrendingUp, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10", isDecimal: true },
+        { label: "Strike Rate", value: (batter!.StrikeRate).toFixed(1), icon: Zap, colorClass: "text-white", bgClass: "bg-white/[0.06]", isDecimal: true },
+        { label: "Highest Score", value: (batter!.HighestScore), icon: Medal, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10" },
+        { label: "100s / 50s", value: `${(batter!.Hundreds)} / ${(batter!.Fifties)}`, icon: Target, colorClass: "text-white", bgClass: "bg-white/[0.06]" },
+        { label: "Fours / Sixes", value: `${(batter!.Fours)} / ${(batter!.Sixes)}`, icon: Eye, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10" },
+        { label: "Not Outs", value: (batter!.NotOuts || 0), icon: Users, colorClass: "text-[#525252]", bgClass: "bg-white/[0.03]" },
       ]
     : [
-        { label: "Total Wickets", value: (player as Bowler).Wickets, icon: Target, color: "text-green-400", bg: "bg-green-500/10" },
-        { label: "Innings", value: (player as Bowler).Innings || 0, icon: Trophy, color: "text-blue-400", bg: "bg-blue-500/10" },
-        { label: "Average", value: (player as Bowler).BowlingAverage.toFixed(2), icon: TrendingUp, color: "text-amber", bg: "bg-amber/10", isDecimal: true },
-        { label: "Economy", value: (player as Bowler).Economy.toFixed(2), icon: Zap, color: "text-red-400", bg: "bg-red-500/10", isDecimal: true },
-        { label: "Strike Rate", value: (player as Bowler).StrikeRate.toFixed(1), icon: Shield, color: "text-purple-400", bg: "bg-purple-500/10", isDecimal: true },
-        { label: "Overs", value: (player as Bowler).Overs.toFixed(1), icon: Eye, color: "text-cyan-400", bg: "bg-cyan-500/10", isDecimal: true },
-        { label: "Runs Given", value: (player as Bowler).Runs, icon: BarChart3, color: "text-orange-400", bg: "bg-orange-500/10" },
-        { label: "5-wicket Hauls", value: (player as Bowler).FiveWickets, icon: Medal, color: "text-amber", bg: "bg-amber/10" },
+        { label: "Total Wickets", value: (bowler!.Wickets), icon: Target, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10" },
+        { label: "Innings", value: (bowler!.Innings || 0), icon: Trophy, colorClass: "text-white", bgClass: "bg-white/[0.06]" },
+        { label: "Average", value: (bowler!.BowlingAverage).toFixed(2), icon: TrendingUp, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10", isDecimal: true },
+        { label: "Economy", value: (bowler!.Economy).toFixed(2), icon: Zap, colorClass: "text-white", bgClass: "bg-white/[0.06]", isDecimal: true },
+        { label: "Strike Rate", value: (bowler!.StrikeRate).toFixed(1), icon: Shield, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10", isDecimal: true },
+        { label: "Overs", value: (bowler!.Overs).toFixed(1), icon: Eye, colorClass: "text-white", bgClass: "bg-white/[0.06]", isDecimal: true },
+        { label: "Runs Given", value: (bowler!.Runs), icon: BarChart3, colorClass: "text-[#FEDF4B]", bgClass: "bg-[#FEDF4B]/10" },
+        { label: "5-wicket Hauls", value: (bowler!.FiveWickets), icon: Medal, colorClass: "text-white", bgClass: "bg-white/[0.06]" },
       ];
+
+  const displayRank = isUnified ? undefined : rank;
 
   return (
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 bg-obsidian/70 backdrop-blur-sm"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md"
             onClick={onClose}
           />
 
-          {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.92, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 260 }}
-            className="fixed inset-4 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-50 w-full sm:w-[520px] max-h-[90vh] overflow-y-auto glass rounded-3xl border border-border/50 shadow-2xl"
+            initial={{ opacity: 0, scale: 0.9, y: 30, rotateX: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
+            exit={{ opacity: 0, scale: 0.92, y: 20, rotateX: -5 }}
+            transition={{ type: "spring", damping: 26, stiffness: 280, mass: 0.8 }}
+            className="fixed inset-4 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-50 w-full sm:w-[540px] max-h-[92vh] overflow-y-auto rounded-3xl border border-white/[0.08] shadow-[0_40px_100px_rgba(0,0,0,0.8)]"
+            style={{ background: "linear-gradient(180deg, #1a1a1a 0%, #111111 100%)" }}
           >
             {/* Close button */}
-            <button
+            <motion.button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-xl bg-surface hover:bg-surface-hover text-gray-400 hover:text-white transition-all z-10"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, type: "spring", stiffness: 400 }}
+              className="absolute top-5 right-5 p-2.5 rounded-2xl bg-white/[0.06] hover:bg-white/[0.12] text-[#525252] hover:text-white transition-all duration-300 z-10 hover:rotate-90"
             >
               <X size={18} />
-            </button>
+            </motion.button>
 
-            {/* Hero section with avatar */}
-            <div className="relative overflow-hidden rounded-t-3xl px-6 pt-10 pb-8 hero-grid">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-[80px] animate-pulse-glow" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/5 rounded-full blur-[60px]" />
+            {/* Header with gradient */}
+            <div className="relative px-7 pt-9 pb-7 overflow-hidden">
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: isBatter
+                    ? "linear-gradient(135deg, rgba(254,223,75,0.06) 0%, transparent 60%)"
+                    : "linear-gradient(135deg, rgba(244,63,94,0.06) 0%, transparent 60%)",
+                }}
+              />
+              <div
+                className="absolute top-[-60px] right-[-40px] w-48 h-48 rounded-full blur-[100px]"
+                style={{
+                  background: isBatter ? "rgba(254,223,75,0.08)" : "rgba(244,63,94,0.08)",
+                }}
+              />
+              <div
+                className="absolute bottom-[-40px] left-[20%] w-32 h-32 rounded-full blur-[80px]"
+                style={{
+                  background: isBatter ? "rgba(254,223,75,0.04)" : "rgba(56,189,248,0.04)",
+                }}
+              />
 
-              <div className="relative flex items-center gap-5">
-                {/* Avatar circle */}
-                <div className={cn(
-                  "w-20 h-20 rounded-2xl flex items-center justify-center text-2xl font-bold font-display shadow-lg shrink-0",
-                  isBatter ? "bg-amber text-obsidian" : "bg-green-500 text-obsidian"
-                )}>
-                  {initials}
-                </div>
-
-                <div className="min-w-0">
-                  <h2 className="font-display text-2xl font-bold text-white truncate">
-                    {player.PlayerName.replace(/\s*\([^)]*\)/g, "").trim()}
-                  </h2>
-                  <p className="text-sm font-mono text-gray-400 mt-0.5 truncate">
-                    {player.TeamName}
-                  </p>
-                  <div className="flex items-center gap-2 mt-2">
-                    <span className={cn(
-                      "text-[10px] font-mono px-2.5 py-1 rounded-full font-medium",
+              <div className="relative flex items-start gap-5">
+                {/* Avatar with animated ring */}
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ type: "spring", damping: 15, stiffness: 200, delay: 0.1 }}
+                  className="relative flex-shrink-0"
+                >
+                  <div
+                    className={cn(
+                      "absolute inset-[-3px] rounded-2xl opacity-30 animate-spin-slow",
+                    )}
+                    style={{
+                      background: `conic-gradient(from 0deg, ${isBatter ? "#FEDF4B" : "#f43f5e"}, transparent, ${isBatter ? "#FEDF4B" : "#f43f5e"})`,
+                    }}
+                  />
+                  <div
+                    className={cn(
+                      "w-[72px] h-[72px] rounded-2xl flex items-center justify-center font-display text-2xl relative",
                       isBatter
-                        ? "bg-amber/10 text-amber border border-amber/20"
-                        : "bg-green-500/10 text-green-400 border border-green-500/20"
-                    )}>
-                      {isBatter ? "Batsman" : "Bowler"}
-                    </span>
-                    <span className="text-[10px] font-mono text-gray-600">
-                      #{player._rank || "-"} in tournament
-                    </span>
+                        ? "bg-[#FEDF4B]/10 text-[#FEDF4B]"
+                        : "bg-white/[0.06] text-white"
+                    )}
+                  >
+                    {initials}
                   </div>
+                </motion.div>
+
+                {/* Player info */}
+                <div className="min-w-0 flex-1 pt-1">
+                  <motion.h2
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.15 }}
+                    className="font-display text-[1.6rem] font-extrabold uppercase text-white truncate leading-tight"
+                  >
+                    {playerName}
+                  </motion.h2>
+                  <motion.p
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-sm text-[#737373] mt-1 truncate"
+                  >
+                    {teamName}
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.25 }}
+                    className="flex items-center gap-2 mt-3 flex-wrap"
+                  >
+                    <span
+                      className={cn(
+                        "stat-pill text-[10px]",
+                        isBatter ? "stat-pill-yellow" : "stat-pill-rose"
+                      )}
+                    >
+                      {role}
+                    </span>
+                    <span
+                      className="stat-pill text-[10px]"
+                      style={{
+                        background: "rgba(56,189,248,0.12)",
+                        color: "#38bdf8",
+                        border: "1px solid rgba(56,189,248,0.2)",
+                      }}
+                    >
+                      <Hand size={10} />
+                      {battingStyle === "RHB" ? "Right-Hand" : "Left-Hand"}
+                    </span>
+                    {displayRank && (
+                      <span className="text-[10px] text-[#525252] font-mono">
+                        #{displayRank} in tournament
+                      </span>
+                    )}
+                  </motion.div>
                 </div>
               </div>
             </div>
 
             {/* Stats grid */}
-            <div className="px-6 py-6">
-              <h3 className="font-display text-sm font-bold text-white mb-4 flex items-center gap-2">
-                <BarChart3 size={14} className="text-amber" />
+            <div className="px-7 pb-8">
+              <motion.h3
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="flex items-center gap-2 text-xs font-bold text-[#737373] uppercase tracking-wider mb-4"
+              >
+                <BarChart3 size={13} />
                 Player Statistics
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              </motion.h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                 {statCards.map((stat, i) => {
                   const Icon = stat.icon;
                   return (
                     <motion.div
                       key={stat.label}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.05 * i }}
-                      className={cn("rounded-xl p-3 text-center border border-border/30", stat.bg)}
+                      initial={{ opacity: 0, y: 12, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{
+                        delay: 0.35 + i * 0.04,
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
+                      className={cn(
+                        "rounded-xl p-3 text-center border border-white/[0.04] hover:border-white/[0.1] transition-all duration-300 hover:scale-[1.03]",
+                        stat.bgClass
+                      )}
                     >
-                      <Icon size={14} className={cn("mx-auto mb-1.5", stat.color)} />
-                      <p className={cn("text-lg font-bold font-mono", stat.color)}>
-                        {stat.isDecimal ? stat.value : (stat.value as number).toLocaleString()}
+                      <Icon
+                        size={13}
+                        className={cn("mx-auto mb-1.5", stat.colorClass)}
+                      />
+                      <p className={cn("text-base font-display", stat.colorClass)}>
+                        {stat.isDecimal
+                          ? stat.value
+                          : (stat.value as number).toLocaleString()}
                       </p>
-                      <p className="text-[10px] font-mono text-gray-500 mt-0.5">{stat.label}</p>
+                      <p className="text-[10px] text-[#525252] mt-0.5">
+                        {stat.label}
+                      </p>
                     </motion.div>
                   );
                 })}
               </div>
             </div>
+
+            {/* Bottom accent line */}
+            <div
+              className="h-[2px] mx-7 mb-7 rounded-full opacity-30"
+              style={{
+                background: isBatter
+                  ? "linear-gradient(90deg, #FEDF4B, transparent)"
+                  : "linear-gradient(90deg, #f43f5e, transparent)",
+              }}
+            />
           </motion.div>
         </>
       )}
