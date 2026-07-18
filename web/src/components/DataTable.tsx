@@ -78,24 +78,24 @@ export function DataTable<T extends Record<string, any>>({
     return (
       <div className="space-y-3">
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="skeleton h-12 w-full" />
+          <div key={i} className="skeleton h-12 w-full rounded-xl" />
         ))}
       </div>
     );
   }
 
   return (
-    <div className="glass rounded-2xl overflow-hidden gradient-border">
+    <div className="card-flat overflow-hidden">
       {searchKeys && (
-        <div className="p-4 border-b border-border">
+        <div className="p-4 border-b border-white/[0.06]">
           <div className="relative max-w-sm">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+            <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#525252]" />
             <input
               type="text"
               value={search}
               onChange={(e) => { setSearch(e.target.value); setPage(1); }}
               placeholder={searchPlaceholder}
-              className="w-full bg-obsidian/50 border border-border rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-amber/40 focus:ring-1 focus:ring-amber/20 transition-all font-mono"
+              className="w-full bg-white/[0.04] border border-white/[0.06] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-[#525252] focus:outline-none focus:border-[#FEDF4B]/30 focus:ring-1 focus:ring-[#FEDF4B]/20 transition-all font-mono"
             />
           </div>
         </div>
@@ -104,13 +104,13 @@ export function DataTable<T extends Record<string, any>>({
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-border">
+            <tr className="border-b border-white/[0.06]">
               {columns.map((col) => (
                 <th
                   key={col.key}
                   className={cn(
-                    "px-4 py-3.5 text-left text-xs font-mono font-medium text-gray-500 uppercase tracking-wider",
-                    col.sortable && "cursor-pointer select-none hover:text-amber transition-colors",
+                    "px-4 py-3 text-left text-[11px] font-bold text-[#525252] uppercase tracking-wider",
+                    col.sortable && "cursor-pointer select-none hover:text-[#FEDF4B] transition-colors",
                     col.hideOnMobile && "hidden md:table-cell",
                     col.className
                   )}
@@ -119,11 +119,11 @@ export function DataTable<T extends Record<string, any>>({
                   <div className="flex items-center gap-1.5">
                     {col.label}
                     {col.sortable && (
-                      <span className="text-gray-600">
+                      <span className="text-[#525252]">
                         {sortKey === col.key ? (
-                          sortDir === "asc" ? <ChevronUp size={14} /> : <ChevronDown size={14} />
+                          sortDir === "asc" ? <ChevronUp size={13} /> : <ChevronDown size={13} />
                         ) : (
-                          <ArrowUpDown size={12} />
+                          <ArrowUpDown size={11} />
                         )}
                       </span>
                     )}
@@ -136,25 +136,25 @@ export function DataTable<T extends Record<string, any>>({
             <AnimatePresence mode="popLayout">
               {paged.length === 0 ? (
                 <tr>
-                  <td colSpan={columns.length} className="text-center py-16 text-gray-500">
-                    <p className="font-mono text-sm">{emptyMessage}</p>
+                  <td colSpan={columns.length} className="text-center py-16 text-[#525252]">
+                    <p className="text-sm">{emptyMessage}</p>
                   </td>
                 </tr>
               ) : (
                 paged.map((item, idx) => (
                   <motion.tr
                     key={idx}
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.2, delay: idx * 0.03 }}
-                    className="border-b border-border/50 hover:bg-surface-hover transition-colors cursor-default group"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.15, delay: idx * 0.02 }}
+                    className="border-b border-white/[0.03] hover:bg-white/[0.02] transition-colors cursor-default group"
                   >
                     {columns.map((col) => (
                       <td
                         key={col.key}
                         className={cn(
-                          "px-4 py-3 text-sm text-gray-300 group-hover:text-white transition-colors",
+                          "px-4 py-3 text-sm text-[#a3a3a3] group-hover:text-white transition-colors",
                           col.hideOnMobile && "hidden md:table-cell",
                           col.className
                         )}
@@ -171,8 +171,8 @@ export function DataTable<T extends Record<string, any>>({
       </div>
 
       {totalPages > 1 && (
-        <div className="flex items-center justify-between px-4 py-3 border-t border-border">
-          <p className="text-xs font-mono text-gray-500">
+        <div className="flex items-center justify-between px-4 py-3 border-t border-white/[0.06]">
+          <p className="text-xs text-[#525252]">
             Page {page} of {totalPages} ({sorted.length} results)
           </p>
           <div className="flex gap-1">
@@ -183,10 +183,10 @@ export function DataTable<T extends Record<string, any>>({
                   key={p}
                   onClick={() => setPage(p)}
                   className={cn(
-                    "w-8 h-8 rounded-lg text-xs font-mono transition-all",
+                    "w-8 h-8 rounded-lg text-xs font-mono transition-all duration-200",
                     page === p
-                      ? "bg-amber text-obsidian font-bold"
-                      : "text-gray-500 hover:text-white hover:bg-surface-hover"
+                      ? "bg-[#FEDF4B] text-[#111111] font-bold"
+                      : "text-[#525252] hover:text-white hover:bg-white/[0.04]"
                   )}
                 >
                   {p}
@@ -194,7 +194,7 @@ export function DataTable<T extends Record<string, any>>({
               );
             })}
             {totalPages > 5 && (
-              <span className="px-1 self-center text-gray-500 font-mono text-xs">...</span>
+              <span className="px-1 self-center text-[#525252] text-xs">...</span>
             )}
           </div>
         </div>

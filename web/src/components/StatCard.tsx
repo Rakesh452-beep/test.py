@@ -53,36 +53,36 @@ export function StatCard({ title, value, subtitle, icon, format = "number", pref
   const { display } = useCountUp(value, 1.5, format);
 
   const trendColor = trend === "up"
-    ? "text-green-400"
+    ? "text-[#22c55e]"
     : trend === "down"
-      ? "text-red-400"
-      : "text-gray-400";
+      ? "text-[#f43f5e]"
+      : "text-[#525252]";
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      transition={{ duration: 0.45, delay, ease: "easeOut" }}
       className={cn(
-        "glass rounded-2xl p-5 gradient-border hover:bg-surface-hover transition-all duration-300 group cursor-default",
+        "card-flat p-5 group cursor-default",
         className
       )}
     >
       <div className="flex items-start justify-between">
-        <div className="space-y-1">
-          <p className="text-xs font-mono text-gray-500 uppercase tracking-wider">{title}</p>
+        <div className="space-y-1.5">
+          <p className="text-[11px] font-bold text-[#525252] uppercase tracking-wider">{title}</p>
           <div className="flex items-baseline gap-1">
-            {prefix && <span className="text-lg text-gray-400 font-mono">{prefix}</span>}
-            <span className="text-3xl font-bold text-white font-mono tabular-nums">
+            {prefix && <span className="text-sm text-[#525252] font-mono">{prefix}</span>}
+            <span className="text-2xl font-display text-white tabular-nums">
               {display}
             </span>
-            {suffix && <span className="text-sm text-gray-400 font-mono">{suffix}</span>}
+            {suffix && <span className="text-xs text-[#525252] font-mono">{suffix}</span>}
           </div>
           {subtitle && (
-            <p className={cn("text-xs font-mono", trendColor)}>{subtitle}</p>
+            <p className={cn("text-[11px] font-bold", trendColor)}>{subtitle}</p>
           )}
         </div>
-        <div className="p-3 rounded-xl bg-amber/10 text-amber group-hover:bg-amber/15 transition-colors">
+        <div className="p-3 rounded-xl bg-[#FEDF4B]/10 text-[#FEDF4B] group-hover:bg-[#FEDF4B]/15 transition-colors duration-200">
           {icon}
         </div>
       </div>

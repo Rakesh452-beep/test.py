@@ -33,32 +33,32 @@ export function TeamFilter({ teams, value, onChange, className }: TeamFilterProp
     <div ref={ref} className={cn("relative", className)}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-2 bg-obsidian/50 border border-border rounded-xl px-4 py-2.5 text-sm text-left text-white hover:border-amber/40 transition-all font-mono"
+        className="w-full flex items-center justify-between gap-2 bg-white/[0.04] border border-white/[0.06] rounded-xl px-4 py-2.5 text-sm text-left text-white hover:border-[#FEDF4B]/20 transition-all duration-200 font-mono"
       >
-        <span className={cn(!selected && "text-gray-500")}>
+        <span className={cn(!selected && "text-[#525252]")}>
           {selected ? selected.name : "All Teams"}
         </span>
         <ChevronDown
-          size={16}
-          className={cn("text-gray-500 transition-transform", open && "rotate-180")}
+          size={15}
+          className={cn("text-[#525252] transition-transform", open && "rotate-180")}
         />
       </button>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.96 }}
+            initial={{ opacity: 0, y: -6, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.96 }}
+            exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.15 }}
-            className="absolute z-50 mt-1 w-full glass rounded-xl border border-border overflow-hidden shadow-xl"
+            className="absolute z-50 mt-1.5 w-full bg-[#1a1a1a] rounded-xl border border-white/[0.06] overflow-hidden shadow-xl max-h-64 overflow-y-auto"
           >
             <button
               onClick={() => { onChange(""); setOpen(false); }}
-              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-surface-hover transition-colors font-mono"
+              className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#a3a3a3] hover:text-white hover:bg-white/[0.04] transition-colors font-mono"
             >
-              <span className={cn(!value && "text-amber")}>
-                {!value && <Check size={14} className="inline mr-2" />}
+              <span className={cn(!value && "text-[#FEDF4B]")}>
+                {!value && <Check size={13} className="inline mr-2" />}
                 All Teams
               </span>
             </button>
@@ -66,10 +66,10 @@ export function TeamFilter({ teams, value, onChange, className }: TeamFilterProp
               <button
                 key={team.id}
                 onClick={() => { onChange(team.id); setOpen(false); }}
-                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-gray-400 hover:text-white hover:bg-surface-hover transition-colors font-mono"
+                className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-[#a3a3a3] hover:text-white hover:bg-white/[0.04] transition-colors font-mono"
               >
-                <span className={cn(value === team.id && "text-amber")}>
-                  {value === team.id && <Check size={14} className="inline mr-2" />}
+                <span className={cn(value === team.id && "text-[#FEDF4B]")}>
+                  {value === team.id && <Check size={13} className="inline mr-2" />}
                   {team.name}
                 </span>
               </button>

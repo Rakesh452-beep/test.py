@@ -22,12 +22,12 @@ export function Skeleton({ className, count = 1 }: SkeletonProps) {
 
 export function StatCardSkeleton() {
   return (
-    <div className="glass rounded-2xl p-5">
+    <div className="card-flat p-5">
       <div className="flex items-start justify-between">
-        <div className="space-y-2 flex-1">
+        <div className="space-y-2.5 flex-1">
+          <Skeleton className="h-3 w-24" />
+          <Skeleton className="h-9 w-28" />
           <Skeleton className="h-3 w-20" />
-          <Skeleton className="h-8 w-24" />
-          <Skeleton className="h-3 w-16" />
         </div>
         <Skeleton className="h-12 w-12 rounded-xl" />
       </div>
@@ -37,9 +37,9 @@ export function StatCardSkeleton() {
 
 export function TableSkeleton({ rows = 5, cols = 4 }: { rows?: number; cols?: number }) {
   return (
-    <div className="glass rounded-2xl overflow-hidden">
-      <div className="p-4 border-b border-border">
-        <Skeleton className="h-10 w-64 rounded-xl" />
+    <div className="card-flat overflow-hidden">
+      <div className="p-4 border-b border-white/[0.06]">
+        <Skeleton className="h-10 w-72 rounded-xl" />
       </div>
       <div className="p-4 space-y-3">
         <div className="flex gap-4">
@@ -61,11 +61,11 @@ export function TableSkeleton({ rows = 5, cols = 4 }: { rows?: number; cols?: nu
 
 export function ChartSkeleton() {
   return (
-    <div className="glass rounded-2xl p-5">
+    <div className="card-flat p-5">
       <div className="flex items-start justify-between mb-4">
-        <div className="space-y-2">
-          <Skeleton className="h-5 w-40" />
-          <Skeleton className="h-3 w-24" />
+        <div className="space-y-1.5">
+          <Skeleton className="h-5 w-48" />
+          <Skeleton className="h-3 w-28" />
         </div>
       </div>
       <Skeleton className="h-64 w-full rounded-xl" />
