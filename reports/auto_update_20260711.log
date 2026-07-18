@@ -1,0 +1,34 @@
+2026-07-11 21:26:56,360 [INFO] 
+2026-07-11 21:26:56,366 [INFO] 
+2026-07-11 21:26:56,367 [INFO] ============================================================
+2026-07-11 21:26:56,367 [INFO] AUTO UPDATE PIPELINE — 2026-07-11 21:26:56
+2026-07-11 21:26:56,404 [INFO] ============================================================
+2026-07-11 21:26:56,406 [INFO] ============================================================
+2026-07-11 21:26:56,407 [INFO] START: Player Stats (batting + bowling)
+2026-07-11 21:26:56,407 [INFO] ============================================================
+2026-07-11 21:27:14,331 [WARNING] Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'RemoteDisconnected('Remote end closed connection without response')': /feed/stats/306-teamlist.js?callback=onteamlist
+2026-07-11 21:27:16,931 [INFO] Found 61 teams
+2026-07-11 21:27:19,928 [WARNING] Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'RemoteDisconnected('Remote end closed connection without response')': /feed/stats/306-434-playerinninswisestats.js?callback=onplayerinninswisestats
+2026-07-11 21:27:27,428 [INFO] Batting records: 1539, Bowling records: 974
+2026-07-11 21:27:35,239 [INFO] FINISH: Player Stats (batting + bowling) — OK
+2026-07-11 21:27:35,239 [INFO] ============================================================
+2026-07-11 21:27:35,239 [INFO] START: Keeper Stats (pipeline)
+2026-07-11 21:27:35,239 [INFO] ============================================================
+2026-07-11 21:29:04,371 [INFO] Appended 285 keeper rows to reports/WicketKeepers_latest.xlsx
+2026-07-11 21:29:14,225 [INFO] Uploaded keeper data. Total processed matches: 143
+2026-07-11 21:29:14,227 [INFO] FINISH: Keeper Stats (pipeline) — OK
+2026-07-11 21:29:14,227 [INFO] ============================================================
+2026-07-11 21:29:14,227 [INFO] START: Google Sheet sync
+2026-07-11 21:29:14,227 [INFO] ============================================================
+2026-07-11 21:29:22,368 [INFO] Google Sheet synced (437 unique players)
+2026-07-11 21:29:22,368 [INFO] FINISH: Google Sheet sync — OK
+2026-07-11 21:29:22,368 [INFO] ============================================================
+2026-07-11 21:29:22,368 [INFO] START: Email daily report
+2026-07-11 21:29:22,368 [INFO] ============================================================
+2026-07-11 21:29:29,815 [INFO] Email sent to Sureshkutam@gmail.com
+2026-07-11 21:29:29,816 [INFO] FINISH: Email daily report — OK
+2026-07-11 21:29:29,816 [INFO] ============================================================
+2026-07-11 21:29:29,816 [INFO] PIPELINE COMPLETE
+2026-07-11 21:29:29,816 [INFO] Log saved to: reports/auto_update_20260711.log
+2026-07-11 21:29:29,816 [INFO] ============================================================
+2026-07-11 21:29:29,853 [INFO] Opened Excel: C:\Users\Lenovo\Desktop\test.py\reports\WicketKeepers_latest.xlsx
