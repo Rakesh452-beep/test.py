@@ -1,0 +1,200 @@
+[browser] In HTML, <h2> cannot be a child of <h2>.
+This will cause a hydration error.
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:Promise, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function LandingPage} serverProvidedParams={{...}}>
+                <LandingPage params={Promise} searchParams={Promise}>
+                  <section>
+                  <section>
+                  <ScaleReveal>
+                  <StaggerReveal className="bg-[#05050...">
+                    <motion.section ref={{...}} initial={{opacity:0}} animate={{}} transition={{duration:0.5}} ...>
+                      <section className="bg-[#05050..." style={{opacity:0}} ref={function useMotionRef.useCallback}>
+                        <div>
+                        <div className="max-w-[144...">
+                          <div className="text-cente...">
+                            <div>
+>                           <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-white uppercase">
+                              <ScrollFloat animationDuration={1} ease="back.inOut(2)" scrollStart="center bot..." ...>
+>                               <h2 ref={{current:null}} className={"scroll-float "}>
+                            ...
+                          ...
+                  ...
+            ...
+          ...
+ 
+    at Set.forEach (<anonymous>) (<anonymous>)
+[browser] <h2> cannot contain a nested <h2>.
+See this log for the ancestor stack trace. 
+    at Set.forEach (<anonymous>) (<anonymous>)
+[browser] In HTML, <h2> cannot be a child of <h2>.
+This will cause a hydration error.
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function LandingPage} serverProvidedParams={{...}}>
+                <LandingPage params={Promise} searchParams={Promise}>
+                  <section>
+                  <section>
+                  <ScaleReveal>
+                  <StaggerReveal className="bg-[#05050...">
+                    <motion.section ref={{current:null}} initial={{opacity:0}} animate={{}} transition={{duration:0.5}} ...>
+                      <section className="bg-[#05050..." style={{opacity:0}} ref={function useMotionRef.useCallback}>
+                        <div>
+                        <div className="max-w-[144...">
+                          <div className="text-cente...">
+                            <div>
+>                           <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-white uppercase">
+                              <ScrollFloat animationDuration={1} ease="back.inOut(2)" scrollStart="center bot..." ...>
+>                               <h2 ref={{current:null}} className={"scroll-float "}>
+                            ...
+                          ...
+                  ...
+            ...
+          ...
+ 
+[browser] <h2> cannot contain a nested <h2>.
+See this log for the ancestor stack trace. 
+[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at h2 (<anonymous>)
+    at ScrollFloat (src/components/ScrollFloat.tsx:84:5)
+    at LandingPage (src/app/page.tsx:820:15)
+  82 |
+  83 |   return (
+> 84 |     <Tag ref={containerRef} className={`scroll-float ${className}`}>
+     |     ^
+  85 |       <span className={`scroll-float-text ${textClassName}`}>{splitText}</span>
+  86 |     </Tag>
+  87 |   );
+[browser] In HTML, <h2> cannot be a child of <h2>.
+This will cause a hydration error.
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function LandingPage} serverProvidedParams={{...}}>
+                <LandingPage params={Promise} searchParams={Promise}>
+                  <section>
+                  <section>
+                  <ScaleReveal>
+                  <StaggerReveal className="bg-[#05050...">
+                    <motion.section ref={{current:null}} initial={{opacity:0}} animate={{}} transition={{duration:0.5}} ...>
+                      <section className="bg-[#05050..." style={{opacity:0}} ref={function useMotionRef.useCallback}>
+                        <div>
+                        <div className="max-w-[144...">
+                          <div className="text-cente...">
+                            <div>
+>                           <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-white uppercase">
+                              <ScrollFloat animationDuration={1} ease="back.inOut(2)" scrollStart="center bot..." ...>
+>                               <h2 ref={{current:null}} className={"scroll-float "}>
+                            ...
+                          ...
+                  ...
+            ...
+          ...
+ 
+[browser] <h2> cannot contain a nested <h2>.
+See this log for the ancestor stack trace. 
+[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at h2 (<anonymous>)
+    at ScrollFloat (src/components/ScrollFloat.tsx:84:5)
+    at LandingPage (src/app/page.tsx:820:15)
+  82 |
+  83 |   return (
+> 84 |     <Tag ref={containerRef} className={`scroll-float ${className}`}>
+     |     ^
+  85 |       <span className={`scroll-float-text ${textClassName}`}>{splitText}</span>
+  86 |     </Tag>
+  87 |   );
+[browser] In HTML, <h2> cannot be a child of <h2>.
+This will cause a hydration error.
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function LandingPage} serverProvidedParams={{...}}>
+                <LandingPage params={Promise} searchParams={Promise}>
+                  <section>
+                  <section>
+                  <ScaleReveal>
+                  <StaggerReveal className="bg-[#05050...">
+                    <motion.section ref={{current:null}} initial={{opacity:0}} animate={{}} transition={{duration:0.5}} ...>
+                      <section className="bg-[#05050..." style={{opacity:0}} ref={function useMotionRef.useCallback}>
+                        <div>
+                        <div className="max-w-[144...">
+                          <div className="text-cente...">
+                            <div>
+>                           <h2 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-white uppercase">
+                              <ScrollFloat animationDuration={1} ease="back.inOut(2)" scrollStart="center bot..." ...>
+>                               <h2 ref={{current:null}} className={"scroll-float "}>
+                            ...
+                          ...
+                  ...
+            ...
+          ...
+ 
+[browser] <h2> cannot contain a nested <h2>.
+See this log for the ancestor stack trace. 
+[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at h2 (<anonymous>)
+    at ScrollFloat (src/components/ScrollFloat.tsx:84:5)
+    at LandingPage (src/app/page.tsx:820:15)
+  82 |
+  83 |   return (
+> 84 |     <Tag ref={containerRef} className={`scroll-float ${className}`}>
+     |     ^
+  85 |       <span className={`scroll-float-text ${textClassName}`}>{splitText}</span>
+  86 |     </Tag>
+  87 |   );

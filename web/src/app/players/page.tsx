@@ -6,13 +6,15 @@ import { Search, Users, Filter } from "lucide-react";
 import { getAllPlayers, MOCK_TEAMS } from "@/lib/mock-data";
 import type { UnifiedPlayer } from "@/lib/mock-data";
 import { PlayerProfile } from "@/components/PlayerProfile";
+import ScrollFloat from "@/components/ScrollFloat";
+import "@/components/ScrollFloat.css";
 
 type RoleFilter = "all" | "Batsman" | "Bowler";
 
 const teamColors = [
-  "#FEDF4B", "#f43f5e", "#38bdf8", "#a855f7", "#22c55e",
+  "#D4FF00", "#f43f5e", "#38bdf8", "#a855f7", "#22c55e",
   "#f97316", "#e879f9", "#2dd4bf", "#fb923c", "#818cf8",
-  "#f472b6", "#34d399", "#fbbf24", "#60a5fa", "#c084fc",
+  "#f472b6", "#34d399", "#fbbf24", "#D4FF00", "#c084fc",
   "#fb7185", "#4ade80", "#facc15", "#38bdf8", "#a78bfa",
 ];
 
@@ -67,8 +69,8 @@ export default function PlayersPage() {
 
   return (
     <>
-      <section className="bg-[#0a0a0a] min-h-screen">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 py-12 sm:py-16">
+      <section className="min-h-screen pt-20">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 py-12 sm:py-16">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -76,14 +78,24 @@ export default function PlayersPage() {
             transition={{ duration: 0.5 }}
             className="mb-10"
           >
-            <span className="section-label-outline mb-4 inline-flex items-center gap-2">
+            <span className="editorial-caption mb-4 inline-flex items-center gap-2">
               <Users size={12} />
               Squad Directory
             </span>
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl uppercase tracking-wide text-white mt-4 text-glow-white">
-              Players
+            <h1 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-white mt-4">
+              <ScrollFloat
+                as="span"
+                animationDuration={1}
+                ease="back.inOut(2)"
+                scrollStart="center bottom+=50%"
+                scrollEnd="bottom bottom-=40%"
+                stagger={0.03}
+              >
+                Players
+              </ScrollFloat>
             </h1>
-            <p className="text-base sm:text-lg text-[#525252] mt-4 max-w-2xl">
+            <div className="editorial-rule-accent mt-4" />
+            <p className="text-sm text-gray-500 mt-4 max-w-2xl">
               Click any name to reveal their full stats.
             </p>
           </motion.div>
@@ -96,25 +108,25 @@ export default function PlayersPage() {
             className="flex flex-col sm:flex-row gap-4 mb-10"
           >
             <div className="relative flex-1 max-w-md">
-              <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#525252]" />
+              <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search by name or team..."
-                className="w-full pl-11 pr-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-sm text-white placeholder:text-[#525252] focus:outline-none focus:border-[#FEDF4B]/30 transition-colors"
+                className="w-full pl-11 pr-4 py-3 bg-white/[0.03] border border-white/5 rounded-lg text-sm text-white placeholder:text-[#7A7A7A] focus:outline-none focus:border-[#D4FF00]/30 transition-colors"
               />
             </div>
 
-            <div className="flex gap-2 bg-white/[0.03] p-1 rounded-xl border border-white/[0.06]">
+            <div className="flex gap-2 bg-white/[0.03] p-1 rounded-lg border border-white/5">
               {(["all", "Batsman", "Bowler"] as RoleFilter[]).map((role) => (
                 <button
                   key={role}
                   onClick={() => setRoleFilter(role)}
-                  className={`px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all duration-300 ${
+                  className={`px-4 py-2 rounded text-[11px] font-bold uppercase tracking-wider transition-all duration-300 ${
                     roleFilter === role
-                      ? "bg-[#FEDF4B] text-[#0a0a0a]"
-                      : "text-[#525252] hover:text-white"
+                      ? "bg-[#D4FF00] text-[#050505]"
+                      : "text-gray-500 hover:text-white"
                   }`}
                 >
                   {role === "all" ? "All" : role === "Batsman" ? "Batsmen" : "Bowlers"}
@@ -123,11 +135,11 @@ export default function PlayersPage() {
             </div>
 
             <div className="relative">
-              <Filter size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#525252] pointer-events-none" />
+              <Filter size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
               <select
                 value={teamFilter}
                 onChange={(e) => setTeamFilter(e.target.value)}
-                className="appearance-none pl-9 pr-8 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-sm text-white focus:outline-none focus:border-[#FEDF4B]/30 transition-colors cursor-pointer"
+                className="appearance-none pl-9 pr-8 py-3 bg-white/[0.03] border border-white/5 rounded-lg text-sm text-white focus:outline-none focus:border-[#D4FF00]/30 transition-colors cursor-pointer"
               >
                 <option value="" className="bg-[#111]">All Teams</option>
                 {MOCK_TEAMS.map((t) => (
@@ -142,7 +154,7 @@ export default function PlayersPage() {
           {/* Player name grid — creative layout */}
           <div className="space-y-14">
             {groupedByTeam.map(([teamName, players], teamIdx) => {
-              const color = teamColorMap.get(teamName + " (U-19)") ?? "#FEDF4B";
+              const color = teamColorMap.get(teamName + " (U-19)") ?? "#D4FF00";
               return (
                 <motion.div
                   key={teamName}
@@ -166,7 +178,7 @@ export default function PlayersPage() {
                       className="flex-1 h-px"
                       style={{ background: `linear-gradient(90deg, ${color}30, transparent)` }}
                     />
-                    <span className="text-[10px] font-mono text-[#333]">
+                    <span className="text-[10px] font-mono text-gray-600">
                       {players.length}
                     </span>
                   </div>
@@ -207,10 +219,10 @@ export default function PlayersPage() {
                             className="font-display uppercase tracking-wide transition-all duration-300"
                             style={{
                               color: isHovered
-                                ? isBatter ? "#FEDF4B" : "#f43f5e"
+                                ? isBatter ? "#D4FF00" : "#f43f5e"
                                 : `${color}55`,
                               textShadow: isHovered
-                                ? `0 0 30px ${isBatter ? "rgba(254,223,75,0.3)" : "rgba(244,63,94,0.3)"}`
+                                ? `0 0 30px ${isBatter ? "rgba(212,255,0,0.3)" : "rgba(244,63,94,0.3)"}`
                                 : "none",
                             }}
                           >
@@ -223,7 +235,7 @@ export default function PlayersPage() {
                             style={{
                               width: isHovered ? "100%" : "0%",
                               background: isBatter
-                                ? "linear-gradient(90deg, #FEDF4B, transparent)"
+                                ? "linear-gradient(90deg, #D4FF00, transparent)"
                                 : "linear-gradient(90deg, #f43f5e, transparent)",
                             }}
                           />
@@ -241,9 +253,9 @@ export default function PlayersPage() {
                                 <div
                                   className="px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider border"
                                   style={{
-                                    background: isBatter ? "rgba(254,223,75,0.1)" : "rgba(244,63,94,0.1)",
-                                    color: isBatter ? "#FEDF4B" : "#f43f5e",
-                                    borderColor: isBatter ? "rgba(254,223,75,0.2)" : "rgba(244,63,94,0.2)",
+                                    background: isBatter ? "rgba(212,255,0,0.1)" : "rgba(244,63,94,0.1)",
+                                    color: isBatter ? "#D4FF00" : "#f43f5e",
+                                    borderColor: isBatter ? "rgba(212,255,0,0.2)" : "rgba(244,63,94,0.2)",
                                   }}
                                 >
                                   {isBatter ? `${player.runs ?? 0} runs` : `${player.wickets ?? 0} wickets`}
@@ -267,8 +279,8 @@ export default function PlayersPage() {
               animate={{ opacity: 1 }}
               className="text-center py-24"
             >
-              <Users size={40} className="mx-auto text-[#222] mb-4" />
-              <p className="text-[#525252] text-lg">No players found.</p>
+              <Users size={40} className="mx-auto text-gray-600 mb-4" />
+              <p className="text-gray-500 text-lg">No players found.</p>
             </motion.div>
           )}
         </div>

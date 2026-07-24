@@ -1,0 +1,260 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - generic [ref=f2e4]:
+      - link "KSCA U-19" [ref=f2e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f2e26]:
+          - generic [ref=f2e27]: KSCA
+          - generic [ref=f2e28]: U-19
+      - navigation [ref=f2e29]:
+        - link "Home" [ref=f2e30] [cursor=pointer]:
+          - /url: /
+        - link "Batting" [ref=f2e31] [cursor=pointer]:
+          - /url: /batting
+        - link "Bowling" [ref=f2e32] [cursor=pointer]:
+          - /url: /bowling
+        - link "Keepers" [ref=f2e33] [cursor=pointer]:
+          - /url: /keepers
+      - generic [ref=f2e34]:
+        - generic [ref=f2e35]: Live
+        - generic [ref=f2e38]: 2024-25
+  - generic [ref=f2e39]:
+    - button "Close menu" [ref=f2e40]
+    - navigation [ref=f2e43]:
+      - link "01Home" [ref=f2e44] [cursor=pointer]:
+        - /url: /
+      - link "02Batting" [ref=f2e45] [cursor=pointer]:
+        - /url: /batting
+      - link "03Bowling" [ref=f2e46] [cursor=pointer]:
+        - /url: /bowling
+      - link "04Keepers" [ref=f2e47] [cursor=pointer]:
+        - /url: /keepers
+      - link "05Daily" [ref=f2e48] [cursor=pointer]:
+        - /url: /daily
+      - link "06Players" [ref=f2e49] [cursor=pointer]:
+        - /url: /players
+      - link "07Teams" [ref=f2e50] [cursor=pointer]:
+        - /url: /teams
+    - generic [ref=f2e51]:
+      - generic [ref=f2e52]:
+        - paragraph [ref=f2e53]: KSCA U-19 Analytics
+        - paragraph [ref=f2e54]: Season 2024-25
+      - generic [ref=f2e55]:
+        - paragraph [ref=f2e56]: Inter Club Tournament
+        - paragraph [ref=f2e57]: Cricket Analytics Dashboard
+  - main [ref=f2e58]:
+    - generic [ref=f2e61]:
+      - generic [ref=f2e62]:
+        - generic [ref=f2e63]:
+          - generic [ref=f2e64]: Statistics
+          - heading "Bowling Stats" [level=1] [ref=f2e65]
+          - paragraph [ref=f2e67]: Complete bowling statistics across all teams
+        - button "All Teams" [ref=f2e69]
+      - generic [ref=f2e73]:
+        - generic [ref=f2e76]:
+          - paragraph [ref=f2e77]: Total Wickets
+          - generic [ref=f2e78]: "0"
+          - paragraph [ref=f2e80]: Tournament total
+        - generic [ref=f2e88]:
+          - paragraph [ref=f2e89]: Best Economy
+          - generic [ref=f2e90]: "0.00"
+          - paragraph [ref=f2e92]: Lowest economy rate
+        - generic [ref=f2e99]:
+          - paragraph [ref=f2e100]: 5-wicket Hauls
+          - generic [ref=f2e101]: "0"
+          - paragraph [ref=f2e103]: Across all bowlers
+        - generic [ref=f2e109]:
+          - paragraph [ref=f2e110]: Avg Economy
+          - generic [ref=f2e111]: "0.00"
+          - paragraph [ref=f2e113]: Tournament average
+      - generic [ref=f2e118]:
+        - generic [ref=f2e121]:
+          - heading "Top 10 Wicket Takers" [level=3] [ref=f2e122]
+          - paragraph [ref=f2e123]: Leading bowlers by wickets
+        - generic [ref=f2e126]:
+          - generic [ref=f2e128]:
+            - heading "Team Bowling Breakdown" [level=3] [ref=f2e129]
+            - paragraph [ref=f2e130]: Total wickets per team
+          - generic [ref=f2e132]:
+            - generic [ref=f2e133]:
+              - generic [ref=f2e134]:
+                - generic [ref=f2e135]: City Gymkhana (U-19)
+                - generic [ref=f2e136]: 34 wkts
+              - paragraph [ref=f2e138]: "Avg Eco: 3.68"
+            - generic [ref=f2e139]:
+              - generic [ref=f2e140]:
+                - generic [ref=f2e141]: Vijaya Cricket Club (U-19)
+                - generic [ref=f2e142]: 26 wkts
+              - paragraph [ref=f2e144]: "Avg Eco: 4.96"
+            - generic [ref=f2e145]:
+              - generic [ref=f2e146]:
+                - generic [ref=f2e147]: Vultures CC (U-19)
+                - generic [ref=f2e148]: 23 wkts
+              - paragraph [ref=f2e150]: "Avg Eco: 2.79"
+            - generic [ref=f2e151]:
+              - generic [ref=f2e152]:
+                - generic [ref=f2e153]: Vijaya Cricket Club (Malur) (U-19)
+                - generic [ref=f2e154]: 23 wkts
+              - paragraph [ref=f2e156]: "Avg Eco: 4.42"
+            - generic [ref=f2e157]:
+              - generic [ref=f2e158]:
+                - generic [ref=f2e159]: Chintamani Sports Association (Chintamani) (U-19)
+                - generic [ref=f2e160]: 21 wkts
+              - paragraph [ref=f2e162]: "Avg Eco: 3.86"
+            - generic [ref=f2e163]:
+              - generic [ref=f2e164]:
+                - generic [ref=f2e165]: National Cricketers (U-19)
+                - generic [ref=f2e166]: 15 wkts
+              - paragraph [ref=f2e168]: "Avg Eco: 6.02"
+            - generic [ref=f2e169]:
+              - generic [ref=f2e170]:
+                - generic [ref=f2e171]: Jayanagar Cricketers (U-19)
+                - generic [ref=f2e172]: 14 wkts
+              - paragraph [ref=f2e174]: "Avg Eco: 4.77"
+            - generic [ref=f2e175]:
+              - generic [ref=f2e176]:
+                - generic [ref=f2e177]: Palar Sports Club (Kolar) (U-19)
+                - generic [ref=f2e178]: 13 wkts
+              - paragraph [ref=f2e180]: "Avg Eco: 4.22"
+      - generic [ref=f2e181]:
+        - textbox "Search by player or team..." [ref=f2e187]
+        - table [ref=f2e189]:
+          - rowgroup [ref=f2e190]:
+            - row [ref=f2e191]:
+              - columnheader "#" [ref=f2e192]
+              - columnheader [ref=f2e194] [cursor=pointer]
+              - columnheader [ref=f2e200] [cursor=pointer]
+              - columnheader [ref=f2e206] [cursor=pointer]
+              - columnheader [ref=f2e212] [cursor=pointer]
+              - columnheader [ref=f2e218] [cursor=pointer]
+              - columnheader [ref=f2e224] [cursor=pointer]
+              - columnheader [ref=f2e230] [cursor=pointer]
+              - columnheader [ref=f2e236] [cursor=pointer]
+          - rowgroup [ref=f2e242]:
+            - row [ref=f2e243]:
+              - cell "1" [ref=f2e244]
+              - cell "AKSHAY RAVI SASTRY" [ref=f2e245]
+              - cell "National Cricketers (U-19)" [ref=f2e246]
+              - cell "15" [ref=f2e247]
+              - cell "47" [ref=f2e248]
+              - cell "233" [ref=f2e249]
+              - cell "6.02" [ref=f2e250]
+              - cell "36.64" [ref=f2e251]
+              - cell "3" [ref=f2e252]
+            - row [ref=f2e253]:
+              - cell "2" [ref=f2e254]
+              - cell "Vaibhav C" [ref=f2e255]
+              - cell "Vijaya Cricket Club (U-19)" [ref=f2e256]
+              - cell "15" [ref=f2e257]
+              - cell "38.2" [ref=f2e258]
+              - cell "189" [ref=f2e259]
+              - cell "5.04" [ref=f2e260]
+              - cell "12.45" [ref=f2e261]
+              - cell "3" [ref=f2e262]
+            - row [ref=f2e263]:
+              - cell "3" [ref=f2e264]
+              - cell "Suhaan Bhandary" [ref=f2e265]
+              - cell "Jayanagar Cricketers (U-19)" [ref=f2e266]
+              - cell "14" [ref=f2e267]
+              - cell "40" [ref=f2e268]
+              - cell "202" [ref=f2e269]
+              - cell "4.77" [ref=f2e270]
+              - cell "13.25" [ref=f2e271]
+              - cell "0" [ref=f2e272]
+            - row [ref=f2e273]:
+              - cell "4" [ref=f2e274]
+              - cell "S Pratham Raj" [ref=f2e275]
+              - cell "Palar Sports Club (Kolar) (U-19)" [ref=f2e276]
+              - cell "13" [ref=f2e277]
+              - cell "26.3" [ref=f2e278]
+              - cell "112" [ref=f2e279]
+              - cell "4.22" [ref=f2e280]
+              - cell "9.45" [ref=f2e281]
+              - cell "1" [ref=f2e282]
+            - row [ref=f2e283]:
+              - cell "5" [ref=f2e284]
+              - cell "KRISHNA" [ref=f2e285]
+              - cell "Bangalore Sports Club (U-19)" [ref=f2e286]
+              - cell "13" [ref=f2e287]
+              - cell "37.5" [ref=f2e288]
+              - cell "80" [ref=f2e289]
+              - cell "2.10" [ref=f2e290]
+              - cell "6.42" [ref=f2e291]
+              - cell "6" [ref=f2e292]
+            - row [ref=f2e293]:
+              - cell "6" [ref=f2e294]
+              - cell "JAYANTH R GOWDA" [ref=f2e295]
+              - cell "Vultures CC (U-19)" [ref=f2e296]
+              - cell "13" [ref=f2e297]
+              - cell "40.5" [ref=f2e298]
+              - cell "97" [ref=f2e299]
+              - cell "2.42" [ref=f2e300]
+              - cell "7.52" [ref=f2e301]
+              - cell "2" [ref=f2e302]
+            - row [ref=f2e303]:
+              - cell "7" [ref=f2e304]
+              - cell "Mohammed Shamsheer" [ref=f2e305]
+              - cell "Dooravani Cricketers (1) (U-19)" [ref=f2e306]
+              - cell "13" [ref=f2e307]
+              - cell "34.8" [ref=f2e308]
+              - cell "127" [ref=f2e309]
+              - cell "3.42" [ref=f2e310]
+              - cell "9.07" [ref=f2e311]
+              - cell "2" [ref=f2e312]
+            - row [ref=f2e313]:
+              - cell "8" [ref=f2e314]
+              - cell "Moksh Nahar" [ref=f2e315]
+              - cell "Neptune Cricket Club (U-19)" [ref=f2e316]
+              - cell "13" [ref=f2e317]
+              - cell "33" [ref=f2e318]
+              - cell "117" [ref=f2e319]
+              - cell "4.50" [ref=f2e320]
+              - cell "3.85" [ref=f2e321]
+              - cell "3" [ref=f2e322]
+            - row [ref=f2e323]:
+              - cell "9" [ref=f2e324]
+              - cell "Sidhanth Sunil" [ref=f2e325]
+              - cell "Social Cricketers (U-19)" [ref=f2e326]
+              - cell "12" [ref=f2e327]
+              - cell "27" [ref=f2e328]
+              - cell "111" [ref=f2e329]
+              - cell "4.11" [ref=f2e330]
+              - cell "9.25" [ref=f2e331]
+              - cell "1" [ref=f2e332]
+            - row [ref=f2e333]:
+              - cell "10" [ref=f2e334]
+              - cell "Krushna V Rao" [ref=f2e335]
+              - cell "City Gymkhana (U-19)" [ref=f2e336]
+              - cell "12" [ref=f2e337]
+              - cell "42.2" [ref=f2e338]
+              - cell "180" [ref=f2e339]
+              - cell "4.26" [ref=f2e340]
+              - cell "15.05" [ref=f2e341]
+              - cell "1" [ref=f2e342]
+            - row [ref=f2e343]:
+              - cell "11" [ref=f2e344]
+              - cell "CHILUKURI SRI RAM PRANEETH" [ref=f2e345]
+              - cell "Century Cricketers (U-19)" [ref=f2e346]
+              - cell "12" [ref=f2e347]
+              - cell "26.7" [ref=f2e348]
+              - cell "108" [ref=f2e349]
+              - cell "4.15" [ref=f2e350]
+              - cell "9.00" [ref=f2e351]
+              - cell "4" [ref=f2e352]
+            - row [ref=f2e353]:
+              - cell "12" [ref=f2e354]
+              - cell "MANISH V PATIL" [ref=f2e355]
+              - cell "Vijaya Cricket Club (Malur) (U-19)" [ref=f2e356]
+              - cell "12" [ref=f2e357]
+              - cell "43" [ref=f2e358]
+              - cell "194" [ref=f2e359]
+              - cell "4.44" [ref=f2e360]
+              - cell "17.52" [ref=f2e361]
+              - cell "1" [ref=f2e362]
+        - generic [ref=f2e363]:
+          - paragraph [ref=f2e364]: Page 1 of 3 (30 results)
+          - generic [ref=f2e365]:
+            - button "1" [ref=f2e366]
+            - button "2" [ref=f2e367]
+            - button "3" [ref=f2e368]
+  - button "Open Next.js Dev Tools" [ref=f2e374] [cursor=pointer]

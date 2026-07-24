@@ -9,9 +9,11 @@ import {
   MOCK_BATTERS,
   MOCK_BOWLERS,
 } from "@/lib/mock-data";
+import ScrollFloat from "@/components/ScrollFloat";
+import "@/components/ScrollFloat.css";
 
 const teamColors: string[] = [
-  "#FEDF4B",
+  "#D4FF00",
   "#f43f5e",
   "#38bdf8",
   "#22c55e",
@@ -69,8 +71,8 @@ export default function TeamsPage() {
   }, [allTeams, search]);
 
   return (
-    <section className="bg-[#0a0a0a] min-h-screen">
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 py-12 sm:py-16">
+    <section className="min-h-screen pt-20">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 py-12 sm:py-16">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,14 +80,24 @@ export default function TeamsPage() {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <span className="section-label-outline mb-4 inline-flex items-center gap-2">
+          <span className="editorial-caption mb-4 inline-flex items-center gap-2">
             <Shield size={12} />
             Tournament Clubs
           </span>
-          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl uppercase tracking-wide text-white mt-4 text-glow-white">
-            All Teams
+          <h1 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-white mt-4">
+            <ScrollFloat
+              as="span"
+              animationDuration={1}
+              ease="back.inOut(2)"
+              scrollStart="center bottom+=50%"
+              scrollEnd="bottom bottom-=40%"
+              stagger={0.03}
+            >
+              All Teams
+            </ScrollFloat>
           </h1>
-          <p className="text-base sm:text-lg text-[#525252] mt-4 max-w-2xl">
+          <div className="editorial-rule-accent mt-4" />
+          <p className="text-sm text-gray-500 mt-4 max-w-2xl">
             {allTeams.length} teams competing in the KSCA Under-19 Inter Club Tournament 2026.
           </p>
         </motion.div>
@@ -99,14 +111,14 @@ export default function TeamsPage() {
         >
           <Search
             size={16}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-[#525252]"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
           />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search teams..."
-            className="w-full pl-11 pr-4 py-3.5 bg-white/[0.04] border border-white/[0.08] rounded-2xl text-sm text-white placeholder:text-[#525252] focus:outline-none focus:border-[#FEDF4B]/30 transition-colors"
+            className="w-full pl-11 pr-4 py-3 bg-white/[0.03] border border-white/5 rounded-lg text-sm text-white placeholder:text-[#7A7A7A] focus:outline-none focus:border-[#D4FF00]/30 transition-colors"
           />
         </motion.div>
 
@@ -137,7 +149,7 @@ export default function TeamsPage() {
                 }}
               >
                 <div
-                  className="relative p-6 rounded-2xl border border-white/[0.06] bg-[#141414] overflow-hidden group hover:-translate-y-1.5 transition-all duration-500 hover:shadow-[0_24px_60px_rgba(0,0,0,0.6)] h-full"
+                  className="relative p-5 rounded-lg border border-white/5 overflow-hidden group hover:-translate-y-1.5 transition-all duration-500 hover:shadow-[0_24px_60px_rgba(0,0,0,0.6)] h-full"
                   style={{
                     borderColor: `${color}15`,
                   }}
@@ -153,9 +165,9 @@ export default function TeamsPage() {
                   />
 
                   {/* Team avatar */}
-                  <div className="flex items-start gap-4 mb-5">
+                  <div className="flex items-start gap-3 mb-4">
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center font-display text-lg flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                      className="w-10 h-10 rounded-lg flex items-center justify-center font-display text-sm flex-shrink-0 transition-all duration-300 group-hover:scale-110"
                       style={{
                         background: `${color}15`,
                         color: color,
@@ -174,7 +186,7 @@ export default function TeamsPage() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <h3
-                        className="font-display text-lg uppercase tracking-wide leading-tight group-hover:transition-colors"
+                        className="font-display text-base uppercase tracking-wide leading-tight group-hover:transition-colors"
                         style={{ color: "white" }}
                       >
                         <span className="group-hover:hidden">{shortName}</span>
@@ -182,7 +194,7 @@ export default function TeamsPage() {
                           {shortName}
                         </span>
                       </h3>
-                      <p className="text-[11px] text-[#525252] mt-1 leading-snug line-clamp-2">
+                      <p className="text-[10px] text-gray-500 mt-1 leading-snug line-clamp-2">
                         {team}
                       </p>
                     </div>
@@ -191,33 +203,33 @@ export default function TeamsPage() {
                   {/* Stats */}
                   <div className="grid grid-cols-3 gap-2">
                     <div className="text-center p-2 rounded-lg bg-white/[0.02]">
-                      <p className="font-display text-lg tabular-nums" style={{ color }}>
+                      <p className="font-display text-base tabular-nums" style={{ color }}>
                         {stats.totalRuns}
                       </p>
-                      <p className="text-[9px] text-[#525252] uppercase tracking-wider mt-0.5">
+                      <p className="text-[9px] text-gray-500 uppercase tracking-wider mt-0.5">
                         Runs
                       </p>
                     </div>
                     <div className="text-center p-2 rounded-lg bg-white/[0.02]">
-                      <p className="font-display text-lg tabular-nums" style={{ color }}>
+                      <p className="font-display text-base tabular-nums" style={{ color }}>
                         {stats.totalWickets}
                       </p>
-                      <p className="text-[9px] text-[#525252] uppercase tracking-wider mt-0.5">
+                      <p className="text-[9px] text-gray-500 uppercase tracking-wider mt-0.5">
                         Wickets
                       </p>
                     </div>
                     <div className="text-center p-2 rounded-lg bg-white/[0.02]">
-                      <p className="font-display text-lg tabular-nums" style={{ color }}>
+                      <p className="font-display text-base tabular-nums" style={{ color }}>
                         {stats.playerCount}
                       </p>
-                      <p className="text-[9px] text-[#525252] uppercase tracking-wider mt-0.5">
+                      <p className="text-[9px] text-gray-500 uppercase tracking-wider mt-0.5">
                         Players
                       </p>
                     </div>
                   </div>
 
                   {/* Breakdown */}
-                  <div className="mt-4 pt-3 border-t border-white/[0.04] flex justify-between text-[10px] text-[#525252] font-mono">
+                  <div className="mt-3 pt-3 border-t border-white/5 flex justify-between text-[9px] text-gray-500 font-mono">
                     <span>
                       <BarChart3 size={10} className="inline mr-1" />
                       {stats.batterCount} batters
@@ -239,8 +251,8 @@ export default function TeamsPage() {
             animate={{ opacity: 1 }}
             className="text-center py-20"
           >
-            <Shield size={40} className="mx-auto text-[#333] mb-4" />
-            <p className="text-[#525252] text-lg">No teams found.</p>
+            <Shield size={40} className="mx-auto text-gray-600 mb-4" />
+            <p className="text-gray-500 text-lg">No teams found.</p>
           </motion.div>
         )}
       </div>

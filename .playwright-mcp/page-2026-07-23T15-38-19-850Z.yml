@@ -1,0 +1,247 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - generic [ref=f2e4]:
+      - link "KSCA U-19 KSCA U-19 Analytics Dashboard" [ref=f2e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f2e27]:
+          - generic [ref=f2e28]: KSCA
+          - generic [ref=f2e29]: U-19
+        - generic [ref=f2e30]:
+          - paragraph [ref=f2e31]: KSCA U-19
+          - paragraph [ref=f2e32]: Analytics Dashboard
+      - navigation [ref=f2e33]:
+        - link "01 Overview" [ref=f2e34] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f2e35]:
+            - generic [ref=f2e36]: "01"
+            - text: Overview
+        - link "02 Players" [ref=f2e37] [cursor=pointer]:
+          - /url: /players
+          - generic [ref=f2e38]:
+            - generic [ref=f2e39]: "02"
+            - text: Players
+        - link "03 Teams" [ref=f2e40] [cursor=pointer]:
+          - /url: /teams
+          - generic [ref=f2e41]:
+            - generic [ref=f2e42]: "03"
+            - text: Teams
+      - generic [ref=f2e43]:
+        - generic [ref=f2e44]: Live
+        - generic [ref=f2e48]:
+          - paragraph [ref=f2e49]: Season
+          - paragraph [ref=f2e50]: 2024-25
+  - main [ref=f2e51]:
+    - generic [ref=f2e54]:
+      - generic [ref=f2e55]:
+        - generic [ref=f2e56]:
+          - generic [ref=f2e57]: Statistics
+          - heading "Batting Stats" [level=1] [ref=f2e58]
+          - paragraph [ref=f2e60]: Complete batting statistics across all teams
+        - button "All Teams" [ref=f2e62]
+      - generic [ref=f2e66]:
+        - generic [ref=f2e69]:
+          - paragraph [ref=f2e70]: Total Runs
+          - generic [ref=f2e71]: "0"
+          - paragraph [ref=f2e73]: Tournament total
+        - generic [ref=f2e79]:
+          - paragraph [ref=f2e80]: Avg Strike Rate
+          - generic [ref=f2e81]: "0.0"
+          - paragraph [ref=f2e83]: Across all players
+        - generic [ref=f2e90]:
+          - paragraph [ref=f2e91]: Highest Score
+          - generic [ref=f2e92]: "0"
+          - paragraph [ref=f2e94]: Individual best
+        - generic [ref=f2e104]:
+          - paragraph [ref=f2e105]: Total Boundaries
+          - generic [ref=f2e106]: "0"
+          - paragraph [ref=f2e108]: Fours + Sixes
+      - generic [ref=f2e112]:
+        - generic [ref=f2e115]:
+          - heading "Top 10 Run Scorers" [level=3] [ref=f2e116]
+          - paragraph [ref=f2e117]: Leading batsmen by total runs
+        - generic [ref=f2e120]:
+          - generic [ref=f2e122]:
+            - heading "Team Batting Breakdown" [level=3] [ref=f2e123]
+            - paragraph [ref=f2e124]: Total runs per team
+          - generic [ref=f2e126]:
+            - generic [ref=f2e128]:
+              - generic [ref=f2e129]: City Gymkhana (U-19)
+              - generic [ref=f2e130]: 1,182
+            - generic [ref=f2e133]:
+              - generic [ref=f2e134]: Vultures CC (U-19)
+              - generic [ref=f2e135]: "859"
+            - generic [ref=f2e138]:
+              - generic [ref=f2e139]: Friends Union CC (1) (U-19)
+              - generic [ref=f2e140]: "740"
+            - generic [ref=f2e143]:
+              - generic [ref=f2e144]: Jawans Cricket Club (U-19)
+              - generic [ref=f2e145]: "611"
+            - generic [ref=f2e148]:
+              - generic [ref=f2e149]: Vijaya Cricket Club (U-19)
+              - generic [ref=f2e150]: "577"
+            - generic [ref=f2e153]:
+              - generic [ref=f2e154]: Visweswarampuram Cricket Club (1) (U-19)
+              - generic [ref=f2e155]: "519"
+            - generic [ref=f2e158]:
+              - generic [ref=f2e159]: Century Cricketers (U-19)
+              - generic [ref=f2e160]: "517"
+            - generic [ref=f2e163]:
+              - generic [ref=f2e164]: Swastic Union Cricket Club (2) (U-19)
+              - generic [ref=f2e165]: "511"
+      - generic [ref=f2e167]:
+        - textbox "Search by player or team..." [ref=f2e173]
+        - table [ref=f2e175]:
+          - rowgroup [ref=f2e176]:
+            - row [ref=f2e177]:
+              - columnheader "#" [ref=f2e178]
+              - columnheader [ref=f2e180] [cursor=pointer]
+              - columnheader [ref=f2e186] [cursor=pointer]
+              - columnheader [ref=f2e192] [cursor=pointer]
+              - columnheader [ref=f2e198] [cursor=pointer]
+              - columnheader [ref=f2e204] [cursor=pointer]
+              - columnheader [ref=f2e210] [cursor=pointer]
+              - columnheader [ref=f2e216] [cursor=pointer]
+              - columnheader [ref=f2e222] [cursor=pointer]
+              - columnheader [ref=f2e228] [cursor=pointer]
+          - rowgroup [ref=f2e234]:
+            - row [ref=f2e235]:
+              - cell "1" [ref=f2e236]
+              - cell "Bhuvan Gowda N" [ref=f2e237]
+              - cell "Vultures CC (U-19)" [ref=f2e238]
+              - cell "518" [ref=f2e239]
+              - cell "503" [ref=f2e240]
+              - cell "96.6" [ref=f2e241]
+              - cell "259.00" [ref=f2e242]
+              - cell "221" [ref=f2e243]
+              - cell "71" [ref=f2e244]
+              - cell "4" [ref=f2e245]
+            - row [ref=f2e246]:
+              - cell "2" [ref=f2e247]
+              - cell "Amogh R Shetty" [ref=f2e248]
+              - cell "Mount Joy Cricket Club (U-19)" [ref=f2e249]
+              - cell "403" [ref=f2e250]
+              - cell "349" [ref=f2e251]
+              - cell "97.9" [ref=f2e252]
+              - cell "112.25" [ref=f2e253]
+              - cell "109" [ref=f2e254]
+              - cell "61" [ref=f2e255]
+              - cell "3" [ref=f2e256]
+            - row [ref=f2e257]:
+              - cell "3" [ref=f2e258]
+              - cell "Nitish Arya" [ref=f2e259]
+              - cell "Jawans Cricket Club (U-19)" [ref=f2e260]
+              - cell "400" [ref=f2e261]
+              - cell "360" [ref=f2e262]
+              - cell "111.8" [ref=f2e263]
+              - cell "134.75" [ref=f2e264]
+              - cell "139" [ref=f2e265]
+              - cell "46" [ref=f2e266]
+              - cell "10" [ref=f2e267]
+            - row [ref=f2e268]:
+              - cell "4" [ref=f2e269]
+              - cell "CHAVANTH R GOWDA" [ref=f2e270]
+              - cell "Coles Cricket Club (U-19)" [ref=f2e271]
+              - cell "387" [ref=f2e272]
+              - cell "459" [ref=f2e273]
+              - cell "82.2" [ref=f2e274]
+              - cell "74.75" [ref=f2e275]
+              - cell "112" [ref=f2e276]
+              - cell "49" [ref=f2e277]
+              - cell "3" [ref=f2e278]
+            - row [ref=f2e279]:
+              - cell "5" [ref=f2e280]
+              - cell "Dhruv Krishnan" [ref=f2e281]
+              - cell "Vijaya Cricket Club (U-19)" [ref=f2e282]
+              - cell "372" [ref=f2e283]
+              - cell "306" [ref=f2e284]
+              - cell "118.4" [ref=f2e285]
+              - cell "93.00" [ref=f2e286]
+              - cell "193" [ref=f2e287]
+              - cell "50" [ref=f2e288]
+              - cell "7" [ref=f2e289]
+            - row [ref=f2e290]:
+              - cell "6" [ref=f2e291]
+              - cell "Arsh Arora" [ref=f2e292]
+              - cell "City Gymkhana (U-19)" [ref=f2e293]
+              - cell "350" [ref=f2e294]
+              - cell "303" [ref=f2e295]
+              - cell "94.4" [ref=f2e296]
+              - cell "62.34" [ref=f2e297]
+              - cell "154" [ref=f2e298]
+              - cell "37" [ref=f2e299]
+              - cell "1" [ref=f2e300]
+            - row [ref=f2e301]:
+              - cell "7" [ref=f2e302]
+              - cell "Atharv Malviya" [ref=f2e303]
+              - cell "Vultures CC (U-19)" [ref=f2e304]
+              - cell "341" [ref=f2e305]
+              - cell "304" [ref=f2e306]
+              - cell "114.4" [ref=f2e307]
+              - cell "38.84" [ref=f2e308]
+              - cell "147" [ref=f2e309]
+              - cell "36" [ref=f2e310]
+              - cell "5" [ref=f2e311]
+            - row [ref=f2e312]:
+              - cell "8" [ref=f2e313]
+              - cell "Arsh" [ref=f2e314]
+              - cell "Modern Cricket Club (U-19)" [ref=f2e315]
+              - cell "332" [ref=f2e316]
+              - cell "205" [ref=f2e317]
+              - cell "154.1" [ref=f2e318]
+              - cell "71.00" [ref=f2e319]
+              - cell "191" [ref=f2e320]
+              - cell "39" [ref=f2e321]
+              - cell "17" [ref=f2e322]
+            - row [ref=f2e323]:
+              - cell "9" [ref=f2e324]
+              - cell "Daivik S" [ref=f2e325]
+              - cell "Bangalore Cricketers (U-19)" [ref=f2e326]
+              - cell "320" [ref=f2e327]
+              - cell "308" [ref=f2e328]
+              - cell "101.8" [ref=f2e329]
+              - cell "131.75" [ref=f2e330]
+              - cell "106" [ref=f2e331]
+              - cell "45" [ref=f2e332]
+              - cell "3" [ref=f2e333]
+            - row [ref=f2e334]:
+              - cell "10" [ref=f2e335]
+              - cell "Dhruv Modhe" [ref=f2e336]
+              - cell "Friends Union CC (1) (U-19)" [ref=f2e337]
+              - cell "311" [ref=f2e338]
+              - cell "309" [ref=f2e339]
+              - cell "100.3" [ref=f2e340]
+              - cell "38.75" [ref=f2e341]
+              - cell "128" [ref=f2e342]
+              - cell "30" [ref=f2e343]
+              - cell "9" [ref=f2e344]
+            - row [ref=f2e345]:
+              - cell "11" [ref=f2e346]
+              - cell "Barath C" [ref=f2e347]
+              - cell "City Gymkhana (U-19)" [ref=f2e348]
+              - cell "308" [ref=f2e349]
+              - cell "318" [ref=f2e350]
+              - cell "88.8" [ref=f2e351]
+              - cell "55.34" [ref=f2e352]
+              - cell "84" [ref=f2e353]
+              - cell "35" [ref=f2e354]
+              - cell "3" [ref=f2e355]
+            - row [ref=f2e356]:
+              - cell "12" [ref=f2e357]
+              - cell "Pranav G" [ref=f2e358]
+              - cell "Yankees Cricket Club (U-19)" [ref=f2e359]
+              - cell "302" [ref=f2e360]
+              - cell "414" [ref=f2e361]
+              - cell "72.3" [ref=f2e362]
+              - cell "122.75" [ref=f2e363]
+              - cell "165" [ref=f2e364]
+              - cell "41" [ref=f2e365]
+              - cell "1" [ref=f2e366]
+        - generic [ref=f2e367]:
+          - paragraph [ref=f2e368]: Page 1 of 5 (50 results)
+          - generic [ref=f2e369]:
+            - button "1" [ref=f2e370]
+            - button "2" [ref=f2e371]
+            - button "3" [ref=f2e372]
+            - button "4" [ref=f2e373]
+            - button "5" [ref=f2e374]
+  - button "Open Next.js Dev Tools" [ref=f2e380] [cursor=pointer]

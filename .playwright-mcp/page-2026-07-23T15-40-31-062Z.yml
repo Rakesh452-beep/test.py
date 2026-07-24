@@ -1,0 +1,192 @@
+- generic [active] [ref=f6e1]:
+  - banner [ref=f6e2]:
+    - generic [ref=f6e4]:
+      - link "KSCA U-19 KSCA U-19 Analytics Dashboard" [ref=f6e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f6e27]:
+          - generic [ref=f6e28]: KSCA
+          - generic [ref=f6e29]: U-19
+        - generic [ref=f6e30]:
+          - paragraph [ref=f6e31]: KSCA U-19
+          - paragraph [ref=f6e32]: Analytics Dashboard
+      - navigation [ref=f6e33]:
+        - link "01 Overview" [ref=f6e34] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f6e35]:
+            - generic [ref=f6e36]: "01"
+            - text: Overview
+        - link "02 Players" [ref=f6e37] [cursor=pointer]:
+          - /url: /players
+          - generic [ref=f6e38]:
+            - generic [ref=f6e39]: "02"
+            - text: Players
+        - link "03 Teams" [ref=f6e40] [cursor=pointer]:
+          - /url: /teams
+          - generic [ref=f6e41]:
+            - generic [ref=f6e42]: "03"
+            - text: Teams
+      - generic [ref=f6e43]:
+        - generic [ref=f6e44]: Live
+        - generic [ref=f6e48]:
+          - paragraph [ref=f6e49]: Season
+          - paragraph [ref=f6e50]: 2024-25
+  - main [ref=f6e51]:
+    - generic [ref=f6e54]:
+      - generic [ref=f6e55]:
+        - generic [ref=f6e56]:
+          - generic [ref=f6e57]: Statistics
+          - heading "Wicketkeeper Analysis" [level=1] [ref=f6e58]
+          - paragraph [ref=f6e60]: Complete keeper analytics — batting, catches & stumpings
+        - button "All Teams" [ref=f6e62]
+      - generic [ref=f6e66]:
+        - generic [ref=f6e69]:
+          - paragraph [ref=f6e70]: Total Runs by Keepers
+          - generic [ref=f6e71]: "0"
+          - paragraph [ref=f6e73]: All keeper contributions
+        - generic [ref=f6e80]:
+          - paragraph [ref=f6e81]: Total Catches
+          - generic [ref=f6e82]: "0"
+          - paragraph [ref=f6e84]: Catches by keepers
+        - generic [ref=f6e90]:
+          - paragraph [ref=f6e91]: Total Stumpings
+          - generic [ref=f6e92]: "0"
+          - paragraph [ref=f6e94]: Stumpings by keepers
+        - generic [ref=f6e102]:
+          - paragraph [ref=f6e103]: Highest Keeper Score
+          - generic [ref=f6e104]: "0"
+          - paragraph [ref=f6e106]: Individual best
+      - generic [ref=f6e111]:
+        - generic [ref=f6e114]:
+          - heading "Keeper Batting Performance" [level=3] [ref=f6e115]
+          - paragraph [ref=f6e116]: Total runs scored by each wicketkeeper
+        - generic [ref=f6e121]:
+          - heading "Dismissals Breakdown" [level=3] [ref=f6e122]
+          - paragraph [ref=f6e123]: Catches vs Stumpings distribution
+      - generic [ref=f6e130]:
+        - heading "Keeper Dismissals Comparison" [level=3] [ref=f6e131]
+        - paragraph [ref=f6e132]: Catches & Stumpings per wicketkeeper
+      - generic [ref=f6e135]:
+        - textbox "Search keeper, club or opponent..." [ref=f6e141]
+        - table [ref=f6e143]:
+          - rowgroup [ref=f6e144]:
+            - row [ref=f6e145]:
+              - columnheader [ref=f6e146] [cursor=pointer]
+              - columnheader [ref=f6e152] [cursor=pointer]
+              - columnheader [ref=f6e158] [cursor=pointer]
+              - columnheader [ref=f6e164] [cursor=pointer]
+              - columnheader [ref=f6e170] [cursor=pointer]
+              - columnheader [ref=f6e176] [cursor=pointer]
+              - columnheader [ref=f6e182] [cursor=pointer]
+              - columnheader [ref=f6e188] [cursor=pointer]
+              - columnheader [ref=f6e194] [cursor=pointer]
+          - rowgroup [ref=f6e200]:
+            - row [ref=f6e201]:
+              - cell "2026-07-08" [ref=f6e202]
+              - cell "Blue Diamond Cricketers (U-19)" [ref=f6e203]
+              - cell "Mount Joy Cricket Club (U-19)" [ref=f6e204]
+              - cell "AHAN KAUSHIK (LHB) (WK)" [ref=f6e205]
+              - cell "12" [ref=f6e206]
+              - cell "20" [ref=f6e207]
+              - cell "0" [ref=f6e208]
+              - cell "0" [ref=f6e209]
+              - cell "Out" [ref=f6e210]
+            - row [ref=f6e212]:
+              - cell "2026-07-08" [ref=f6e213]
+              - cell "Mount Joy Cricket Club (U-19)" [ref=f6e214]
+              - cell "Blue Diamond Cricketers (U-19)" [ref=f6e215]
+              - cell "MOHIT GOWDA B N (RHB) (WK)" [ref=f6e216]
+              - cell "0" [ref=f6e217]
+              - cell "0" [ref=f6e218]
+              - cell "0" [ref=f6e219]
+              - cell "0" [ref=f6e220]
+              - cell "Not out" [ref=f6e221]
+            - row [ref=f6e223]:
+              - cell "2026-07-08" [ref=f6e224]
+              - cell "Coles Cricket Club (U-19)" [ref=f6e225]
+              - cell "Swastic Union Cricket Club (2) (U-19)" [ref=f6e226]
+              - cell "CHIRAG AGARWAL (RHB) (WK)" [ref=f6e227]
+              - cell "0" [ref=f6e228]
+              - cell "1" [ref=f6e229]
+              - cell "2" [ref=f6e230]
+              - cell "0" [ref=f6e231]
+              - cell "Out" [ref=f6e232]
+            - row [ref=f6e234]:
+              - cell "2026-07-08" [ref=f6e235]
+              - cell "Swastic Union Cricket Club (2) (U-19)" [ref=f6e236]
+              - cell "Coles Cricket Club (U-19)" [ref=f6e237]
+              - cell "REHAN MOHAMMED (RHB) (C)(WK)" [ref=f6e238]
+              - cell "72" [ref=f6e239]
+              - cell "101" [ref=f6e240]
+              - cell "1" [ref=f6e241]
+              - cell "0" [ref=f6e242]
+              - cell "Not out" [ref=f6e243]
+            - row [ref=f6e245]:
+              - cell "2026-07-08" [ref=f6e246]
+              - cell "Cambridge Cricket Club (U-19)" [ref=f6e247]
+              - cell "Chintamani Sports Association (Chintamani) (U-19)" [ref=f6e248]
+              - cell "NITHIN R (LHB) (WK)" [ref=f6e249]
+              - cell "32" [ref=f6e250]
+              - cell "33" [ref=f6e251]
+              - cell "1" [ref=f6e252]
+              - cell "0" [ref=f6e253]
+              - cell "Out" [ref=f6e254]
+            - row [ref=f6e256]:
+              - cell "2026-07-08" [ref=f6e257]
+              - cell "Chintamani Sports Association (Chintamani) (U-19)" [ref=f6e258]
+              - cell "Cambridge Cricket Club (U-19)" [ref=f6e259]
+              - cell "MANAS A BALAJI (RHB) (WK)" [ref=f6e260]
+              - cell "34" [ref=f6e261]
+              - cell "50" [ref=f6e262]
+              - cell "1" [ref=f6e263]
+              - cell "1" [ref=f6e264]
+              - cell "Out" [ref=f6e265]
+            - row [ref=f6e267]:
+              - cell "2026-07-08" [ref=f6e268]
+              - cell "Friends Union CC (1) (U-19)" [ref=f6e269]
+              - cell "Neptune Cricket Club (U-19)" [ref=f6e270]
+              - cell "KALLESH A G (RHB) (WK)" [ref=f6e271]
+              - cell "17" [ref=f6e272]
+              - cell "30" [ref=f6e273]
+              - cell "2" [ref=f6e274]
+              - cell "0" [ref=f6e275]
+              - cell "Out" [ref=f6e276]
+            - row [ref=f6e278]:
+              - cell "2026-07-08" [ref=f6e279]
+              - cell "Neptune Cricket Club (U-19)" [ref=f6e280]
+              - cell "Friends Union CC (1) (U-19)" [ref=f6e281]
+              - cell "SATAYIU CHAKRABORTY (RHB) (WK)" [ref=f6e282]
+              - cell "3" [ref=f6e283]
+              - cell "6" [ref=f6e284]
+              - cell "3" [ref=f6e285]
+              - cell "0" [ref=f6e286]
+              - cell "Out" [ref=f6e287]
+            - row [ref=f6e289]:
+              - cell "2026-07-08" [ref=f6e290]
+              - cell "Sir Syed Cricketers (U-19)" [ref=f6e291]
+              - cell "Bharath Cricket Club (U-19)" [ref=f6e292]
+              - cell "ADITYA JHA (RHB) (WK)" [ref=f6e293]
+              - cell "67" [ref=f6e294]
+              - cell "80" [ref=f6e295]
+              - cell "0" [ref=f6e296]
+              - cell "2" [ref=f6e297]
+              - cell "Out" [ref=f6e298]
+            - row [ref=f6e300]:
+              - cell "2026-07-08" [ref=f6e301]
+              - cell "Bharath Cricket Club (U-19)" [ref=f6e302]
+              - cell "Sir Syed Cricketers (U-19)" [ref=f6e303]
+              - cell "SHREYAS SUBRAMANYA (RHB) (WK)" [ref=f6e304]
+              - cell "2" [ref=f6e305]
+              - cell "7" [ref=f6e306]
+              - cell "4" [ref=f6e307]
+              - cell "0" [ref=f6e308]
+              - cell "Out" [ref=f6e309]
+        - generic [ref=f6e311]:
+          - paragraph [ref=f6e312]: Page 1 of 27 (267 results)
+          - generic [ref=f6e313]:
+            - button "1" [ref=f6e314]
+            - button "2" [ref=f6e315]
+            - button "3" [ref=f6e316]
+            - button "4" [ref=f6e317]
+            - button "5" [ref=f6e318]
+            - generic [ref=f6e319]: ...
+  - button "Open Next.js Dev Tools" [ref=f6e325] [cursor=pointer]
