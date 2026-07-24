@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 
-path = "reports/AllTeams_Stats_20260708_221443.xlsx"
+path = "reports/AllTeams_Stats_latest.xlsx"
 
 # --- KEEPER DATA ---
 df_k = pd.read_excel(path, sheet_name="Sheet1")
