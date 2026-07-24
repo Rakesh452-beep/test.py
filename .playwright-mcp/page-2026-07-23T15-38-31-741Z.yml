@@ -1,0 +1,358 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - generic [ref=f3e4]:
+      - link "KSCA U-19 KSCA U-19 Analytics Dashboard" [ref=f3e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f3e27]:
+          - generic [ref=f3e28]: KSCA
+          - generic [ref=f3e29]: U-19
+        - generic [ref=f3e30]:
+          - paragraph [ref=f3e31]: KSCA U-19
+          - paragraph [ref=f3e32]: Analytics Dashboard
+      - navigation [ref=f3e33]:
+        - link "01 Overview" [ref=f3e34] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f3e35]:
+            - generic [ref=f3e36]: "01"
+            - text: Overview
+        - link "02 Players" [ref=f3e37] [cursor=pointer]:
+          - /url: /players
+          - generic [ref=f3e38]:
+            - generic [ref=f3e39]: "02"
+            - text: Players
+        - link "03 Teams" [ref=f3e41] [cursor=pointer]:
+          - /url: /teams
+          - generic [ref=f3e42]:
+            - generic [ref=f3e43]: "03"
+            - text: Teams
+      - generic [ref=f3e44]:
+        - generic [ref=f3e45]: Live
+        - generic [ref=f3e49]:
+          - paragraph [ref=f3e50]: Season
+          - paragraph [ref=f3e51]: 2024-25
+  - main [ref=f3e52]:
+    - generic [ref=f3e54]:
+      - generic [ref=f3e55]:
+        - generic [ref=f3e56]: Squad Directory
+        - heading "Players" [level=1] [ref=f3e62]
+        - paragraph [ref=f3e64]: Click any name to reveal their full stats.
+      - generic [ref=f3e65]:
+        - textbox "Search by name or team..." [ref=f3e70]
+        - generic [ref=f3e71]:
+          - button "All" [ref=f3e72]
+          - button "Batsmen" [ref=f3e73]
+          - button "Bowlers" [ref=f3e74]
+        - combobox [ref=f3e76] [cursor=pointer]:
+          - option "All Teams" [selected]
+          - option "Bangalore Cricketers"
+          - option "Bangalore Sports Club"
+          - option "Bangalore Star Cricket Association"
+          - option "Bangalore United Cricket Club (1)"
+          - option "Bharath Cricket Club"
+          - option "Blue Diamond Cricketers"
+          - option "Cambridge Cricket Club"
+          - option "Caravan Cricketers"
+          - option "Century Cricketers"
+          - option "Chintamani Sports Association (Chintamani)"
+          - option "City Cricketers (2)"
+          - option "City Gymkhana"
+          - option "Coles Cricket Club"
+          - option "Friends Union CC (1)"
+          - option "Jawahar Sp.Club (1)"
+          - option "Jawans Cricket Club"
+          - option "Mathikere Cricket Club"
+          - option "Minerva Cricket Club"
+          - option "Modern Cricket Club"
+          - option "Mount Joy Cricket Club"
+          - option "Rajajinagar Cricketers"
+          - option "Sangam Cricket Association"
+          - option "Sir Syed Cricketers"
+          - option "Spartons Sports Club"
+          - option "Swastic Union Cricket Club (1)"
+          - option "Swastic Union Cricket Club (2)"
+          - option "Vijaya Cricket Club (Malur)"
+          - option "Vijaya Cricket Club"
+          - option "Visweswarampuram Cricket Club (1)"
+          - option "Vultures CC"
+          - option "Wadiyar Cricket Club"
+          - option "Wilson Garden Cricket Club"
+          - option "Yankees Cricket Club"
+      - generic [ref=f3e77]:
+        - generic [ref=f3e78]:
+          - generic [ref=f3e79]:
+            - heading "Bangalore Cricketers" [level=2] [ref=f3e81]
+            - generic [ref=f3e83]: "1"
+          - button "Daivik S" [ref=f3e85] [cursor=pointer]
+        - generic [ref=f3e86]:
+          - generic [ref=f3e87]:
+            - heading "Bangalore Occasionals" [level=2] [ref=f3e89]
+            - generic [ref=f3e91]: "1"
+          - button "Shourya Goswami" [ref=f3e93] [cursor=pointer]
+        - generic [ref=f3e94]:
+          - generic [ref=f3e95]:
+            - heading "Bangalore Sports Club" [level=2] [ref=f3e97]
+            - generic [ref=f3e99]: "2"
+          - generic [ref=f3e100]:
+            - button "Harshit Pai" [ref=f3e101] [cursor=pointer]
+            - button "KRISHNA" [ref=f3e102] [cursor=pointer]
+        - generic [ref=f3e103]:
+          - generic [ref=f3e104]:
+            - heading "Bangalore Star Cricket Association" [level=2] [ref=f3e106]
+            - generic [ref=f3e108]: "2"
+          - generic [ref=f3e109]:
+            - button "PRUTHVI RAJ R" [ref=f3e110] [cursor=pointer]
+            - button "SANDEEP AGRI" [ref=f3e111] [cursor=pointer]
+        - generic [ref=f3e112]:
+          - generic [ref=f3e113]:
+            - heading "Bangalore United Cricket Club (1)" [level=2] [ref=f3e115]
+            - generic [ref=f3e117]: "1"
+          - button "Adhrit Rao" [ref=f3e119] [cursor=pointer]
+        - generic [ref=f3e120]:
+          - generic [ref=f3e121]:
+            - heading "Bharath Cricket Club" [level=2] [ref=f3e123]
+            - generic [ref=f3e125]: "3"
+          - generic [ref=f3e126]:
+            - button "Aadrith" [ref=f3e127] [cursor=pointer]
+            - button "Vedant Kumar" [ref=f3e128] [cursor=pointer]
+            - button "Samarth Patil" [ref=f3e129] [cursor=pointer]
+        - generic [ref=f3e130]:
+          - generic [ref=f3e131]:
+            - heading "Blue Diamond Cricketers" [level=2] [ref=f3e133]
+            - generic [ref=f3e135]: "1"
+          - button "Tanish Yadav R C" [ref=f3e137] [cursor=pointer]
+        - generic [ref=f3e138]:
+          - generic [ref=f3e139]:
+            - heading "Cambridge Cricket Club" [level=2] [ref=f3e141]
+            - generic [ref=f3e143]: "2"
+          - generic [ref=f3e144]:
+            - button "ARNAV ANIL" [ref=f3e145] [cursor=pointer]
+            - button "Arav Prasad" [ref=f3e146] [cursor=pointer]
+        - generic [ref=f3e147]:
+          - generic [ref=f3e148]:
+            - heading "Caravan Cricketers" [level=2] [ref=f3e150]
+            - generic [ref=f3e152]: "1"
+          - button "NAVNEETH V RAJ" [ref=f3e154] [cursor=pointer]
+        - generic [ref=f3e155]:
+          - generic [ref=f3e156]:
+            - heading "Century Cricketers" [level=2] [ref=f3e158]
+            - generic [ref=f3e160]: "3"
+          - generic [ref=f3e161]:
+            - button "Uday Charan R" [ref=f3e162] [cursor=pointer]
+            - button "Siddharth T N V" [ref=f3e163] [cursor=pointer]
+            - button "CHILUKURI SRI RAM PRANEETH" [ref=f3e164] [cursor=pointer]
+        - generic [ref=f3e165]:
+          - generic [ref=f3e166]:
+            - heading "Chintamani Sports Association (Chintamani)" [level=2] [ref=f3e168]
+            - generic [ref=f3e170]: "3"
+          - generic [ref=f3e171]:
+            - button "Arjun Aravind Potti" [ref=f3e172] [cursor=pointer]
+            - button "Shreehaan Arinjai" [ref=f3e173] [cursor=pointer]
+            - button "HARSHITH SURESH" [ref=f3e174] [cursor=pointer]
+        - generic [ref=f3e175]:
+          - generic [ref=f3e176]:
+            - heading "City Cricketers (2)" [level=2] [ref=f3e178]
+            - generic [ref=f3e180]: "1"
+          - button "DIGANTH U" [ref=f3e182] [cursor=pointer]
+        - generic [ref=f3e183]:
+          - generic [ref=f3e184]:
+            - heading "City Gymkhana" [level=2] [ref=f3e186]
+            - generic [ref=f3e188]: "7"
+          - generic [ref=f3e189]:
+            - button "Arsh Arora" [ref=f3e190] [cursor=pointer]
+            - button "Barath C" [ref=f3e191] [cursor=pointer]
+            - button "Vismai P M" [ref=f3e192] [cursor=pointer]
+            - button "SIDDHANTH SMARAN" [ref=f3e193] [cursor=pointer]
+            - button "Krushna V Rao" [ref=f3e194] [cursor=pointer]
+            - button "P JAYANTH ABHIRAM" [ref=f3e195] [cursor=pointer]
+            - button "Nihal H" [ref=f3e196] [cursor=pointer]
+        - generic [ref=f3e197]:
+          - generic [ref=f3e198]:
+            - heading "Coles Cricket Club" [level=2] [ref=f3e200]
+            - generic [ref=f3e202]: "2"
+          - generic [ref=f3e203]:
+            - button "CHAVANTH R GOWDA" [ref=f3e204] [cursor=pointer]
+            - button "M Rushil Ram" [ref=f3e205] [cursor=pointer]
+        - generic [ref=f3e206]:
+          - generic [ref=f3e207]:
+            - heading "Dooravani Cricketers (1)" [level=2] [ref=f3e209]
+            - generic [ref=f3e211]: "1"
+          - button "Mohammed Shamsheer" [ref=f3e213] [cursor=pointer]
+        - generic [ref=f3e214]:
+          - generic [ref=f3e215]:
+            - heading "Friends Union CC (1)" [level=2] [ref=f3e217]
+            - generic [ref=f3e219]: "3"
+          - generic [ref=f3e220]:
+            - button "Dhruv Modhe" [ref=f3e221] [cursor=pointer]
+            - button "Thushar Khande" [ref=f3e222] [cursor=pointer]
+            - button "Rachit Das" [ref=f3e223] [cursor=pointer]
+        - generic [ref=f3e224]:
+          - generic [ref=f3e225]:
+            - heading "Herons Cricket Club" [level=2] [ref=f3e227]
+            - generic [ref=f3e229]: "1"
+          - button "Arnav Gurudatta Mewundi" [ref=f3e231] [cursor=pointer]
+        - generic [ref=f3e232]:
+          - generic [ref=f3e233]:
+            - heading "Jawahar Sp.Club (1)" [level=2] [ref=f3e235]
+            - generic [ref=f3e237]: "1"
+          - button "Abhinav Jha" [ref=f3e239] [cursor=pointer]
+        - generic [ref=f3e240]:
+          - generic [ref=f3e241]:
+            - heading "Jawans Cricket Club" [level=2] [ref=f3e243]
+            - generic [ref=f3e245]: "2"
+          - generic [ref=f3e246]:
+            - button "Nitish Arya" [ref=f3e247] [cursor=pointer]
+            - button "Talha Sheriff" [ref=f3e248] [cursor=pointer]
+        - generic [ref=f3e249]:
+          - generic [ref=f3e250]:
+            - heading "Jayanagar Cricketers" [level=2] [ref=f3e252]
+            - generic [ref=f3e254]: "1"
+          - button "Suhaan Bhandary" [ref=f3e256] [cursor=pointer]
+        - generic [ref=f3e257]:
+          - generic [ref=f3e258]:
+            - heading "Jayanagar United Cricketers" [level=2] [ref=f3e260]
+            - generic [ref=f3e262]: "1"
+          - button "Keerthan S Shenoy" [ref=f3e264] [cursor=pointer]
+        - generic [ref=f3e265]:
+          - generic [ref=f3e266]:
+            - heading "Mathikere Cricket Club" [level=2] [ref=f3e268]
+            - generic [ref=f3e270]: "1"
+          - button "RAFA POONACHA BALLACHANDA" [ref=f3e272] [cursor=pointer]
+        - generic [ref=f3e273]:
+          - generic [ref=f3e274]:
+            - heading "Minerva Cricket Club" [level=2] [ref=f3e276]
+            - generic [ref=f3e278]: "2"
+          - generic [ref=f3e279]:
+            - button "Samarth Srivatsan" [ref=f3e280] [cursor=pointer]
+            - button "Raghavendra Ikkurthi" [ref=f3e281] [cursor=pointer]
+        - generic [ref=f3e282]:
+          - generic [ref=f3e283]:
+            - heading "Modern Cricket Club" [level=2] [ref=f3e285]
+            - generic [ref=f3e287]: "2"
+          - generic [ref=f3e288]:
+            - button "Arsh" [ref=f3e289] [cursor=pointer]
+            - button "Ivan Malhotra" [ref=f3e290] [cursor=pointer]
+        - generic [ref=f3e291]:
+          - generic [ref=f3e292]:
+            - heading "Mount Joy Cricket Club" [level=2] [ref=f3e294]
+            - generic [ref=f3e296]: "1"
+          - button "Amogh R Shetty" [ref=f3e298] [cursor=pointer]
+        - generic [ref=f3e299]:
+          - generic [ref=f3e300]:
+            - heading "National Cricketers" [level=2] [ref=f3e302]
+            - generic [ref=f3e304]: "1"
+          - button "AKSHAY RAVI SASTRY" [ref=f3e306] [cursor=pointer]
+        - generic [ref=f3e307]:
+          - generic [ref=f3e308]:
+            - heading "Neptune Cricket Club" [level=2] [ref=f3e310]
+            - generic [ref=f3e312]: "1"
+          - button "Moksh Nahar" [ref=f3e314] [cursor=pointer]
+        - generic [ref=f3e315]:
+          - generic [ref=f3e316]:
+            - heading "Palar Sports Club (Kolar)" [level=2] [ref=f3e318]
+            - generic [ref=f3e320]: "1"
+          - button "S Pratham Raj" [ref=f3e322] [cursor=pointer]
+        - generic [ref=f3e323]:
+          - generic [ref=f3e324]:
+            - heading "Rajajinagar Cricketers" [level=2] [ref=f3e326]
+            - generic [ref=f3e328]: "2"
+          - generic [ref=f3e329]:
+            - button "NIRANJAN ASHOK" [ref=f3e330] [cursor=pointer]
+            - button "Abhiraj S" [ref=f3e331] [cursor=pointer]
+        - generic [ref=f3e332]:
+          - generic [ref=f3e333]:
+            - heading "RVCE Gymkhana" [level=2] [ref=f3e335]
+            - generic [ref=f3e337]: "1"
+          - button "PRANEEL G M" [ref=f3e339] [cursor=pointer]
+        - generic [ref=f3e340]:
+          - generic [ref=f3e341]:
+            - heading "Sangam Cricket Association" [level=2] [ref=f3e343]
+            - generic [ref=f3e345]: "2"
+          - generic [ref=f3e346]:
+            - button "SYED AMIN" [ref=f3e347] [cursor=pointer]
+            - button "AAKRISH KUMAR" [ref=f3e348] [cursor=pointer]
+        - generic [ref=f3e349]:
+          - generic [ref=f3e350]:
+            - heading "Sir Syed Cricketers" [level=2] [ref=f3e352]
+            - generic [ref=f3e354]: "1"
+          - button "M Jayan Samyog" [ref=f3e356] [cursor=pointer]
+        - generic [ref=f3e357]:
+          - generic [ref=f3e358]:
+            - heading "Social Cricketers" [level=2] [ref=f3e360]
+            - generic [ref=f3e362]: "1"
+          - button "Sidhanth Sunil" [ref=f3e364] [cursor=pointer]
+        - generic [ref=f3e365]:
+          - generic [ref=f3e366]:
+            - heading "Spartons Sports Club" [level=2] [ref=f3e368]
+            - generic [ref=f3e370]: "2"
+          - generic [ref=f3e371]:
+            - button "RYAN TOMAR" [ref=f3e372] [cursor=pointer]
+            - button "NALIN GOYAL" [ref=f3e373] [cursor=pointer]
+        - generic [ref=f3e374]:
+          - generic [ref=f3e375]:
+            - heading "Swastic Union Cricket Club (1)" [level=2] [ref=f3e377]
+            - generic [ref=f3e379]: "3"
+          - generic [ref=f3e380]:
+            - button "Srithan V" [ref=f3e381] [cursor=pointer]
+            - button "R Rohith Reddy" [ref=f3e382] [cursor=pointer]
+            - button "Avaneesh Poonacha" [ref=f3e383] [cursor=pointer]
+        - generic [ref=f3e384]:
+          - generic [ref=f3e385]:
+            - heading "Swastic Union Cricket Club (2)" [level=2] [ref=f3e387]
+            - generic [ref=f3e389]: "2"
+          - generic [ref=f3e390]:
+            - button "Shiv R" [ref=f3e391] [cursor=pointer]
+            - button "K Akhil" [ref=f3e392] [cursor=pointer]
+        - generic [ref=f3e393]:
+          - generic [ref=f3e394]:
+            - heading "Vijaya Cricket Club" [level=2] [ref=f3e396]
+            - generic [ref=f3e398]: "4"
+          - generic [ref=f3e399]:
+            - button "Dhruv Krishnan" [ref=f3e400] [cursor=pointer]
+            - button "Udgeet S Nandan" [ref=f3e401] [cursor=pointer]
+            - button "Vaibhav C" [ref=f3e402] [cursor=pointer]
+            - button "Sujith" [ref=f3e403] [cursor=pointer]
+        - generic [ref=f3e404]:
+          - generic [ref=f3e405]:
+            - heading "Vijaya Cricket Club (Malur)" [level=2] [ref=f3e407]
+            - generic [ref=f3e409]: "3"
+          - generic [ref=f3e410]:
+            - button "Kutam Charan Ram" [ref=f3e411] [cursor=pointer]
+            - button "MANISH V PATIL" [ref=f3e412] [cursor=pointer]
+            - button "SHAURYA TIWARI" [ref=f3e413] [cursor=pointer]
+        - generic [ref=f3e414]:
+          - generic [ref=f3e415]:
+            - heading "Visweswarampuram Cricket Club (1)" [level=2] [ref=f3e417]
+            - generic [ref=f3e419]: "2"
+          - generic [ref=f3e420]:
+            - button "Ayaan Sharmod Kumar" [ref=f3e421] [cursor=pointer]
+            - button "AYUSH S ACHARYA" [ref=f3e422] [cursor=pointer]
+        - generic [ref=f3e423]:
+          - generic [ref=f3e424]:
+            - heading "Viveknagar Cricketers" [level=2] [ref=f3e426]
+            - generic [ref=f3e428]: "1"
+          - button "Lohith Ambarisha" [ref=f3e430] [cursor=pointer]
+        - generic [ref=f3e431]:
+          - generic [ref=f3e432]:
+            - heading "Vultures CC" [level=2] [ref=f3e434]
+            - generic [ref=f3e436]: "4"
+          - generic [ref=f3e437]:
+            - button "Bhuvan Gowda N" [ref=f3e438] [cursor=pointer]
+            - button "Atharv Malviya" [ref=f3e439] [cursor=pointer]
+            - button "JAYANTH R GOWDA" [ref=f3e440] [cursor=pointer]
+            - button "Prathyush G Shetty" [ref=f3e441] [cursor=pointer]
+        - generic [ref=f3e442]:
+          - generic [ref=f3e443]:
+            - heading "Wadiyar Cricket Club" [level=2] [ref=f3e445]
+            - generic [ref=f3e447]: "1"
+          - button "YUVARAJ D KUMAR" [ref=f3e449] [cursor=pointer]
+        - generic [ref=f3e450]:
+          - generic [ref=f3e451]:
+            - heading "Wilson Garden Cricket Club" [level=2] [ref=f3e453]
+            - generic [ref=f3e455]: "1"
+          - button "Sujaybhushan Patil" [ref=f3e457] [cursor=pointer]
+        - generic [ref=f3e458]:
+          - generic [ref=f3e459]:
+            - heading "Yankees Cricket Club" [level=2] [ref=f3e461]
+            - generic [ref=f3e463]: "1"
+          - button "Pranav G" [ref=f3e465] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f3e471] [cursor=pointer]

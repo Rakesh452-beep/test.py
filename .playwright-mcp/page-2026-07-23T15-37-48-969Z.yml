@@ -1,0 +1,389 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e4]:
+      - link "KSCA U-19 KSCA U-19 Analytics Dashboard" [ref=f1e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f1e27]:
+          - generic [ref=f1e28]: KSCA
+          - generic [ref=f1e29]: U-19
+        - generic [ref=f1e30]:
+          - paragraph [ref=f1e31]: KSCA U-19
+          - paragraph [ref=f1e32]: Analytics Dashboard
+      - navigation [ref=f1e33]:
+        - link "01 Overview" [ref=f1e34] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f1e35]:
+            - generic [ref=f1e36]: "01"
+            - text: Overview
+        - link "02 Players" [ref=f1e38] [cursor=pointer]:
+          - /url: /players
+          - generic [ref=f1e39]:
+            - generic [ref=f1e40]: "02"
+            - text: Players
+        - link "03 Teams" [ref=f1e41] [cursor=pointer]:
+          - /url: /teams
+          - generic [ref=f1e42]:
+            - generic [ref=f1e43]: "03"
+            - text: Teams
+      - generic [ref=f1e44]:
+        - generic [ref=f1e45]: Live
+        - generic [ref=f1e49]:
+          - paragraph [ref=f1e50]: Season
+          - paragraph [ref=f1e51]: 2024-25
+  - main [ref=f1e52]:
+    - generic [ref=f1e53]:
+      - paragraph [ref=f1e61]: EST. 2024
+      - paragraph [ref=f1e64]: SEASON 2024-25
+      - generic [ref=f1e67]:
+        - generic [ref=f1e68]:
+          - generic [ref=f1e69]: KSCA Inter Club Tournament 2026
+          - heading "Cricket Analytics Dashboard" [level=1] [ref=f1e74]:
+            - generic [ref=f1e75]: Cricket
+            - generic [ref=f1e76]: Analytics
+            - generic [ref=f1e77]: Dashboard
+          - paragraph [ref=f1e78]: Real-time statistics, performance insights & data-driven analysis for the KSCA Under-19 tournament season.
+          - generic [ref=f1e79]:
+            - link "Explore Batting" [ref=f1e80] [cursor=pointer]:
+              - /url: /batting
+            - link "Wicketkeeper Analysis" [ref=f1e85] [cursor=pointer]:
+              - /url: /keepers
+        - generic [ref=f1e92]:
+          - generic [ref=f1e93]:
+            - paragraph [ref=f1e99]: Top Scorer
+            - paragraph [ref=f1e100]: Bhuvan Gowda N
+            - paragraph [ref=f1e101]: 518 runs
+          - generic [ref=f1e102]:
+            - paragraph [ref=f1e109]: Leading Bowler
+            - paragraph [ref=f1e110]: AKSHAY RAVI SASTRY
+            - paragraph [ref=f1e111]: 15 wickets
+          - generic [ref=f1e112]:
+            - paragraph [ref=f1e121]: Tournament
+            - paragraph [ref=f1e122]: 48 Matches
+            - paragraph [ref=f1e123]: 12 Teams Competing
+      - paragraph [ref=f1e126]: Scroll
+    - generic [ref=f1e129]:
+      - generic [ref=f1e130]: RUNS
+      - generic [ref=f1e133]: WICKETS
+      - generic [ref=f1e136]: AVERAGE
+      - generic [ref=f1e139]: STRIKE RATE
+      - generic [ref=f1e142]: BOUNDARIES
+      - generic [ref=f1e145]: SIXES
+      - generic [ref=f1e148]: CATCHES
+      - generic [ref=f1e151]: STUMPINGS
+      - generic [ref=f1e154]: ECONOMY
+      - generic [ref=f1e157]: MAIDENS
+      - generic [ref=f1e160]: CENTURIES
+      - generic [ref=f1e163]: FIFTIES
+      - generic [ref=f1e166]: HAT-TRICKS
+      - generic [ref=f1e169]: DOT BALLS
+      - generic [ref=f1e172]: POWERPLAY
+      - generic [ref=f1e175]: DEATH OVERS
+      - generic [ref=f1e178]: YORKERS
+      - generic [ref=f1e181]: BOUNCERS
+      - generic [ref=f1e184]: RUNS
+      - generic [ref=f1e187]: WICKETS
+      - generic [ref=f1e190]: AVERAGE
+      - generic [ref=f1e193]: STRIKE RATE
+      - generic [ref=f1e196]: BOUNDARIES
+      - generic [ref=f1e199]: SIXES
+      - generic [ref=f1e202]: CATCHES
+      - generic [ref=f1e205]: STUMPINGS
+      - generic [ref=f1e208]: ECONOMY
+      - generic [ref=f1e211]: MAIDENS
+      - generic [ref=f1e214]: CENTURIES
+      - generic [ref=f1e217]: FIFTIES
+      - generic [ref=f1e220]: HAT-TRICKS
+      - generic [ref=f1e223]: DOT BALLS
+      - generic [ref=f1e226]: POWERPLAY
+      - generic [ref=f1e229]: DEATH OVERS
+      - generic [ref=f1e232]: YORKERS
+      - generic [ref=f1e235]: BOUNCERS
+      - generic [ref=f1e238]: RUNS
+      - generic [ref=f1e241]: WICKETS
+      - generic [ref=f1e244]: AVERAGE
+      - generic [ref=f1e247]: STRIKE RATE
+      - generic [ref=f1e250]: BOUNDARIES
+      - generic [ref=f1e253]: SIXES
+      - generic [ref=f1e256]: CATCHES
+      - generic [ref=f1e259]: STUMPINGS
+      - generic [ref=f1e262]: ECONOMY
+      - generic [ref=f1e265]: MAIDENS
+      - generic [ref=f1e268]: CENTURIES
+      - generic [ref=f1e271]: FIFTIES
+      - generic [ref=f1e274]: HAT-TRICKS
+      - generic [ref=f1e277]: DOT BALLS
+      - generic [ref=f1e280]: POWERPLAY
+      - generic [ref=f1e283]: DEATH OVERS
+      - generic [ref=f1e286]: YORKERS
+      - generic [ref=f1e289]: BOUNCERS
+    - generic [ref=f1e294]:
+      - generic [ref=f1e296]:
+        - paragraph [ref=f1e298]: 12,964
+        - paragraph [ref=f1e300]: Total Runs
+      - generic [ref=f1e302]:
+        - paragraph [ref=f1e304]: "350"
+        - paragraph [ref=f1e306]: Total Wickets
+      - generic [ref=f1e308]:
+        - paragraph [ref=f1e310]: "232"
+        - paragraph [ref=f1e312]: Catches
+      - generic [ref=f1e314]:
+        - paragraph [ref=f1e316]: "72"
+        - paragraph [ref=f1e318]: Stumpings
+    - generic [ref=f1e321]:
+      - generic [ref=f1e322]: Explore
+      - heading "What's it all about?" [level=2] [ref=f1e325]
+      - paragraph [ref=f1e327]: Dive deep into the numbers. Every run scored, every wicket taken, every catch held — tracked and analyzed.
+    - generic [ref=f1e330]:
+      - link "01 Batting Runs, averages, strike rates & top scorers" [ref=f1e332] [cursor=pointer]:
+        - /url: /batting
+        - generic [ref=f1e333]: "01"
+        - heading "Batting" [level=3] [ref=f1e341]
+        - paragraph [ref=f1e342]: Runs, averages, strike rates & top scorers
+      - link "02 Bowling Wickets, economy rates & best figures" [ref=f1e344] [cursor=pointer]:
+        - /url: /bowling
+        - generic [ref=f1e345]: "02"
+        - heading "Bowling" [level=3] [ref=f1e355]
+        - paragraph [ref=f1e356]: Wickets, economy rates & best figures
+      - link "03 Wicketkeepers Keeper analysis with batting & dismissals" [ref=f1e358] [cursor=pointer]:
+        - /url: /keepers
+        - generic [ref=f1e359]: "03"
+        - heading "Wicketkeepers" [level=3] [ref=f1e367]
+        - paragraph [ref=f1e368]: Keeper analysis with batting & dismissals
+      - link "04 Club Summary Per-club keeper aggregates & rankings" [ref=f1e370] [cursor=pointer]:
+        - /url: /keeper-summary
+        - generic [ref=f1e371]: "04"
+        - heading "Club Summary" [level=3] [ref=f1e383]
+        - paragraph [ref=f1e384]: Per-club keeper aggregates & rankings
+      - link "05 Daily Report Per-day match details with all player data" [ref=f1e386] [cursor=pointer]:
+        - /url: /daily
+        - generic [ref=f1e387]: "05"
+        - heading "Daily Report" [level=3] [ref=f1e395]
+        - paragraph [ref=f1e396]: Per-day match details with all player data
+    - generic [ref=f1e398]:
+      - generic [ref=f1e399]:
+        - generic [ref=f1e400]:
+          - generic [ref=f1e401]: Featured
+          - heading "Tournament Standouts" [level=2] [ref=f1e405]
+          - paragraph [ref=f1e407]: The players making headlines across the KSCA U-19 tournament.
+        - generic [ref=f1e408]:
+          - button "Top Batters" [ref=f1e409]
+          - button "Top Bowlers" [ref=f1e413]
+      - generic [ref=f1e418]:
+        - generic [ref=f1e419]: Most Runs
+        - generic [ref=f1e422]: Best Strike Rate
+        - generic [ref=f1e426]: Best Average
+      - generic [ref=f1e431]:
+        - generic [ref=f1e433]:
+          - generic [ref=f1e434]: ELITE
+          - generic [ref=f1e435]: "01"
+          - heading "Bhuvan Gowda N" [level=3] [ref=f1e437]
+          - paragraph [ref=f1e438]: Vultures CC (U-19)
+          - generic [ref=f1e439]:
+            - generic [ref=f1e440]: RUNS
+            - generic [ref=f1e441]: "518"
+        - generic [ref=f1e444]:
+          - generic [ref=f1e445]: ELITE
+          - generic [ref=f1e446]: "02"
+          - heading "Amogh R Shetty" [level=3] [ref=f1e448]
+          - paragraph [ref=f1e449]: Mount Joy Cricket Club (U-19)
+          - generic [ref=f1e450]:
+            - generic [ref=f1e451]: RUNS
+            - generic [ref=f1e452]: "403"
+        - generic [ref=f1e455]:
+          - generic [ref=f1e456]: ELITE
+          - generic [ref=f1e457]: "03"
+          - heading "Nitish Arya" [level=3] [ref=f1e459]
+          - paragraph [ref=f1e460]: Jawans Cricket Club (U-19)
+          - generic [ref=f1e461]:
+            - generic [ref=f1e462]: RUNS
+            - generic [ref=f1e463]: "400"
+        - generic [ref=f1e466]:
+          - generic [ref=f1e467]: ELITE
+          - generic [ref=f1e468]: "04"
+          - heading "CHAVANTH R GOWDA" [level=3] [ref=f1e470]
+          - paragraph [ref=f1e471]: Coles Cricket Club (U-19)
+          - generic [ref=f1e472]:
+            - generic [ref=f1e473]: RUNS
+            - generic [ref=f1e474]: "387"
+        - generic [ref=f1e477]:
+          - generic [ref=f1e478]: ELITE
+          - generic [ref=f1e479]: "05"
+          - heading "Dhruv Krishnan" [level=3] [ref=f1e481]
+          - paragraph [ref=f1e482]: Vijaya Cricket Club (U-19)
+          - generic [ref=f1e483]:
+            - generic [ref=f1e484]: RUNS
+            - generic [ref=f1e485]: "372"
+        - generic [ref=f1e488]:
+          - generic [ref=f1e489]: "01"
+          - heading "Arsh" [level=3] [ref=f1e491]
+          - paragraph [ref=f1e492]: Modern Cricket Club (U-19)
+          - generic [ref=f1e493]:
+            - generic [ref=f1e494]: SR
+            - generic [ref=f1e495]: "154.1"
+        - generic [ref=f1e498]:
+          - generic [ref=f1e499]: "02"
+          - heading "Siddharth T N V" [level=3] [ref=f1e501]
+          - paragraph [ref=f1e502]: Century Cricketers (U-19)
+          - generic [ref=f1e503]:
+            - generic [ref=f1e504]: SR
+            - generic [ref=f1e505]: "153.2"
+        - generic [ref=f1e508]:
+          - generic [ref=f1e509]: "03"
+          - heading "Srithan V" [level=3] [ref=f1e511]
+          - paragraph [ref=f1e512]: Swastic Union Cricket Club (1) (U-19)
+          - generic [ref=f1e513]:
+            - generic [ref=f1e514]: SR
+            - generic [ref=f1e515]: "144.4"
+        - generic [ref=f1e518]:
+          - generic [ref=f1e519]: "04"
+          - heading "NALIN GOYAL" [level=3] [ref=f1e521]
+          - paragraph [ref=f1e522]: Spartons Sports Club (U-19)
+          - generic [ref=f1e523]:
+            - generic [ref=f1e524]: SR
+            - generic [ref=f1e525]: "139.7"
+        - generic [ref=f1e528]:
+          - generic [ref=f1e529]: "05"
+          - heading "Thushar Khande" [level=3] [ref=f1e531]
+          - paragraph [ref=f1e532]: Friends Union CC (1) (U-19)
+          - generic [ref=f1e533]:
+            - generic [ref=f1e534]: SR
+            - generic [ref=f1e535]: "136.9"
+        - generic [ref=f1e538]:
+          - generic [ref=f1e539]: PROLIFIC
+          - generic [ref=f1e540]: "01"
+          - heading "Bhuvan Gowda N" [level=3] [ref=f1e542]
+          - paragraph [ref=f1e543]: Vultures CC (U-19)
+          - generic [ref=f1e544]:
+            - generic [ref=f1e545]: AVG
+            - generic [ref=f1e546]: "259"
+        - generic [ref=f1e549]:
+          - generic [ref=f1e550]: PROLIFIC
+          - generic [ref=f1e551]: "02"
+          - heading "Ayaan Sharmod Kumar" [level=3] [ref=f1e553]
+          - paragraph [ref=f1e554]: Visweswarampuram Cricket Club (1) (U-19)
+          - generic [ref=f1e555]:
+            - generic [ref=f1e556]: AVG
+            - generic [ref=f1e557]: "138"
+        - generic [ref=f1e560]:
+          - generic [ref=f1e561]: PROLIFIC
+          - generic [ref=f1e562]: "03"
+          - heading "Nitish Arya" [level=3] [ref=f1e564]
+          - paragraph [ref=f1e565]: Jawans Cricket Club (U-19)
+          - generic [ref=f1e566]:
+            - generic [ref=f1e567]: AVG
+            - generic [ref=f1e568]: "134.75"
+        - generic [ref=f1e571]:
+          - generic [ref=f1e572]: PROLIFIC
+          - generic [ref=f1e573]: "04"
+          - heading "Daivik S" [level=3] [ref=f1e575]
+          - paragraph [ref=f1e576]: Bangalore Cricketers (U-19)
+          - generic [ref=f1e577]:
+            - generic [ref=f1e578]: AVG
+            - generic [ref=f1e579]: "131.75"
+        - generic [ref=f1e582]:
+          - generic [ref=f1e583]: PROLIFIC
+          - generic [ref=f1e584]: "05"
+          - heading "DIGANTH U" [level=3] [ref=f1e586]
+          - paragraph [ref=f1e587]: City Cricketers (2) (U-19)
+          - generic [ref=f1e588]:
+            - generic [ref=f1e589]: AVG
+            - generic [ref=f1e590]: "131"
+      - link "View all batters" [ref=f1e593] [cursor=pointer]:
+        - /url: /batting
+    - generic [ref=f1e598]:
+      - generic [ref=f1e599]:
+        - generic [ref=f1e600]:
+          - generic [ref=f1e601]:
+            - generic [ref=f1e602]: Batting
+            - heading "Top Run Scorers" [level=2] [ref=f1e606]
+          - link "View all" [ref=f1e607] [cursor=pointer]:
+            - /url: /batting
+        - generic [ref=f1e610]:
+          - generic [ref=f1e611]:
+            - generic [ref=f1e612]: "1"
+            - generic [ref=f1e613]:
+              - generic [ref=f1e614]:
+                - generic [ref=f1e615]: Bhuvan Gowda N
+                - generic [ref=f1e616]: "518"
+              - paragraph [ref=f1e618]: Vultures CC (U-19) · HS 221 · SR 96.6
+          - generic [ref=f1e619]:
+            - generic [ref=f1e620]: "2"
+            - generic [ref=f1e621]:
+              - generic [ref=f1e622]:
+                - generic [ref=f1e623]: Amogh R Shetty
+                - generic [ref=f1e624]: "403"
+              - paragraph [ref=f1e626]: Mount Joy Cricket Club (U-19) · HS 109 · SR 97.9
+          - generic [ref=f1e627]:
+            - generic [ref=f1e628]: "3"
+            - generic [ref=f1e629]:
+              - generic [ref=f1e630]:
+                - generic [ref=f1e631]: Nitish Arya
+                - generic [ref=f1e632]: "400"
+              - paragraph [ref=f1e634]: Jawans Cricket Club (U-19) · HS 139 · SR 111.8
+          - generic [ref=f1e635]:
+            - generic [ref=f1e636]: "4"
+            - generic [ref=f1e637]:
+              - generic [ref=f1e638]:
+                - generic [ref=f1e639]: CHAVANTH R GOWDA
+                - generic [ref=f1e640]: "387"
+              - paragraph [ref=f1e642]: Coles Cricket Club (U-19) · HS 112 · SR 82.2
+          - generic [ref=f1e643]:
+            - generic [ref=f1e644]: "5"
+            - generic [ref=f1e645]:
+              - generic [ref=f1e646]:
+                - generic [ref=f1e647]: Dhruv Krishnan
+                - generic [ref=f1e648]: "372"
+              - paragraph [ref=f1e650]: Vijaya Cricket Club (U-19) · HS 193 · SR 118.4
+      - generic [ref=f1e651]:
+        - generic [ref=f1e652]:
+          - generic [ref=f1e653]:
+            - generic [ref=f1e654]: Bowling
+            - heading "Leading Wicket Takers" [level=2] [ref=f1e659]
+          - link "View all" [ref=f1e660] [cursor=pointer]:
+            - /url: /bowling
+        - generic [ref=f1e663]:
+          - generic [ref=f1e664]:
+            - generic [ref=f1e665]: "1"
+            - generic [ref=f1e666]:
+              - generic [ref=f1e667]:
+                - generic [ref=f1e668]: AKSHAY RAVI SASTRY
+                - generic [ref=f1e669]: "15"
+              - paragraph [ref=f1e671]: National Cricketers (U-19) · Eco 6.02 · SR 32.4
+          - generic [ref=f1e672]:
+            - generic [ref=f1e673]: "2"
+            - generic [ref=f1e674]:
+              - generic [ref=f1e675]:
+                - generic [ref=f1e676]: Vaibhav C
+                - generic [ref=f1e677]: "15"
+              - paragraph [ref=f1e679]: Vijaya Cricket Club (U-19) · Eco 5.04 · SR 14.9
+          - generic [ref=f1e680]:
+            - generic [ref=f1e681]: "3"
+            - generic [ref=f1e682]:
+              - generic [ref=f1e683]:
+                - generic [ref=f1e684]: Suhaan Bhandary
+                - generic [ref=f1e685]: "14"
+              - paragraph [ref=f1e687]: Jayanagar Cricketers (U-19) · Eco 4.77 · SR 16.5
+          - generic [ref=f1e688]:
+            - generic [ref=f1e689]: "4"
+            - generic [ref=f1e690]:
+              - generic [ref=f1e691]:
+                - generic [ref=f1e692]: S Pratham Raj
+                - generic [ref=f1e693]: "13"
+              - paragraph [ref=f1e695]: Palar Sports Club (Kolar) (U-19) · Eco 4.22 · SR 13.5
+          - generic [ref=f1e696]:
+            - generic [ref=f1e697]: "5"
+            - generic [ref=f1e698]:
+              - generic [ref=f1e699]:
+                - generic [ref=f1e700]: KRISHNA
+                - generic [ref=f1e701]: "13"
+              - paragraph [ref=f1e703]: Bangalore Sports Club (U-19) · Eco 2.1 · SR 17.5
+    - generic [ref=f1e706]:
+      - generic [ref=f1e707]:
+        - generic [ref=f1e728]:
+          - generic [ref=f1e729]: KSCA
+          - generic [ref=f1e730]: U-19
+        - generic [ref=f1e731]:
+          - paragraph [ref=f1e732]: KSCA U-19
+          - paragraph [ref=f1e733]: Analytics Dashboard
+      - paragraph [ref=f1e734]: Cricket Analytics Dashboard · Season 2024-25
+  - button "Open Next.js Dev Tools" [ref=f1e740] [cursor=pointer]

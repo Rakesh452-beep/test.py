@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
 interface ChartCardProps {
@@ -13,23 +14,27 @@ interface ChartCardProps {
 }
 
 export function ChartCard({ title, subtitle, children, className, delay = 0, action }: ChartCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true, margin: "-40px" });
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, delay, ease: "easeOut" }}
-      className={cn("card-flat p-5", className)}
+      ref={cardRef}
+      initial={{ opacity: 0, y: 20, scale: 0.98 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={cn("card-editorial p-6", className)}
     >
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between mb-5">
         <div>
-          <h3 className="font-display text-base font-extrabold uppercase text-white">{title}</h3>
+          <h3 className="font-display text-base uppercase text-white tracking-wide font-bold">{title}</h3>
           {subtitle && (
-            <p className="text-xs text-[#525252] mt-1">{subtitle}</p>
+            <p className="text-xs text-[#7A7A7A] mt-1.5">{subtitle}</p>
           )}
         </div>
         {action && <div>{action}</div>}
       </div>
-      <div className="text-[#a3a3a3]">
+      <div className="text-[#B8B8B8]">
         {children}
       </div>
     </motion.div>

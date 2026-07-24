@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -51,6 +51,8 @@ function useCountUp(target: number, duration = 1.5, format: "number" | "decimal"
 
 export function StatCard({ title, value, subtitle, icon, format = "number", prefix, suffix, trend, delay = 0, className }: StatCardProps) {
   const { display } = useCountUp(value, 1.5, format);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true, margin: "-40px" });
 
   const trendColor = trend === "up"
     ? "text-[#22c55e]"
@@ -60,29 +62,30 @@ export function StatCard({ title, value, subtitle, icon, format = "number", pref
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, delay, ease: "easeOut" }}
+      ref={cardRef}
+      initial={{ opacity: 0, y: 20, scale: 0.97 }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "card-flat p-5 group cursor-default",
+        "card-editorial p-6 group cursor-default",
         className
       )}
     >
       <div className="flex items-start justify-between">
-        <div className="space-y-1.5">
-          <p className="text-[11px] font-bold text-[#525252] uppercase tracking-wider">{title}</p>
+        <div className="space-y-3">
+          <p className="editorial-caption text-[10px]">{title}</p>
           <div className="flex items-baseline gap-1">
-            {prefix && <span className="text-sm text-[#525252] font-mono">{prefix}</span>}
-            <span className="text-2xl font-display text-white tabular-nums">
+            {prefix && <span className="text-xs text-[#7A7A7A] font-mono">{prefix}</span>}
+            <span className="text-3xl font-display text-white tabular-nums">
               {display}
             </span>
-            {suffix && <span className="text-xs text-[#525252] font-mono">{suffix}</span>}
+            {suffix && <span className="text-[10px] text-[#7A7A7A] font-mono">{suffix}</span>}
           </div>
           {subtitle && (
-            <p className={cn("text-[11px] font-bold", trendColor)}>{subtitle}</p>
+            <p className={cn("text-[11px] font-medium", trendColor)}>{subtitle}</p>
           )}
         </div>
-        <div className="p-3 rounded-xl bg-[#FEDF4B]/10 text-[#FEDF4B] group-hover:bg-[#FEDF4B]/15 transition-colors duration-200">
+        <div className="p-3 rounded-lg bg-[#D4FF00]/10 text-[#D4FF00] group-hover:bg-[#D4FF00]/15 transition-all duration-300 group-hover:scale-110">
           {icon}
         </div>
       </div>
