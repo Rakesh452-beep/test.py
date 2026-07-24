@@ -1,0 +1,39 @@
+2026-07-25 00:37:18,978 [INFO] 
+2026-07-25 00:37:18,978 [INFO] 
+2026-07-25 00:37:18,978 [INFO] ============================================================
+2026-07-25 00:37:18,978 [INFO] AUTO UPDATE PIPELINE — 2026-07-25 00:37:18
+2026-07-25 00:37:18,980 [INFO] ============================================================
+2026-07-25 00:37:18,980 [INFO] ============================================================
+2026-07-25 00:37:18,980 [INFO] START: Player Stats (batting + bowling)
+2026-07-25 00:37:18,980 [INFO] ============================================================
+2026-07-25 00:37:21,241 [INFO] NumExpr defaulting to 12 threads.
+2026-07-25 00:37:22,417 [INFO] Found 61 teams
+2026-07-25 00:37:23,436 [INFO] Batting records: 1555, Bowling records: 988
+2026-07-25 00:37:41,702 [INFO] FINISH: Player Stats (batting + bowling) — OK
+2026-07-25 00:37:41,703 [INFO] ============================================================
+2026-07-25 00:37:41,703 [INFO] PIPELINE COMPLETE
+2026-07-25 00:37:41,703 [INFO] Log saved to: reports/auto_update_20260725.log
+2026-07-25 00:37:41,703 [INFO] ============================================================
+2026-07-25 00:38:20,952 [INFO] 
+2026-07-25 00:38:20,952 [INFO] 
+2026-07-25 00:38:20,953 [INFO] ============================================================
+2026-07-25 00:38:20,953 [INFO] AUTO UPDATE PIPELINE — 2026-07-25 00:38:20
+2026-07-25 00:38:20,953 [INFO] ============================================================
+2026-07-25 00:38:20,953 [INFO] ============================================================
+2026-07-25 00:38:20,953 [INFO] START: Keeper Stats (pipeline)
+2026-07-25 00:38:20,954 [INFO] ============================================================
+2026-07-25 00:38:23,124 [INFO] NumExpr defaulting to 12 threads.
+2026-07-25 00:38:24,417 [ERROR] FAIL: Keeper Stats (pipeline) — No module named 'gspread'
+2026-07-25 00:38:24,421 [ERROR] Traceback (most recent call last):
+  File "C:\Users\tejan\OneDrive\Desktop\automation\test.py\auto_update.py", line 28, in run_step
+    result = fn(*args, **kwargs)
+  File "C:\Users\tejan\OneDrive\Desktop\automation\test.py\auto_update.py", line 56, in step_keeper_pipeline
+    from sheets_writer import upload_keeper_data
+  File "C:\Users\tejan\OneDrive\Desktop\automation\test.py\sheets_writer.py", line 2, in <module>
+    import gspread
+ModuleNotFoundError: No module named 'gspread'
+
+2026-07-25 00:38:24,422 [INFO] ============================================================
+2026-07-25 00:38:24,422 [INFO] PIPELINE COMPLETE
+2026-07-25 00:38:24,422 [INFO] Log saved to: reports/auto_update_20260725.log
+2026-07-25 00:38:24,422 [INFO] ============================================================
