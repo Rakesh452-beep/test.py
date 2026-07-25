@@ -29,7 +29,7 @@ export default function ScrollFloat({
   scrollStart = "center bottom+=50%",
   scrollEnd = "bottom bottom-=40%",
   stagger = 0.03,
-  as: Tag = "h2",
+  as: Tag = "span",
 }: ScrollFloatProps) {
   const containerRef = useRef<any>(null);
 
