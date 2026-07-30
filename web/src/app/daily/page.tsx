@@ -1,15 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import { PageTransition } from "@/components/PageTransition";
 import { MOCK_KEEPERS, MOCK_BATTERS, MOCK_BOWLERS } from "@/lib/mock-data";
 import ScrollFloat from "@/components/ScrollFloat";
 import "@/components/ScrollFloat.css";
 import { motion } from "framer-motion";
 import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import CalendarPicker from "@/components/CalendarPicker";
 
 export default function DailyPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [showCalendar, setShowCalendar] = useState(false);
 
   const dates = useMemo(() => {
     const unique = [...new Set(MOCK_KEEPERS.map((k) => k.date))].sort();
@@ -17,6 +19,11 @@ export default function DailyPage() {
   }, []);
 
   const currentDate = dates[selectedIndex] || dates[0];
+
+  const handleDateSelect = useCallback((date: string) => {
+    const idx = dates.indexOf(date);
+    if (idx !== -1) setSelectedIndex(idx);
+  }, [dates]);
 
   const dayKeepers = MOCK_KEEPERS.filter((k) => k.date === currentDate);
   const dayBatters = MOCK_BATTERS.filter((b) =>
@@ -68,9 +75,22 @@ export default function DailyPage() {
               >
                 <ChevronLeft size={18} />
               </button>
-              <div className="flex items-center gap-2.5 px-4 py-2.5 bg-white/[0.03] border border-white/5 rounded-lg">
-                <Calendar size={15} className="text-[#D4FF00]" />
-                <span className="font-mono text-sm text-white font-medium">{currentDate}</span>
+              <div className="relative">
+                <button
+                  onClick={() => setShowCalendar((v) => !v)}
+                  className="flex items-center gap-2.5 px-4 py-2.5 bg-white/[0.03] border border-white/5 rounded-lg hover:bg-white/[0.08] transition-all duration-200"
+                >
+                  <Calendar size={15} className="text-[#D4FF00]" />
+                  <span className="font-mono text-sm text-white font-medium">{currentDate}</span>
+                </button>
+                {showCalendar && (
+                  <CalendarPicker
+                    availableDates={dates}
+                    selectedDate={currentDate}
+                    onSelect={handleDateSelect}
+                    onClose={() => setShowCalendar(false)}
+                  />
+                )}
               </div>
               <button
                 onClick={() => setSelectedIndex(Math.min(dates.length - 1, selectedIndex + 1))}

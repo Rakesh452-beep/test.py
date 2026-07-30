@@ -1,15 +1,33 @@
 import pandas as pd
 import json
+from datetime import datetime
 
 path = "reports/AllTeams_Stats_latest.xlsx"
 
-# --- KEEPER DATA ---
-df_k = pd.read_excel(path, sheet_name="Sheet1")
+# --- KEEPER DATA (from WicketKeepers Excel — most up-to-date) ---
+keeper_path = "reports/WicketKeepers_latest.xlsx"
+df_k = pd.read_excel(keeper_path, sheet_name="WicketKeepers")
 keepers = []
+
+def parse_date(val):
+    if pd.isna(val):
+        return ""
+    val = str(val).strip()
+    # Already ISO format
+    if len(val) >= 10 and val[4] == "-":
+        return val[:10]
+    # "DD Mon YYYY" format
+    for fmt in ("%d %b %Y", "%d-%m-%Y", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(val[:12].strip(), fmt).strftime("%Y-%m-%d")
+        except ValueError:
+            continue
+    return val[:10]
+
 for _, row in df_k.iterrows():
     keepers.append({
         "club": str(row.get("Club Name", "")),
-        "date": str(row.get("Date", ""))[:10],
+        "date": parse_date(row.get("Date", "")),
         "vs_team": str(row.get("Vs Team", "")),
         "keeper": str(row.get("Name of Keeper", "")),
         "score": int(row.get("Score", 0)) if pd.notna(row.get("Score")) else 0,
