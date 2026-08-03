@@ -40,6 +40,10 @@ def delete_old_sent_emails(sender, password, max_delete=50):
 def send_email(subject, body, attachments=None):
     import config
 
+    if not getattr(config, "EMAIL_ENABLED", True):
+        log.info("Emails disabled (EMAIL_ENABLED=False) — skipping send")
+        return False
+
     sender = config.EMAIL_SENDER
     password = config.EMAIL_PASSWORD
     recipient = config.EMAIL_RECIPIENT

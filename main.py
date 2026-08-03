@@ -33,6 +33,13 @@ def mode_keeper(upload_to_sheets=False):
     export_keeper_dataframe(df)
     print(f"Exported {len(df)} keeper rows to local Excel.")
 
+    from mongo_writer import store_keeper_rows
+    try:
+        store_keeper_rows(rows, COMPETITION_ID)
+    except Exception as e:
+        print(f"MongoDB upload failed: {e}")
+        print("Data is still saved locally.")
+
     if upload_to_sheets:
         from sheets_writer import upload_keeper_data
         try:
@@ -55,6 +62,13 @@ def mode_stats():
 
     all_batting, all_bowling = fetch_all_team_stats(team_ids, COMPETITION_ID)
     export_combined(all_batting, all_bowling)
+
+    from mongo_writer import store_player_stats
+    try:
+        store_player_stats(all_batting, all_bowling, COMPETITION_ID)
+    except Exception as e:
+        print(f"MongoDB upload failed: {e}")
+        print("Excel export is still saved.")
 
 
 def mode_google():

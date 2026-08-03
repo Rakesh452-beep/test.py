@@ -3,29 +3,97 @@ import json, os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 with open("reports/_extracted_data.json") as f:
     data = json.load(f)
+with open("reports/_match_data.json") as f:
+    matches = json.load(f)
 
-ts = 'import type { Batter, Bowler, KeeperRow, Team } from "./types";\n\n'
+ts = 'import type { Batter, Bowler, DailyMatch, KeeperRow, Team } from "./types";\n\n'
 
 ts += "export const MOCK_TEAMS: Team[] = " + json.dumps(data["teams"], indent=2) + ";\n\n"
 ts += "export const MOCK_BATTERS: Batter[] = " + json.dumps(data["batters"], indent=2) + ";\n\n"
 ts += "export const MOCK_BOWLERS: Bowler[] = " + json.dumps(data["bowlers"], indent=2) + ";\n\n"
 ts += "export const MOCK_KEEPERS: KeeperRow[] = " + json.dumps(data["keepers"], indent=2) + ";\n\n"
+ts += "export const MOCK_MATCHES: DailyMatch[] = " + json.dumps(matches, indent=2) + ";\n\n"
 
-ts += """export function getBatterStats() {
-  return MOCK_BATTERS.sort((a, b) => b.Runs - a.Runs);
+ts += """export interface LiveSnapshot {
+  teams: Team[];
+  batters: Batter[];
+  bowlers: Bowler[];
+  keepers: KeeperRow[];
+  matches: DailyMatch[];
+  generatedAt?: string;
+}
+
+let LIVE: LiveSnapshot | null = null;
+let LIVE_FP = "";
+const LIVE_LISTENERS = new Set<() => void>();
+
+function liveFingerprint(data: LiveSnapshot): string {
+  const last = data.matches?.length ? data.matches[data.matches.length - 1]?.match_id ?? "" : "";
+  return [
+    data.generatedAt ?? "",
+    data.batters?.length ?? 0,
+    data.bowlers?.length ?? 0,
+    data.keepers?.length ?? 0,
+    data.matches?.length ?? 0,
+    last,
+  ].join("|");
+}
+
+export function getLiveSnapshot(): LiveSnapshot | null {
+  return LIVE;
+}
+
+export function subscribeLive(listener: () => void): () => void {
+  LIVE_LISTENERS.add(listener);
+  return () => {
+    LIVE_LISTENERS.delete(listener);
+  };
+}
+
+export function setLiveData(data: LiveSnapshot): boolean {
+  const fp = liveFingerprint(data);
+  const changed = fp !== LIVE_FP;
+  if (changed || !LIVE) {
+    LIVE = data;
+    LIVE_FP = fp;
+    LIVE_LISTENERS.forEach((l) => l());
+  }
+  return changed;
+}
+
+const TEAMS = () => LIVE?.teams ?? MOCK_TEAMS;
+const BATTERS = () => LIVE?.batters ?? MOCK_BATTERS;
+const BOWLERS = () => LIVE?.bowlers ?? MOCK_BOWLERS;
+const KEEPERS = () => LIVE?.keepers ?? MOCK_KEEPERS;
+const MATCHES = () => LIVE?.matches ?? MOCK_MATCHES;
+
+export function getTeams() {
+  return TEAMS();
+}
+
+export function getMatches() {
+  return MATCHES();
+}
+
+export function getKeepers() {
+  return KEEPERS();
+}
+
+export function getBatterStats() {
+  return [...BATTERS()].sort((a, b) => b.Runs - a.Runs);
 }
 
 export function getBowlerStats() {
-  return MOCK_BOWLERS.sort((a, b) => b.Wickets - a.Wickets);
+  return [...BOWLERS()].sort((a, b) => b.Wickets - a.Wickets);
 }
 
 export function getKeeperStats() {
-  return MOCK_KEEPERS;
+  return KEEPERS();
 }
 
 export function getTeamBattingBreakdown() {
   const map = new Map<string, { runs: number; wickets: number; matches: number; players: Set<string> }>();
-  for (const b of MOCK_BATTERS) {
+  for (const b of BATTERS()) {
     if (!map.has(b.TeamName)) map.set(b.TeamName, { runs: 0, wickets: 0, matches: 0, players: new Set() });
     const entry = map.get(b.TeamName)!;
     entry.runs += b.Runs;
@@ -42,7 +110,7 @@ export function getTeamBattingBreakdown() {
 
 export function getTeamBowlingBreakdown() {
   const map = new Map<string, { wickets: number; economy: number; count: number }>();
-  for (const b of MOCK_BOWLERS) {
+  for (const b of BOWLERS()) {
     if (!map.has(b.TeamName)) map.set(b.TeamName, { wickets: 0, economy: 0, count: 0 });
     const entry = map.get(b.TeamName)!;
     entry.wickets += b.Wickets;
@@ -60,7 +128,7 @@ export function getTeamBowlingBreakdown() {
 
 export function getKeeperClubSummary() {
   const map = new Map<string, { runs: number; balls: number; catches: number; stumps: number; keepers: Set<string> }>();
-  for (const k of MOCK_KEEPERS) {
+  for (const k of KEEPERS()) {
     if (!map.has(k.club)) map.set(k.club, { runs: 0, balls: 0, catches: 0, stumps: 0, keepers: new Set() });
     const entry = map.get(k.club)!;
     entry.runs += k.score;
@@ -89,19 +157,19 @@ export function getTopWicketTakers(limit = 5) {
 }
 
 export function getTopStrikeRates(limit = 5) {
-  return [...MOCK_BATTERS].sort((a, b) => b.StrikeRate - a.StrikeRate).slice(0, limit);
+  return [...BATTERS()].sort((a, b) => b.StrikeRate - a.StrikeRate).slice(0, limit);
 }
 
 export function getTopAverages(limit = 5) {
-  return [...MOCK_BATTERS].filter(b => b.Runs > 0).sort((a, b) => b.BattingAverage - a.BattingAverage).slice(0, limit);
+  return [...BATTERS()].filter(b => b.Runs > 0).sort((a, b) => b.BattingAverage - a.BattingAverage).slice(0, limit);
 }
 
 export function getBestEconomy(limit = 5) {
-  return [...MOCK_BOWLERS].filter(b => b.Wickets > 0).sort((a, b) => a.Economy - b.Economy).slice(0, limit);
+  return [...BOWLERS()].filter(b => b.Wickets > 0).sort((a, b) => a.Economy - b.Economy).slice(0, limit);
 }
 
 export function getBestBowlingFigures(limit = 5) {
-  return [...MOCK_BOWLERS]
+  return [...BOWLERS()]
     .filter(b => b.BestBowling)
     .sort((a, b) => {
       const aW = parseInt(a.BestBowling!.split("/")[0]);
@@ -145,7 +213,7 @@ export interface UnifiedPlayer {
 }
 
 export function getAllPlayers(): UnifiedPlayer[] {
-  const batters: UnifiedPlayer[] = MOCK_BATTERS.map((b) => ({
+  const batters: UnifiedPlayer[] = BATTERS().map((b) => ({
     name: b.PlayerName.trim(),
     team: b.TeamName,
     role: "Batsman" as const,
@@ -163,7 +231,7 @@ export function getAllPlayers(): UnifiedPlayer[] {
     balls: b.Balls,
   }));
 
-  const bowlers: UnifiedPlayer[] = MOCK_BOWLERS.map((b) => ({
+  const bowlers: UnifiedPlayer[] = BOWLERS().map((b) => ({
     name: b.PlayerName.trim(),
     team: b.TeamName,
     role: "Bowler" as const,
@@ -188,9 +256,9 @@ export function getAllPlayers(): UnifiedPlayer[] {
 
 export function getAllTeams() {
   const teamSet = new Set<string>();
-  MOCK_BATTERS.forEach((b) => teamSet.add(b.TeamName));
-  MOCK_BOWLERS.forEach((b) => teamSet.add(b.TeamName));
-  MOCK_KEEPERS.forEach((k) => {
+  BATTERS().forEach((b) => teamSet.add(b.TeamName));
+  BOWLERS().forEach((b) => teamSet.add(b.TeamName));
+  KEEPERS().forEach((k) => {
     teamSet.add(k.club);
     teamSet.add(k.vs_team);
   });

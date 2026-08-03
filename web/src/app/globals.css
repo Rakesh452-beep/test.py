@@ -51,6 +51,13 @@
   color: #FFFFFF;
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   background: #050505;
   color: #B8B8B8;
@@ -61,10 +68,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-}
-
-html {
-  scroll-behavior: smooth;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -479,6 +484,12 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px;
 }
 
+/* Skip rendering of far-off-screen sections so long pages scroll smoothly */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
 .annotation {
   position: relative;
 }
@@ -643,15 +654,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .glass {
   background: rgba(13, 13, 13, 0.8);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .glass-strong {
   background: rgba(5, 5, 5, 0.92);
-  backdrop-filter: blur(40px) saturate(200%);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
@@ -687,7 +698,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   border-radius: 24px;
   background: #0D0D0D;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(12px);
 }
 
 .card-gradient-border::before {
@@ -888,3 +899,25 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: none;
   }
 }
+
+.pc-card-wrapper.footer-card .pc-card {
+  height: 360px;
+  max-height: 360px;
+}
+
+/* ═══════════════════════════════════════════════
+   MOBILE UX REFINEMENTS
+   ═══════════════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  .sm-toggle {
+    min-height: 44px;
+  }
+}
+

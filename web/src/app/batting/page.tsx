@@ -8,7 +8,7 @@ import { ChartCard } from "@/components/ChartCard";
 import { TeamFilter } from "@/components/TeamFilter";
 import ScrollFloat from "@/components/ScrollFloat";
 import "@/components/ScrollFloat.css";
-import { MOCK_TEAMS, getBatterStats, getTeamBattingBreakdown } from "@/lib/mock-data";
+import { getTeams, getBatterStats, getTeamBattingBreakdown } from "@/lib/mock-data";
 import type { Batter } from "@/lib/types";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
@@ -48,7 +48,7 @@ export default function BattingPage() {
   const filtered = useMemo(() => {
     if (!teamFilter) return allBatters;
     return allBatters.filter((b) => {
-      const team = MOCK_TEAMS.find((t) => t.id === teamFilter);
+      const team = getTeams().find((t) => t.id === teamFilter);
       return team && b.TeamName === team.name;
     });
   }, [allBatters, teamFilter]);
@@ -118,7 +118,7 @@ export default function BattingPage() {
                 Complete batting statistics across all teams
               </p>
             </div>
-            <TeamFilter teams={MOCK_TEAMS} value={teamFilter} onChange={setTeamFilter} className="w-full sm:w-64" />
+            <TeamFilter teams={getTeams()} value={teamFilter} onChange={setTeamFilter} className="w-full sm:w-64" />
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">

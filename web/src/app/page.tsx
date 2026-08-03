@@ -1,20 +1,19 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
-import { useRef, useMemo } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { FeaturedPlayers } from "@/components/FeaturedPlayers";
-import { Logo } from "@/components/Logo";
-import CircularGallery from "@/components/CircularGallery";
+import ProfileCard from "@/components/ProfileCard";
+import Cricket3DScene from "@/components/Cricket3DScene";
 import ScrollFloat from "@/components/ScrollFloat";
+import TextPressure from "@/components/TextPressure";
 import "@/components/ScrollFloat.css";
 import {
   BarChart3,
   Target,
   Shield,
-  Trophy,
   ChevronRight,
-  Calendar,
   TrendingUp,
   ArrowRight,
   Zap,
@@ -29,49 +28,6 @@ import {
   getTopScorers,
   getTopWicketTakers,
 } from "@/lib/mock-data";
-
-const navCards = [
-  {
-    href: "/batting",
-    label: "Batting",
-    description: "Runs, averages, strike rates & top scorers",
-    icon: BarChart3,
-    color: "#D4FF00",
-    annotation: "01",
-  },
-  {
-    href: "/bowling",
-    label: "Bowling",
-    description: "Wickets, economy rates & best figures",
-    icon: Target,
-    color: "#f43f5e",
-    annotation: "02",
-  },
-  {
-    href: "/keepers",
-    label: "Wicketkeepers",
-    description: "Keeper analysis with batting & dismissals",
-    icon: Shield,
-    color: "#38bdf8",
-    annotation: "03",
-  },
-  {
-    href: "/keeper-summary",
-    label: "Club Summary",
-    description: "Per-club keeper aggregates & rankings",
-    icon: Trophy,
-    color: "#a78bfa",
-    annotation: "04",
-  },
-  {
-    href: "/daily",
-    label: "Daily Report",
-    description: "Per-day match details with all player data",
-    icon: Calendar,
-    color: "#10b981",
-    annotation: "05",
-  },
-];
 
 const marqueeWords = [
   "RUNS", "WICKETS", "AVERAGE", "STRIKE RATE", "BOUNDARIES",
@@ -108,7 +64,7 @@ function AnimatedCounter({ value, label, color }: { value: string; label: string
   );
 }
 
-/* ── Section animation wrappers ─────────────── */
+/* â”€â”€ Section animation wrappers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 function ScaleReveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLElement>(null);
@@ -174,7 +130,7 @@ function ParallaxReveal({ children, className = "" }: { children: React.ReactNod
   );
 }
 
-/* ── Page ───────────────────────────────────── */
+/* â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 export default function LandingPage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -194,461 +150,20 @@ export default function LandingPage() {
   const totalCatches = keepers.reduce((s, k) => s + k.catches, 0);
   const totalStumps = keepers.reduce((s, k) => s + k.stumps, 0);
 
-  const galleryItems = useMemo(() => {
-    if (typeof window === 'undefined') return [];
-
-    function hexPath(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: number) {
-      ctx.beginPath();
-      for (let i = 0; i < 6; i++) {
-        const angle = (Math.PI / 3) * i - Math.PI / 6;
-        const x = cx + r * Math.cos(angle);
-        const y = cy + r * Math.sin(angle);
-        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-      ctx.closePath();
-    }
-
-    function drawCricketBat(ctx: CanvasRenderingContext2D, x: number, y: number, scale: number, color: string) {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.scale(scale, scale);
-      ctx.fillStyle = color;
-      // Handle
-      ctx.fillRect(-4, -60, 8, 40);
-      // Blade
-      ctx.beginPath();
-      ctx.moveTo(-20, -60);
-      ctx.lineTo(20, -60);
-      ctx.lineTo(18, -120);
-      ctx.lineTo(-18, -120);
-      ctx.closePath();
-      ctx.fill();
-      // Spine line
-      ctx.strokeStyle = '#00000030';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(0, -60);
-      ctx.lineTo(0, -118);
-      ctx.stroke();
-      ctx.restore();
-    }
-
-    function drawCricketBall(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, color: string) {
-      ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fillStyle = color;
-      ctx.fill();
-      // Seam
-      ctx.strokeStyle = '#ffffff40';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.arc(x, y, r * 0.7, -0.5, 0.5);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(x, y, r * 0.7, Math.PI - 0.5, Math.PI + 0.5);
-      ctx.stroke();
-      // Stitch marks
-      for (let i = -3; i <= 3; i++) {
-        const angle = 0.3 * i;
-        const sx = x + Math.cos(angle) * r * 0.7;
-        const sy = y + Math.sin(angle) * r * 0.7;
-        ctx.fillStyle = '#ffffff60';
-        ctx.fillRect(sx - 1, sy - 3, 2, 6);
-      }
-    }
-
-    function drawStarfield(ctx: CanvasRenderingContext2D, w: number, h: number, count: number, color: string) {
-      for (let i = 0; i < count; i++) {
-        const sx = Math.random() * w;
-        const sy = Math.random() * h;
-        const sr = Math.random() * 1.5 + 0.3;
-        const alpha = Math.random() * 0.4 + 0.1;
-        ctx.beginPath();
-        ctx.arc(sx, sy, sr, 0, Math.PI * 2);
-        ctx.fillStyle = color + Math.round(alpha * 255).toString(16).padStart(2, '0');
-        ctx.fill();
-      }
-    }
-
-    function drawHexGrid(ctx: CanvasRenderingContext2D, w: number, h: number, size: number, color: string) {
-      const hexW = size * 2;
-      const hexH = size * Math.sqrt(3);
-      for (let row = -1; row < h / hexH + 1; row++) {
-        for (let col = -1; col < w / (hexW * 0.75) + 1; col++) {
-          const x = col * hexW * 0.75;
-          const y = row * hexH + (col % 2 ? hexH / 2 : 0);
-          hexPath(ctx, x, y, size);
-          ctx.strokeStyle = color;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-
-    function drawWaveForm(ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, color: string, bars: number) {
-      const barW = width / bars - 2;
-      for (let i = 0; i < bars; i++) {
-        const barH = (Math.sin(i * 0.5) * 0.5 + 0.5) * height;
-        const bx = x + i * (barW + 2);
-        ctx.fillStyle = color;
-        ctx.fillRect(bx, y - barH / 2, barW, barH);
-      }
-    }
-
-    function makeCard(
-      name: string, stat: string, statValue: string, accent: string,
-      subtitle: string, rank: number, extra?: string, role?: string
-    ) {
-      const w = 800, h = 1000;
-      const canvas = document.createElement('canvas');
-      canvas.width = w;
-      canvas.height = h;
-      const ctx = canvas.getContext('2d')!;
-
-      // ── Dark base ──
-      ctx.fillStyle = '#090909';
-      ctx.fillRect(0, 0, w, h);
-
-      // ── Hex grid background ──
-      drawHexGrid(ctx, w, h, 40, accent + '06');
-
-      // ── Starfield ──
-      drawStarfield(ctx, w, h, 80, accent);
-
-      // ── Radial glow ──
-      const glow = ctx.createRadialGradient(w / 2, 300, 0, w / 2, 300, 350);
-      glow.addColorStop(0, accent + '12');
-      glow.addColorStop(0.6, accent + '04');
-      glow.addColorStop(1, 'transparent');
-      ctx.fillStyle = glow;
-      ctx.fillRect(0, 0, w, h);
-
-      // ── Energy streaks (lightning-like) ──
-      ctx.strokeStyle = accent + '15';
-      ctx.lineWidth = 1;
-      for (let s = 0; s < 3; s++) {
-        ctx.beginPath();
-        let sx = Math.random() * w;
-        let sy = 0;
-        ctx.moveTo(sx, sy);
-        for (let seg = 0; seg < 12; seg++) {
-          sx += (Math.random() - 0.5) * 80;
-          sy += h / 12;
-          ctx.lineTo(sx, sy);
-        }
-        ctx.stroke();
-      }
-
-      // ── Floating geometric shapes ──
-      for (let i = 0; i < 6; i++) {
-        const fx = Math.random() * w;
-        const fy = Math.random() * h;
-        const fs = Math.random() * 20 + 10;
-        ctx.save();
-        ctx.translate(fx, fy);
-        ctx.rotate(Math.random() * Math.PI);
-        ctx.strokeStyle = accent + '10';
-        ctx.lineWidth = 1;
-        if (i % 3 === 0) {
-          // Diamond
-          ctx.beginPath();
-          ctx.moveTo(0, -fs);
-          ctx.lineTo(fs, 0);
-          ctx.lineTo(0, fs);
-          ctx.lineTo(-fs, 0);
-          ctx.closePath();
-          ctx.stroke();
-        } else if (i % 3 === 1) {
-          // Triangle
-          ctx.beginPath();
-          ctx.moveTo(0, -fs);
-          ctx.lineTo(fs, fs);
-          ctx.lineTo(-fs, fs);
-          ctx.closePath();
-          ctx.stroke();
-        } else {
-          // Cross
-          ctx.beginPath();
-          ctx.moveTo(-fs, 0); ctx.lineTo(fs, 0);
-          ctx.moveTo(0, -fs); ctx.lineTo(0, fs);
-          ctx.stroke();
-        }
-        ctx.restore();
-      }
-
-      // ── Top gradient bar ──
-      const barGrad = ctx.createLinearGradient(0, 0, w, 0);
-      barGrad.addColorStop(0, 'transparent');
-      barGrad.addColorStop(0.15, accent + '60');
-      barGrad.addColorStop(0.5, accent);
-      barGrad.addColorStop(0.85, accent + '60');
-      barGrad.addColorStop(1, 'transparent');
-      ctx.fillStyle = barGrad;
-      ctx.fillRect(0, 0, w, 3);
-
-      // ── Rank badge (hexagonal) ──
-      if (rank > 0) {
-        const bx = w - 80, by = 80, br = 38;
-        hexPath(ctx, bx, by, br);
-        ctx.fillStyle = accent;
-        ctx.fill();
-        ctx.fillStyle = '#0a0a0b';
-        ctx.font = 'bold 36px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(`${rank}`, bx, by);
-        // Glow behind badge
-        const bGlow = ctx.createRadialGradient(bx, by, 0, bx, by, 60);
-        bGlow.addColorStop(0, accent + '30');
-        bGlow.addColorStop(1, 'transparent');
-        ctx.fillStyle = bGlow;
-        ctx.fillRect(bx - 60, by - 60, 120, 120);
-      }
-
-      // ── Cricket icon based on role ──
-      if (role === 'bat') {
-        drawCricketBat(ctx, 80, 130, 0.7, accent + '25');
-      } else {
-        drawCricketBall(ctx, 80, 100, 20, accent + '20');
-      }
-
-      // ── Hexagonal avatar ──
-      const cx = w / 2, cy = 300, ar = 140;
-
-      // Outer rotating dashed ring
-      ctx.save();
-      ctx.setLineDash([8, 12]);
-      ctx.strokeStyle = accent + '30';
-      ctx.lineWidth = 2;
-      hexPath(ctx, cx, cy, ar + 30);
-      ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.restore();
-
-      // Pulsing outer ring
-      for (let ring = 3; ring >= 1; ring--) {
-        ctx.beginPath();
-        ctx.arc(cx, cy, ar + ring * 8, 0, Math.PI * 2);
-        ctx.strokeStyle = accent + Math.round((0.05 / ring) * 255).toString(16).padStart(2, '0');
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-
-      // Main hex avatar
-      hexPath(ctx, cx, cy, ar);
-      const hexGrad = ctx.createRadialGradient(cx, cy - 30, 0, cx, cy, ar);
-      hexGrad.addColorStop(0, accent + '30');
-      hexGrad.addColorStop(0.7, accent + '10');
-      hexGrad.addColorStop(1, accent + '05');
-      ctx.fillStyle = hexGrad;
-      ctx.fill();
-      ctx.strokeStyle = accent;
-      ctx.lineWidth = 2.5;
-      ctx.stroke();
-
-      // Inner hex border
-      hexPath(ctx, cx, cy, ar - 10);
-      ctx.strokeStyle = accent + '25';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-
-      // Corner dots on hex
-      for (let i = 0; i < 6; i++) {
-        const angle = (Math.PI / 3) * i - Math.PI / 6;
-        const dx = cx + (ar + 5) * Math.cos(angle);
-        const dy = cy + (ar + 5) * Math.sin(angle);
-        ctx.beginPath();
-        ctx.arc(dx, dy, 3, 0, Math.PI * 2);
-        ctx.fillStyle = accent;
-        ctx.fill();
-      }
-
-      // ── Initials inside hex ──
-      const initials = name.split(' ').map((n: string) => n[0]).join('').slice(0, 2);
-      ctx.fillStyle = accent;
-      ctx.font = 'bold 100px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(initials, cx, cy);
-
-      // ── Name with glow ──
-      ctx.shadowColor = accent;
-      ctx.shadowBlur = 20;
-      ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 48px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(name, w / 2, 530);
-      ctx.shadowBlur = 0;
-
-      // ── Underline with arrow ──
-      const nameW = ctx.measureText(name).width;
-      const ulY = 548;
-      const ulGrad = ctx.createLinearGradient(w / 2 - nameW / 2 - 20, 0, w / 2 + nameW / 2 + 20, 0);
-      ulGrad.addColorStop(0, 'transparent');
-      ulGrad.addColorStop(0.2, accent + '80');
-      ulGrad.addColorStop(0.5, accent);
-      ulGrad.addColorStop(0.8, accent + '80');
-      ulGrad.addColorStop(1, 'transparent');
-      ctx.fillStyle = ulGrad;
-      ctx.fillRect(w / 2 - nameW / 2 - 20, ulY, nameW + 40, 1.5);
-      // Arrow tips
-      ctx.fillStyle = accent;
-      ctx.beginPath();
-      ctx.moveTo(w / 2 - nameW / 2 - 25, ulY + 3);
-      ctx.lineTo(w / 2 - nameW / 2 - 18, ulY - 2);
-      ctx.lineTo(w / 2 - nameW / 2 - 18, ulY + 8);
-      ctx.closePath();
-      ctx.fill();
-      ctx.beginPath();
-      ctx.moveTo(w / 2 + nameW / 2 + 25, ulY + 3);
-      ctx.lineTo(w / 2 + nameW / 2 + 18, ulY - 2);
-      ctx.lineTo(w / 2 + nameW / 2 + 18, ulY + 8);
-      ctx.closePath();
-      ctx.fill();
-
-      // ── Team name pill ──
-      const teamW = ctx.measureText(subtitle).width + 40;
-      roundRect(ctx, w / 2 - teamW / 2, 565, teamW, 36, 18);
-      ctx.fillStyle = accent + '12';
-      ctx.fill();
-      ctx.strokeStyle = accent + '30';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-      ctx.fillStyle = '#999999';
-      ctx.font = '24px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(subtitle, w / 2, 588);
-
-      // ── Role label ──
-      if (role) {
-        ctx.fillStyle = accent + '60';
-        ctx.font = '20px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(role === 'bat' ? 'BATTER' : 'BOWLER', w / 2, 622);
-      }
-
-      // ── Waveform decoration ──
-      drawWaveForm(ctx, w / 2 - 100, 660, 200, 30, accent + '20', 20);
-
-      // ── Stat display (digital/LED style) ──
-      const statCardY = 690;
-      // Stat card bg with angled cut
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(w / 2 - 260, statCardY);
-      ctx.lineTo(w / 2 + 260, statCardY);
-      ctx.lineTo(w / 2 + 240, statCardY + 190);
-      ctx.lineTo(w / 2 - 240, statCardY + 190);
-      ctx.closePath();
-      const scGrad = ctx.createLinearGradient(0, statCardY, 0, statCardY + 190);
-      scGrad.addColorStop(0, accent + '10');
-      scGrad.addColorStop(1, accent + '03');
-      ctx.fillStyle = scGrad;
-      ctx.fill();
-      ctx.strokeStyle = accent + '25';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-      ctx.restore();
-
-      // Side accent bars
-      ctx.fillStyle = accent;
-      ctx.fillRect(w / 2 - 260, statCardY, 3, 190);
-      ctx.fillStyle = accent + '40';
-      ctx.fillRect(w / 2 + 257, statCardY, 3, 190);
-
-      // Stat label
-      ctx.fillStyle = '#777777';
-      ctx.font = '22px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.letterSpacing = '4px';
-      ctx.fillText(stat, w / 2, statCardY + 45);
-
-      // Stat value with glow
-      ctx.shadowColor = accent;
-      ctx.shadowBlur = 30;
-      ctx.fillStyle = accent;
-      ctx.font = 'bold 88px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(statValue, w / 2, statCardY + 140);
-      ctx.shadowBlur = 0;
-
-      // ── Mini bar chart under stat ──
-      const chartX = w / 2 - 80, chartY = statCardY + 165;
-      const barVals = [0.4, 0.7, 0.5, 0.9, 0.6, 0.8, 0.3];
-      barVals.forEach((v, i) => {
-        const bh = v * 15;
-        ctx.fillStyle = accent + (i === 3 ? 'cc' : '30');
-        ctx.fillRect(chartX + i * 24, chartY - bh, 16, bh);
-      });
-
-      // ── Extra stats line ──
-      if (extra) {
-        ctx.fillStyle = '#555555';
-        ctx.font = '22px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(extra, w / 2, 930);
-      }
-
-      // ── Bottom bar ──
-      ctx.fillStyle = barGrad;
-      ctx.fillRect(0, h - 3, w, 3);
-
-      // ── Corner brackets (angular) ──
-      const cs = 35;
-      ctx.strokeStyle = accent + '35';
-      ctx.lineWidth = 1.5;
-      // TL
-      ctx.beginPath(); ctx.moveTo(16, 16 + cs); ctx.lineTo(16, 16); ctx.lineTo(16 + cs, 16); ctx.stroke();
-      // TR
-      ctx.beginPath(); ctx.moveTo(w - 16 - cs, 16); ctx.lineTo(w - 16, 16); ctx.lineTo(w - 16, 16 + cs); ctx.stroke();
-      // BL
-      ctx.beginPath(); ctx.moveTo(16, h - 16 - cs); ctx.lineTo(16, h - 16); ctx.lineTo(16 + cs, h - 16); ctx.stroke();
-      // BR
-      ctx.beginPath(); ctx.moveTo(w - 16 - cs, h - 16); ctx.lineTo(w - 16, h - 16); ctx.lineTo(w - 16, h - 16 - cs); ctx.stroke();
-
-      // ── Scan line effect (subtle) ──
-      for (let y = 0; y < h; y += 4) {
-        ctx.fillStyle = '#ffffff03';
-        ctx.fillRect(0, y, w, 1);
-      }
-
-      return canvas.toDataURL('image/png');
-    }
-
-    function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
-      ctx.beginPath();
-      ctx.moveTo(x + r, y);
-      ctx.lineTo(x + w - r, y);
-      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-      ctx.lineTo(x + w, y + h - r);
-      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-      ctx.lineTo(x + r, y + h);
-      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-      ctx.lineTo(x, y + r);
-      ctx.quadraticCurveTo(x, y, x + r, y);
-      ctx.closePath();
-    }
-
-    const bestAvg = topBatters.reduce((max, b) => b.BattingAverage > max.BattingAverage ? b : max, topBatters[0]);
-    const bestEcon = topBowlers.reduce((min, b) => b.Economy < min.Economy ? b : min, topBowlers[0]);
-
-    return [
-      { image: makeCard(topBatters[0].PlayerName, 'TOTAL RUNS', String(topBatters[0].Runs), '#D4FF00', topBatters[0].TeamName, 1, `HS ${topBatters[0].HighestScore}  ·  SR ${topBatters[0].StrikeRate}  ·  Avg ${topBatters[0].BattingAverage}`, 'bat'), text: topBatters[0].PlayerName },
-      { image: makeCard(topBowlers[0].PlayerName, 'TOTAL WICKETS', String(topBowlers[0].Wickets), '#f43f5e', topBowlers[0].TeamName, 1, `Econ ${bestEcon.Economy}  ·  Best ${topBowlers[0].BestBowling}  ·  SR ${topBowlers[0].StrikeRate}`, 'bowl'), text: topBowlers[0].PlayerName },
-      { image: makeCard(topBatters[1].PlayerName, 'TOTAL RUNS', String(topBatters[1].Runs), '#38bdf8', topBatters[1].TeamName, 2, `HS ${topBatters[1].HighestScore}  ·  SR ${topBatters[1].StrikeRate}  ·  Avg ${topBatters[1].BattingAverage}`, 'bat'), text: topBatters[1].PlayerName },
-      { image: makeCard(topBowlers[1].PlayerName, 'TOTAL WICKETS', String(topBowlers[1].Wickets), '#a78bfa', topBowlers[1].TeamName, 2, `Econ ${topBowlers[1].Economy}  ·  Best ${topBowlers[1].BestBowling}  ·  SR ${topBowlers[1].StrikeRate}`, 'bowl'), text: topBowlers[1].PlayerName },
-      { image: makeCard(topBatters[2].PlayerName, 'TOTAL RUNS', String(topBatters[2].Runs), '#10b981', topBatters[2].TeamName, 3, `HS ${topBatters[2].HighestScore}  ·  SR ${topBatters[2].StrikeRate}  ·  Avg ${topBatters[2].BattingAverage}`, 'bat'), text: topBatters[2].PlayerName },
-      { image: makeCard(bestAvg.PlayerName, 'BEST AVERAGE', String(bestAvg.BattingAverage), '#f97316', bestAvg.TeamName, 0, `${bestAvg.Runs} Runs in ${bestAvg.Innings} Innings  ·  SR ${bestAvg.StrikeRate}`, 'bat'), text: bestAvg.PlayerName },
-    ];
-  }, [topBatters, topBowlers]);
 
   return (
     <>
-      {/* ── Hero (parallax) ──────────────────── */}
+      {/* â”€â”€ Hero (parallax) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
         <motion.div style={{ y: bgY }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 dot-grid opacity-20" />
-          <div className="absolute top-[-300px] right-[-200px] w-[800px] h-[800px] bg-[#D4FF00]/[0.02] rounded-full blur-[250px]" />
+          <div
+            className="absolute top-[-300px] right-[-200px] w-[800px] h-[800px] rounded-full"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(212,255,0,0.05) 0%, rgba(212,255,0,0.02) 45%, transparent 70%)",
+            }}
+          />
         </motion.div>
 
         <div className="absolute top-32 left-8 hidden lg:block z-10">
@@ -726,12 +241,12 @@ export default function LandingPage() {
                 transition={{ delay: 1, duration: 0.5 }}
                 className="mt-10 flex flex-wrap gap-4"
               >
-                <Link href="/batting" className="btn-yellow group">
+                <Link href="/batting" className="btn-yellow group w-full sm:w-auto justify-center">
                   <BarChart3 size={16} />
                   Explore Batting
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </Link>
-                <Link href="/keepers" className="btn-outline group">
+                <Link href="/keepers" className="btn-outline group w-full sm:w-auto justify-center">
                   <Shield size={16} />
                   Wicketkeeper Analysis
                   <ChevronRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -746,15 +261,7 @@ export default function LandingPage() {
               className="hidden lg:block w-full max-w-[500px]"
             >
               <div style={{ height: '600px', position: 'relative' }}>
-                <CircularGallery
-                  bend={1}
-                  textColor="#ffffff"
-                  borderRadius={0.05}
-                  scrollEase={0.05}
-                  font="bold 30px Orbitron"
-                  scrollSpeed={2}
-                  items={galleryItems}
-                />
+                <Cricket3DScene />
               </div>
             </motion.div>
           </div>
@@ -775,7 +282,7 @@ export default function LandingPage() {
         </motion.div>
       </section>
 
-      {/* ── Marquee ─────────────────────────── */}
+      {/* â”€â”€ Marquee â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative bg-[#D4FF00] py-3 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...marqueeWords, ...marqueeWords, ...marqueeWords].map((word, i) => (
@@ -787,8 +294,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Stats Bar (scale reveal) ─────────── */}
-      <ScaleReveal className="bg-[#050505] border-y border-white/[0.06]">
+      {/* â”€â”€ Stats Bar (scale reveal) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <ScaleReveal className="cv-auto bg-[#050505] border-y border-white/[0.06]">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/[0.06]">
             <div className="py-12 sm:py-14 px-4 sm:px-8">
@@ -807,9 +314,15 @@ export default function LandingPage() {
         </div>
       </ScaleReveal>
 
-      {/* ── Tournament Highlights (graphic cards) ── */}
-      <StaggerReveal className="bg-[#050505] py-20 sm:py-28 relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#D4FF00]/[0.015] rounded-full blur-[300px]" />
+      {/* â”€â”€ Tournament Highlights (graphic cards) â”€â”€ */}
+      <StaggerReveal className="cv-auto bg-[#050505] py-20 sm:py-28 relative overflow-hidden">
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(212,255,0,0.035) 0%, rgba(212,255,0,0.015) 45%, transparent 68%)",
+          }}
+        />
         <div className="max-w-[1440px] mx-auto px-6 sm:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="section-label mb-6 mx-auto w-fit">
@@ -914,7 +427,7 @@ export default function LandingPage() {
                   <div className="mt-3 flex items-center gap-2">
                     <div className="w-1 h-1 rounded-full" style={{ background: item.color }} />
                     <p className="text-xs text-[#7A7A7A] truncate">{item.playerName}</p>
-                    <span className="text-[10px] text-[#525252]">·</span>
+                    <span className="text-[10px] text-[#525252]">Â·</span>
                     <p className="text-[10px] text-[#525252] truncate">{item.teamName}</p>
                   </div>
                   <div
@@ -928,11 +441,11 @@ export default function LandingPage() {
         </div>
       </StaggerReveal>
 
-      {/* ── Featured Players ────────────────── */}
+      {/* â”€â”€ Featured Players â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <FeaturedPlayers />
 
-      {/* ── Top Performers (split slide) ───── */}
-      <SplitReveal className="bg-[#050505] py-20 sm:py-24">
+      {/* â”€â”€ Top Performers (split slide) â”€â”€â”€â”€â”€ */}
+      <SplitReveal className="cv-auto bg-[#050505] py-20 sm:py-24">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Top Batters */}
@@ -968,7 +481,7 @@ export default function LandingPage() {
                   const maxRuns = topBatters[0].Runs;
                   return (
                     <motion.div
-                      key={b.PlayerName}
+                      key={`${b.PlayerName}-${b.TeamName}`}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -997,7 +510,7 @@ export default function LandingPage() {
                           />
                         </div>
                         <p className="text-[10px] text-[#7A7A7A] mt-2 font-mono">
-                          {b.TeamName} · HS <span className="text-[#D4FF00]/40">{b.HighestScore}</span> · SR <span className="text-[#D4FF00]/40">{b.StrikeRate}</span>
+                          {b.TeamName} Â· HS <span className="text-[#D4FF00]/40">{b.HighestScore}</span> Â· SR <span className="text-[#D4FF00]/40">{b.StrikeRate}</span>
                         </p>
                       </div>
                     </motion.div>
@@ -1039,7 +552,7 @@ export default function LandingPage() {
                   const maxW = topBowlers[0].Wickets;
                   return (
                     <motion.div
-                      key={b.PlayerName}
+                      key={`${b.PlayerName}-${b.TeamName}`}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -1068,7 +581,7 @@ export default function LandingPage() {
                           />
                         </div>
                         <p className="text-[10px] text-[#7A7A7A] mt-2 font-mono">
-                          {b.TeamName} · Eco <span className="text-[#f43f5e]/40">{b.Economy}</span> · SR <span className="text-[#f43f5e]/40">{b.StrikeRate}</span>
+                          {b.TeamName} Â· Eco <span className="text-[#f43f5e]/40">{b.Economy}</span> Â· SR <span className="text-[#f43f5e]/40">{b.StrikeRate}</span>
                         </p>
                       </div>
                     </motion.div>
@@ -1080,37 +593,112 @@ export default function LandingPage() {
         </div>
       </SplitReveal>
 
-      {/* ── Footer (parallax text reveal) ────── */}
-      <footer className="bg-[#050505] border-t border-white/[0.06] relative overflow-hidden">
+      {/* â”€â”€ Footer (parallax text reveal) â”€â”€â”€â”€â”€â”€ */}
+      <footer className="cv-auto bg-[#050505] border-t border-white/[0.06] relative overflow-hidden">
         <ParallaxReveal className="">
           <div className="max-w-[1440px] mx-auto px-6 sm:px-8 py-16">
             <div className="relative z-10">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-                <div>
-                  <Logo />
-                  <p className="text-sm text-[#7A7A7A] mt-4 max-w-xs leading-relaxed">
-                    Real-time cricket analytics for the KSCA Under-19 Inter Club Tournament.
+              <div className="mb-16">
+                <div className="max-w-3xl">
+                  <p className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.3em] text-[#525252]">
+                    <span className="h-px w-10 bg-white/[0.15]" aria-hidden="true" />
+                    Credits
+                  </p>
+                  <div className="mt-5 h-[90px] sm:h-[120px] xl:h-[150px] w-full">
+                    <TextPressure
+                      text="Developed By"
+                      fontFamily="var(--font-flex)"
+                      textColor="#ffffff"
+                      minFontSize={20}
+                      italic={false}
+                    />
+                  </div>
+                  <p
+                    className="mt-6 text-lg sm:text-xl font-semibold uppercase text-white/80"
+                    style={{
+                      fontFamily: 'var(--font-flex)',
+                      fontVariationSettings: "'wdth' 110, 'wght' 600",
+                    }}
+                  >
+                    N. Tejaswini <span className="text-[#525252]">&</span> Rakesh Kumar <span className="text-[#525252]">&</span> Janardhan <span className="text-[#525252]">&</span> Yasaswini
                   </p>
                 </div>
-                <div>
-                  <p className="editorial-caption text-[10px] mb-4">Navigation</p>
-                  <div className="space-y-2">
-                    {navCards.map((card) => (
-                      <Link
-                        key={card.href}
-                        href={card.href}
-                        className="block text-sm text-[#7A7A7A] hover:text-white transition-colors duration-300"
-                      >
-                        {card.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="editorial-caption text-[10px] mb-4">Season</p>
-                  <p className="text-sm text-[#7A7A7A]">2024-25 Tournament</p>
-                  <p className="text-sm text-[#7A7A7A] mt-1">KSCA Inter Club Tournament</p>
-                  <p className="text-sm text-[#7A7A7A] mt-1">Under-19 Category</p>
+
+                <p className="mt-14 flex items-center justify-center gap-4 text-[10px] font-mono uppercase tracking-[0.3em] text-[#7A7A7A]">
+                  <span className="h-px w-10 sm:w-16 bg-white/[0.15]" aria-hidden="true" />
+                  <span className="text-[#D4FF00]/70">The Team</span>
+                  <span className="h-px w-10 sm:w-16 bg-white/[0.15]" aria-hidden="true" />
+                </p>
+
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
+                  <ProfileCard
+                    className="footer-card"
+                    name="N.Tejaswini"
+                    title="FullStack Developer"
+                    handle="tejaswini"
+                    status="Online"
+                    contactText="Contact Me"
+                    avatarUrl="/tejaswini-avatar.jpeg"
+                    showUserInfo={false}
+                    enableTilt={true}
+                    enableMobileTilt={false}
+                    onContactClick={() => console.log('Contact clicked')}
+                    behindGlowColor="rgba(125, 190, 255, 0.67)"
+                    iconUrl="/assets/demo/iconpattern.png"
+                    behindGlowEnabled
+                    innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
+                  />
+                  <ProfileCard
+                    className="footer-card"
+                    name="Rakesh Kumar"
+                    title="Full Stack Developer"
+                    handle="rakesh"
+                    status="Active"
+                    contactText="View Stats"
+                    avatarUrl="/rakesh-avatar.jpeg"
+                    showUserInfo={false}
+                    enableTilt={true}
+                    enableMobileTilt={false}
+                    onContactClick={() => console.log('View stats')}
+                    behindGlowColor="rgba(212, 255, 0, 0.67)"
+                    iconUrl="/assets/demo/iconpattern.png"
+                    behindGlowEnabled
+                    innerGradient="linear-gradient(145deg,#4a6e4e8c 0%,#D4FF0044 100%)"
+                  />
+                  <ProfileCard
+                    className="footer-card"
+                    name="Janardhan"
+                    title="Full Stack Developer"
+                    handle="janardhan"
+                    status="Online"
+                    contactText="Contact Me"
+                    avatarUrl="/janardhan-avatar.jpeg"
+                    showUserInfo={false}
+                    enableTilt={true}
+                    enableMobileTilt={false}
+                    onContactClick={() => console.log('Contact clicked')}
+                    behindGlowColor="rgba(56, 189, 248, 0.67)"
+                    iconUrl="/assets/demo/iconpattern.png"
+                    behindGlowEnabled
+                    innerGradient="linear-gradient(145deg,#3f6e8c8c 0%,#38BDF844 100%)"
+                  />
+                  <ProfileCard
+                    className="footer-card"
+                    name="Yasaswini"
+                    title="Full Stack Developer"
+                    handle="yasaswini"
+                    status="Active"
+                    contactText="Contact Me"
+                    avatarUrl="/developer-avatar.jpeg"
+                    showUserInfo={false}
+                    enableTilt={true}
+                    enableMobileTilt={false}
+                    onContactClick={() => console.log('Contact clicked')}
+                    behindGlowColor="rgba(167, 139, 250, 0.67)"
+                    iconUrl="/assets/demo/iconpattern.png"
+                    behindGlowEnabled
+                    innerGradient="linear-gradient(145deg,#6e5e8c8c 0%,#A78BFA44 100%)"
+                  />
                 </div>
               </div>
 
@@ -1118,7 +706,7 @@ export default function LandingPage() {
 
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p className="text-[10px] text-[#525252] font-mono uppercase tracking-wider">
-                  Cricket Analytics Dashboard · Season 2024-25
+                  Cricket Analytics Dashboard Â· Season 2024-25
                 </p>
                 <p className="text-[10px] text-[#525252] font-mono uppercase tracking-wider">
                   KSCA U-19

@@ -8,7 +8,7 @@ import { ChartCard } from "@/components/ChartCard";
 import { TeamFilter } from "@/components/TeamFilter";
 import ScrollFloat from "@/components/ScrollFloat";
 import "@/components/ScrollFloat.css";
-import { MOCK_TEAMS, getKeeperStats } from "@/lib/mock-data";
+import { getTeams, getKeeperStats } from "@/lib/mock-data";
 import type { KeeperRow } from "@/lib/types";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
 import { motion } from "framer-motion";
@@ -54,7 +54,7 @@ export default function KeepersPage() {
 
   const filtered = useMemo(() => {
     if (!clubFilter) return allKeepers;
-    const team = MOCK_TEAMS.find((t) => t.id === clubFilter);
+    const team = getTeams().find((t) => t.id === clubFilter);
     return allKeepers.filter((k) => k.club === team?.name);
   }, [allKeepers, clubFilter]);
 
@@ -154,7 +154,7 @@ export default function KeepersPage() {
                 Complete keeper analytics — batting, catches & stumpings
               </p>
             </div>
-            <TeamFilter teams={MOCK_TEAMS} value={clubFilter} onChange={setClubFilter} className="w-full sm:w-64" />
+            <TeamFilter teams={getTeams()} value={clubFilter} onChange={setClubFilter} className="w-full sm:w-64" />
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
@@ -199,7 +199,7 @@ export default function KeepersPage() {
                     <Legend
                       verticalAlign="bottom"
                       content={({ payload }) => (
-                        <div className="flex justify-center gap-8 mt-4">
+                        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-4">
                           {payload?.map((entry: any, idx) => {
                             const data = dismissalData[idx];
                             return (

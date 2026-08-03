@@ -48,6 +48,14 @@ def step_player_stats():
     log.info(f"Batting records: {len(all_batting)}, Bowling records: {len(all_bowling)}")
     export_combined(all_batting, all_bowling)
 
+    try:
+        from mongo_writer import store_player_stats
+        store_player_stats(all_batting, all_bowling, COMPETITION_ID)
+        log.info(f"MongoDB: stored {len(all_batting)} batting / {len(all_bowling)} bowling docs")
+    except Exception as e:
+        log.error(f"MongoDB player-stats upload failed (continuing): {e}")
+        log.error(traceback.format_exc())
+
 
 def step_keeper_pipeline(today_only=False):
     from config import COMPETITION_ID
@@ -94,6 +102,13 @@ def step_google_sync():
         log.info(f"Google Sheet synced ({len(all_players)} unique players)")
     else:
         log.info("Google workbook empty")
+
+
+def step_web_export():
+    from web_export import refresh_website_data
+
+    refresh_website_data()
+    log.info("Website data exported (ksca-data.json + mock-data.ts)")
 
 
 def step_email_report():
@@ -149,6 +164,7 @@ def main():
         run_step("Player Stats (batting + bowling)", step_player_stats)
         run_step("Keeper Stats (pipeline)", step_keeper_pipeline, **kwargs)
         run_step("Google Sheet sync", step_google_sync)
+        run_step("Website data export", step_web_export)
 
     if args.nightly:
         run_step("Email daily report", step_email_report)

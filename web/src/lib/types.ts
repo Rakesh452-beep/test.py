@@ -88,15 +88,43 @@ export interface KeeperSummary {
   keeper_count: number;
 }
 
+export interface MatchBattingRow {
+  innings: number;
+  club: string;
+  vs_team: string;
+  player: string;
+  playing_order: number;
+  runs: number;
+  balls: number;
+  fours: number;
+  sixes: number;
+  out_desc: string;
+  not_out: boolean;
+}
+
+export interface MatchBowlingRow {
+  innings: number;
+  club: string;
+  vs_team: string;
+  bowler: string;
+  bowling_order: number;
+  overs: number;
+  maidens: number;
+  runs: number;
+  wickets: number;
+  wides: number;
+  no_balls: number;
+  economy: number;
+}
+
 export interface DailyMatch {
   match_id: string;
   date: string;
   team1: string;
   team2: string;
-  result: string;
-  batters: Batter[];
-  bowlers: Bowler[];
-  keepers: KeeperRow[];
+  summary: string;
+  batting: MatchBattingRow[];
+  bowling: MatchBowlingRow[];
 }
 
 export interface Team {

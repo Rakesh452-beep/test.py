@@ -2,9 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { StaggeredMenu } from "./StaggeredMenu";
+import { useLiveSnapshot } from "@/lib/live-data";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const snapshot = useLiveSnapshot();
+
+  const updated = snapshot?.generatedAt ? new Date(snapshot.generatedAt) : null;
+  const updatedLabel =
+    updated && !Number.isNaN(updated.getTime())
+      ? updated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+      : null;
 
   useEffect(() => {
     if (menuOpen) {
@@ -22,25 +30,31 @@ export function Navbar() {
     { label: "Keepers", ariaLabel: "View wicketkeeper stats", link: "/keepers" },
     { label: "Daily", ariaLabel: "View daily report", link: "/daily" },
     { label: "Players", ariaLabel: "View players", link: "/players" },
-    { label: "Teams", ariaLabel: "View teams", link: "/teams" },
   ];
 
   return (
-    <StaggeredMenu
-      position="right"
-      items={menuItems}
-      socialItems={[]}
-      displaySocials={false}
-      displayItemNumbering={true}
-      menuButtonColor="#ffffff"
-      openMenuButtonColor="#fff"
-      changeMenuColorOnOpen={true}
-      colors={['#050505', '#111111']}
-      accentColor="#D4FF00"
-      isFixed={true}
-      closeOnClickAway={true}
-      onMenuOpen={() => setMenuOpen(true)}
-      onMenuClose={() => setMenuOpen(false)}
-    />
+    <>
+      <StaggeredMenu
+        position="right"
+        items={menuItems}
+        socialItems={[]}
+        displaySocials={false}
+        displayItemNumbering={true}
+        menuButtonColor="#ffffff"
+        openMenuButtonColor="#fff"
+        changeMenuColorOnOpen={true}
+        colors={['#050505', '#111111']}
+        accentColor="#D4FF00"
+        isFixed={true}
+        closeOnClickAway={true}
+        onMenuOpen={() => setMenuOpen(true)}
+        onMenuClose={() => setMenuOpen(false)}
+      />
+      <div className="fixed bottom-4 left-4 z-50 flex items-center gap-2 rounded-full border border-zinc-800 bg-black/60 px-3 py-1.5 font-mono text-[11px] text-zinc-400 backdrop-blur-sm">
+        <span className={`h-2 w-2 rounded-full ${snapshot ? "bg-[#D4FF00]" : "bg-zinc-600"}`} />
+        <span>{snapshot ? "LIVE" : "SYNC"}</span>
+        {updatedLabel ? <span className="text-zinc-500">{updatedLabel}</span> : null}
+      </div>
+    </>
   );
 }

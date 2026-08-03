@@ -179,19 +179,20 @@ export function DataTable<T extends Record<string, any>>({
       </div>
 
       {totalPages > 1 && (
-        <div className="flex items-center justify-between px-5 py-4 border-t border-white/[0.04]">
+        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-t border-white/[0.04]">
           <p className="text-[10px] text-[#7A7A7A] font-mono">
             Page {page} of {totalPages} ({sorted.length} results)
           </p>
-          <div className="flex gap-1">
+          <div className="flex gap-1.5">
             {Array.from({ length: Math.min(totalPages, 5) }).map((_, i) => {
               const p = i + 1;
               return (
                 <button
                   key={p}
                   onClick={() => setPage(p)}
+                  aria-label={`Go to page ${p}`}
                   className={cn(
-                    "w-8 h-8 rounded-lg text-[11px] font-mono transition-all duration-300",
+                    "w-9 h-9 rounded-lg text-[11px] font-mono transition-all duration-300",
                     page === p
                       ? "bg-[#D4FF00] text-black font-bold"
                       : "text-[#7A7A7A] hover:text-white hover:bg-white/[0.04]"

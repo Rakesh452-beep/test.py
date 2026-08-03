@@ -33,6 +33,16 @@ SHEET_COLUMNS = [
 SHEET_TAB = "Sheet1"
 
 # Email config for daily report
+EMAIL_ENABLED = False
 EMAIL_SENDER = "rakeshkumarirri28@gmail.com"
 EMAIL_PASSWORD = "REDACTED"
 EMAIL_RECIPIENT = "Sureshkutam@gmail.com"
+
+# MongoDB (Atlas) config
+MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://REDACTED:REDACTED@cluster0.vdn1spy.mongodb.net/")
+MONGO_DB_NAME = os.environ.get("MONGO_DB_NAME", "ksca_cricket")
+MONGO_COLLECTIONS = {
+    "batting": "player_batting",
+    "bowling": "player_bowling",
+    "keeper": "keeper_stats",
+}
