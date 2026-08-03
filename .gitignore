@@ -7,3 +7,13 @@ node_modules/
 web/public/*.jpeg
 web/public/*.jpg
 web/public/*.png
+
+# Generated artifacts, logs, and local tooling (not source code)
+.playwright-mcp/
+*.log
+*.lock
+/*.png
+_check_*.py
+reports/*.xlsx
+reports/*.json
+web/public/data/ksca-data.json
