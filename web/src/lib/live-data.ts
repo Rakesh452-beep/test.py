@@ -10,9 +10,10 @@ import {
 
 /* The `live` branch mirrors the current snapshot produced by the local
    live_update.py pipeline, so the deployed static site can always pull the
-   freshest data without waiting for a Vercel rebuild. */
+   freshest data without waiting for a Vercel rebuild. jsDelivr re-resolves
+   the branch ref on every request (GitHub's raw CDN caches ref lookups). */
 const LIVE_DATA_URL =
-  "https://raw.githubusercontent.com/Rakesh452-beep/test.py/live/web/public/data/ksca-data.json";
+  "https://cdn.jsdelivr.net/gh/Rakesh452-beep/test.py@live/web/public/data/ksca-data.json";
 
 export function useLiveSnapshot(): LiveSnapshot | null {
   return useSyncExternalStore(subscribeLive, getLiveSnapshot, getLiveSnapshot);
