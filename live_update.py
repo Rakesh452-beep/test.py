@@ -44,6 +44,11 @@ log = logging.getLogger("live_update")
 
 LOCK_FILE = os.path.join(ROOT, "live_update.lock")
 
+# Website data snapshot pushed to the `live` branch so the deployed site can
+# fetch fresh data without a Vercel rebuild.
+DATA_FILE = os.path.join(ROOT, "web", "public", "data", "ksca-data.json")
+PUSH_STATE = os.path.join(ROOT, "reports", ".live_push_state")
+
 
 def pid_alive(pid):
     """Return True if a process with the given PID is currently running."""
@@ -102,6 +107,77 @@ def release_lock():
                 os.remove(LOCK_FILE)
     except Exception:
         pass
+
+
+def _data_fingerprint():
+    """Hash of the snapshot ignoring `generatedAt`, so we only push when the
+    actual cricket data changed (not on every poll cycle)."""
+    import hashlib
+
+    try:
+        with open(DATA_FILE, encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            data.pop("generatedAt", None)
+        return hashlib.sha256(
+            json.dumps(data, sort_keys=True, ensure_ascii=False).encode("utf-8")
+        ).hexdigest()
+    except Exception:
+        return None
+
+
+def _should_push():
+    fp = _data_fingerprint()
+    if not fp:
+        return False
+    try:
+        with open(PUSH_STATE, encoding="utf-8") as f:
+            return fp != f.read().strip()
+    except FileNotFoundError:
+        return True
+    except Exception:
+        return True
+
+
+def _record_push():
+    fp = _data_fingerprint()
+    if fp:
+        try:
+            with open(PUSH_STATE, "w", encoding="utf-8") as f:
+                f.write(fp)
+        except Exception:
+            pass
+
+
+def push_to_live():
+    """Commit the fresh website snapshot and push it to the `live` branch.
+
+    The frontend fetches /data/ksca-data.json from the `live` branch (via
+    raw.githubusercontent.com), so new match data reaches the deployed site
+    within one poll cycle — no Vercel rebuild required.
+    """
+    if not _should_push():
+        return
+    try:
+        subprocess.run(
+            ["git", "add", "--", "web/public/data/ksca-data.json"],
+            cwd=ROOT, check=True, capture_output=True,
+        )
+        subprocess.run(
+            ["git", "commit", "-m", "chore: live data update"],
+            cwd=ROOT, check=True, capture_output=True,
+        )
+        subprocess.run(
+            ["git", "push", "origin", "HEAD:live"],
+            cwd=ROOT, check=True, capture_output=True,
+        )
+        _record_push()
+        log.info("Pushed website snapshot to 'live' branch")
+    except subprocess.CalledProcessError as e:
+        detail = (e.stderr or b"").decode("utf-8", "ignore").strip() or str(e)
+        log.error(f"Live branch push failed (will retry next cycle): {detail[:400]}")
+    except Exception as e:
+        log.error(f"Live branch push failed (will retry next cycle): {e}")
 
 
 def get_completed_match_ids(competition_id):
@@ -250,6 +326,8 @@ def main():
             except Exception as e:
                 log.error(f"Poll cycle failed: {e}")
                 log.error(traceback.format_exc())
+
+            push_to_live()
 
             if args.once:
                 break

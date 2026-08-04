@@ -16,3 +16,4 @@ web/public/*.png
 _check_*.py
 reports/*.xlsx
 reports/*.json
+.vercel

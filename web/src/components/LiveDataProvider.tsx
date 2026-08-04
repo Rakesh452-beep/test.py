@@ -8,7 +8,7 @@ interface LiveDataProviderProps {
   pollMs?: number;
 }
 
-export function LiveDataProvider({ children, pollMs = 30000 }: LiveDataProviderProps) {
+export function LiveDataProvider({ children, pollMs = 300000 }: LiveDataProviderProps) {
   const [version, setVersion] = useState(0);
   const firstLoadRef = useRef(true);
 

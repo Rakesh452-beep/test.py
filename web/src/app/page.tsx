@@ -258,9 +258,9 @@ export default function LandingPage() {
               initial={{ opacity: 0, x: 40, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="hidden lg:block w-full max-w-[500px]"
+              className="w-full max-w-[500px]"
             >
-              <div style={{ height: '600px', position: 'relative' }}>
+              <div className="relative h-[420px] sm:h-[520px] lg:h-[600px]">
                 <Cricket3DScene />
               </div>
             </motion.div>

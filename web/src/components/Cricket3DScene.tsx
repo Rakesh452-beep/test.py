@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Component, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 
@@ -227,15 +227,67 @@ function Scene() {
   );
 }
 
+function isWebGLAvailable(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext("webgl2") || canvas.getContext("webgl"))
+    );
+  } catch {
+    return false;
+  }
+}
+
+function FallbackImage() {
+  return (
+    <div className="relative h-full w-full">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/hero-cricket.jpeg"
+        alt="Virat Kohli batting"
+        className="w-full h-full object-contain"
+      />
+    </div>
+  );
+}
+
+class CanvasBoundary extends Component<
+  { fallback: ReactNode; children: ReactNode },
+  { failed: boolean }
+> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  render() {
+    if (this.state.failed) return this.props.fallback;
+    return this.props.children;
+  }
+}
+
 export default function Cricket3DScene() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const [webglOk] = useState<boolean>(() => isWebGLAvailable());
 
   /* mount after first paint (SSR guard) */
   useEffect(() => {
     const raf = requestAnimationFrame(() => setReady(true));
     return () => cancelAnimationFrame(raf);
+  }, []);
+
+  /* lighten the render on small screens */
+  useEffect(() => {
+    setIsMobile(
+      typeof window !== "undefined" &&
+        (window.matchMedia?.("(max-width: 767px)").matches ?? false)
+    );
   }, []);
 
   /* pause the WebGL loop when the hero scrolls out of view */
@@ -260,17 +312,21 @@ export default function Cricket3DScene() {
     );
   }
 
+  if (!webglOk) return <FallbackImage />;
+
   return (
     <div ref={wrapRef} className="relative h-full w-full">
-      <Canvas
-        shadows
-        frameloop={visible ? "always" : "never"}
-        dpr={[1, 1.25]}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance", preserveDrawingBuffer: true }}
-        camera={{ fov: 42, position: [1.9, 1.35, 2.9], near: 0.1, far: 100 }}
-      >
-        <Scene />
-      </Canvas>
+      <CanvasBoundary fallback={<FallbackImage />}>
+        <Canvas
+          shadows={!isMobile}
+          frameloop={visible ? "always" : "never"}
+          dpr={isMobile ? [1, 1.5] : [1, 1.25]}
+          gl={{ antialias: !isMobile, alpha: true, powerPreference: "high-performance", preserveDrawingBuffer: true }}
+          camera={{ fov: 42, position: [1.9, 1.35, 2.9], near: 0.1, far: 100 }}
+        >
+          <Scene />
+        </Canvas>
+      </CanvasBoundary>
     </div>
   );
 }

@@ -8,23 +8,51 @@ import {
   type LiveSnapshot,
 } from "./mock-data";
 
+/* The `live` branch mirrors the current snapshot produced by the local
+   live_update.py pipeline, so the deployed static site can always pull the
+   freshest data without waiting for a Vercel rebuild. */
+const LIVE_DATA_URL =
+  "https://raw.githubusercontent.com/Rakesh452-beep/test.py/live/web/public/data/ksca-data.json";
+
 export function useLiveSnapshot(): LiveSnapshot | null {
   return useSyncExternalStore(subscribeLive, getLiveSnapshot, getLiveSnapshot);
 }
 
-export async function fetchLiveData(): Promise<LiveSnapshot | null> {
+function isLiveSnapshot(data: unknown): data is LiveSnapshot {
+  return (
+    !!data &&
+    Array.isArray((data as LiveSnapshot).batters) &&
+    Array.isArray((data as LiveSnapshot).bowlers)
+  );
+}
+
+async function fetchJson(url: string): Promise<LiveSnapshot | null> {
   try {
-    const res = await fetch(`/data/ksca-data.json?t=${Date.now()}`, {
+    const res = await fetch(url, {
       cache: "no-store",
       headers: { Accept: "application/json" },
     });
     if (!res.ok) return null;
-    const data = (await res.json()) as LiveSnapshot;
-    if (!data || !Array.isArray(data.batters)) return null;
-    return data;
+    const data: unknown = await res.json();
+    return isLiveSnapshot(data) ? data : null;
   } catch {
     return null;
   }
+}
+
+export async function fetchLiveData(): Promise<LiveSnapshot | null> {
+  const [fresh, bundled] = await Promise.all([
+    fetchJson(`${LIVE_DATA_URL}?t=${Date.now()}`),
+    fetchJson(`/data/ksca-data.json?t=${Date.now()}`),
+  ]);
+  if (fresh && bundled) {
+    const liveTs = Date.parse(fresh.generatedAt ?? "");
+    const bundledTs = Date.parse(bundled.generatedAt ?? "");
+    if (!Number.isNaN(liveTs) && !Number.isNaN(bundledTs)) {
+      return liveTs >= bundledTs ? fresh : bundled;
+    }
+  }
+  return fresh ?? bundled;
 }
 
 export function applyLiveData(data: LiveSnapshot): boolean {
