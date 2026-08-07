@@ -177,7 +177,11 @@ def _is_today_match(match, today_str):
     return md[:10] == today_str
 
 
+<<<<<<< HEAD
 def build_all_rows(matches, competition_id, team_name_map=None, max_matches=0, today_only=False):
+=======
+def build_all_rows(matches, competition_id, team_name_map=None, max_matches=0, today_only=False, match_ids=None):
+>>>>>>> origin/teju
     rows = []
     if team_name_map is None:
         try:
@@ -202,6 +206,11 @@ def build_all_rows(matches, competition_id, team_name_map=None, max_matches=0, t
         if not match_id:
             continue
         match_id = str(match_id)
+<<<<<<< HEAD
+=======
+        if match_ids is not None and match_id not in match_ids:
+            continue
+>>>>>>> origin/teju
 
         match_status = str(match.get("MatchStatus", "") or "")
         match_state = str(match.get("MATCH_STATE", "") or "")
@@ -345,7 +354,11 @@ def build_all_rows(matches, competition_id, team_name_map=None, max_matches=0, t
     return rows
 
 
+<<<<<<< HEAD
 def extract_keepers(competition_id=None, max_matches=0, today_only=False):
+=======
+def extract_keepers(competition_id=None, max_matches=0, today_only=False, match_ids=None):
+>>>>>>> origin/teju
     if competition_id is None:
         competition_id = COMPETITION_ID
     schedule_data = fetch_match_schedule(competition_id)
@@ -361,7 +374,11 @@ def extract_keepers(competition_id=None, max_matches=0, today_only=False):
     except Exception:
         team_name_map = {}
 
+<<<<<<< HEAD
     rows = build_all_rows(matches, competition_id, team_name_map, max_matches=max_matches, today_only=today_only)
+=======
+    rows = build_all_rows(matches, competition_id, team_name_map, max_matches=max_matches, today_only=today_only, match_ids=match_ids)
+>>>>>>> origin/teju
     print(f"Extracted {len(rows)} keeper rows")
     return rows
 

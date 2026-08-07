@@ -77,7 +77,11 @@
 - `C:\Users\Lenovo\Desktop\test.py\web\static\*.html` — brutalist web dashboard pages
 
 ### Email config
+<<<<<<< HEAD
 - Sender: rakeshkumarirri28@gmail.com (App Password: tatn bbmq cwoq noty)
+=======
+- Sender: rakeshkumarirri28@gmail.com (App Password: REDACTED)
+>>>>>>> origin/teju
 - Recipient: Sureshkutam@gmail.com
 
 ### Scheduled task details

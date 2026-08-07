@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import Link from "next/link";
@@ -7,14 +8,30 @@ import { FeaturedPlayers } from "@/components/FeaturedPlayers";
 import { Logo } from "@/components/Logo";
 import CircularGallery from "@/components/CircularGallery";
 import ScrollFloat from "@/components/ScrollFloat";
+=======
+﻿"use client";
+
+import Link from "next/link";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { FeaturedPlayers } from "@/components/FeaturedPlayers";
+import ProfileCard from "@/components/ProfileCard";
+import Cricket3DScene from "@/components/Cricket3DScene";
+import ScrollFloat from "@/components/ScrollFloat";
+import TextPressure from "@/components/TextPressure";
+>>>>>>> origin/teju
 import "@/components/ScrollFloat.css";
 import {
   BarChart3,
   Target,
   Shield,
+<<<<<<< HEAD
   Trophy,
   ChevronRight,
   Calendar,
+=======
+  ChevronRight,
+>>>>>>> origin/teju
   TrendingUp,
   ArrowRight,
   Zap,
@@ -30,6 +47,7 @@ import {
   getTopWicketTakers,
 } from "@/lib/mock-data";
 
+<<<<<<< HEAD
 const navCards = [
   {
     href: "/batting",
@@ -73,6 +91,8 @@ const navCards = [
   },
 ];
 
+=======
+>>>>>>> origin/teju
 const marqueeWords = [
   "RUNS", "WICKETS", "AVERAGE", "STRIKE RATE", "BOUNDARIES",
   "SIXES", "CATCHES", "STUMPINGS", "ECONOMY", "MAIDENS",
@@ -108,7 +128,11 @@ function AnimatedCounter({ value, label, color }: { value: string; label: string
   );
 }
 
+<<<<<<< HEAD
 /* ── Section animation wrappers ─────────────── */
+=======
+/* â”€â”€ Section animation wrappers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+>>>>>>> origin/teju
 
 function ScaleReveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLElement>(null);
@@ -174,7 +198,11 @@ function ParallaxReveal({ children, className = "" }: { children: React.ReactNod
   );
 }
 
+<<<<<<< HEAD
 /* ── Page ───────────────────────────────────── */
+=======
+/* â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+>>>>>>> origin/teju
 
 export default function LandingPage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -194,6 +222,7 @@ export default function LandingPage() {
   const totalCatches = keepers.reduce((s, k) => s + k.catches, 0);
   const totalStumps = keepers.reduce((s, k) => s + k.stumps, 0);
 
+<<<<<<< HEAD
   const galleryItems = useMemo(() => {
     if (typeof window === 'undefined') return [];
 
@@ -649,6 +678,22 @@ export default function LandingPage() {
         <motion.div style={{ y: bgY }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 dot-grid opacity-20" />
           <div className="absolute top-[-300px] right-[-200px] w-[800px] h-[800px] bg-[#D4FF00]/[0.02] rounded-full blur-[250px]" />
+=======
+
+  return (
+    <>
+      {/* â”€â”€ Hero (parallax) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden">
+        <motion.div style={{ y: bgY }} className="absolute inset-0 z-0">
+          <div className="absolute inset-0 dot-grid opacity-20" />
+          <div
+            className="absolute top-[-300px] right-[-200px] w-[800px] h-[800px] rounded-full"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(212,255,0,0.05) 0%, rgba(212,255,0,0.02) 45%, transparent 70%)",
+            }}
+          />
+>>>>>>> origin/teju
         </motion.div>
 
         <div className="absolute top-32 left-8 hidden lg:block z-10">
@@ -726,12 +771,20 @@ export default function LandingPage() {
                 transition={{ delay: 1, duration: 0.5 }}
                 className="mt-10 flex flex-wrap gap-4"
               >
+<<<<<<< HEAD
                 <Link href="/batting" className="btn-yellow group">
+=======
+                <Link href="/batting" className="btn-yellow group w-full sm:w-auto justify-center">
+>>>>>>> origin/teju
                   <BarChart3 size={16} />
                   Explore Batting
                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </Link>
+<<<<<<< HEAD
                 <Link href="/keepers" className="btn-outline group">
+=======
+                <Link href="/keepers" className="btn-outline group w-full sm:w-auto justify-center">
+>>>>>>> origin/teju
                   <Shield size={16} />
                   Wicketkeeper Analysis
                   <ChevronRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -743,6 +796,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, x: 40, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+<<<<<<< HEAD
               className="hidden lg:block w-full max-w-[500px]"
             >
               <div style={{ height: '600px', position: 'relative' }}>
@@ -755,6 +809,12 @@ export default function LandingPage() {
                   scrollSpeed={2}
                   items={galleryItems}
                 />
+=======
+              className="w-full max-w-[500px]"
+            >
+              <div className="relative h-[420px] sm:h-[520px] lg:h-[600px]">
+                <Cricket3DScene />
+>>>>>>> origin/teju
               </div>
             </motion.div>
           </div>
@@ -775,7 +835,11 @@ export default function LandingPage() {
         </motion.div>
       </section>
 
+<<<<<<< HEAD
       {/* ── Marquee ─────────────────────────── */}
+=======
+      {/* â”€â”€ Marquee â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+>>>>>>> origin/teju
       <section className="relative bg-[#D4FF00] py-3 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...marqueeWords, ...marqueeWords, ...marqueeWords].map((word, i) => (
@@ -787,8 +851,13 @@ export default function LandingPage() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* ── Stats Bar (scale reveal) ─────────── */}
       <ScaleReveal className="bg-[#050505] border-y border-white/[0.06]">
+=======
+      {/* â”€â”€ Stats Bar (scale reveal) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <ScaleReveal className="cv-auto bg-[#050505] border-y border-white/[0.06]">
+>>>>>>> origin/teju
         <div className="max-w-[1440px] mx-auto px-6 sm:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/[0.06]">
             <div className="py-12 sm:py-14 px-4 sm:px-8">
@@ -807,9 +876,21 @@ export default function LandingPage() {
         </div>
       </ScaleReveal>
 
+<<<<<<< HEAD
       {/* ── Tournament Highlights (graphic cards) ── */}
       <StaggerReveal className="bg-[#050505] py-20 sm:py-28 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#D4FF00]/[0.015] rounded-full blur-[300px]" />
+=======
+      {/* â”€â”€ Tournament Highlights (graphic cards) â”€â”€ */}
+      <StaggerReveal className="cv-auto bg-[#050505] py-20 sm:py-28 relative overflow-hidden">
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(212,255,0,0.035) 0%, rgba(212,255,0,0.015) 45%, transparent 68%)",
+          }}
+        />
+>>>>>>> origin/teju
         <div className="max-w-[1440px] mx-auto px-6 sm:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="section-label mb-6 mx-auto w-fit">
@@ -914,7 +995,11 @@ export default function LandingPage() {
                   <div className="mt-3 flex items-center gap-2">
                     <div className="w-1 h-1 rounded-full" style={{ background: item.color }} />
                     <p className="text-xs text-[#7A7A7A] truncate">{item.playerName}</p>
+<<<<<<< HEAD
                     <span className="text-[10px] text-[#525252]">·</span>
+=======
+                    <span className="text-[10px] text-[#525252]">Â·</span>
+>>>>>>> origin/teju
                     <p className="text-[10px] text-[#525252] truncate">{item.teamName}</p>
                   </div>
                   <div
@@ -928,11 +1013,19 @@ export default function LandingPage() {
         </div>
       </StaggerReveal>
 
+<<<<<<< HEAD
       {/* ── Featured Players ────────────────── */}
       <FeaturedPlayers />
 
       {/* ── Top Performers (split slide) ───── */}
       <SplitReveal className="bg-[#050505] py-20 sm:py-24">
+=======
+      {/* â”€â”€ Featured Players â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+      <FeaturedPlayers />
+
+      {/* â”€â”€ Top Performers (split slide) â”€â”€â”€â”€â”€ */}
+      <SplitReveal className="cv-auto bg-[#050505] py-20 sm:py-24">
+>>>>>>> origin/teju
         <div className="max-w-[1440px] mx-auto px-6 sm:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Top Batters */}
@@ -968,7 +1061,11 @@ export default function LandingPage() {
                   const maxRuns = topBatters[0].Runs;
                   return (
                     <motion.div
+<<<<<<< HEAD
                       key={b.PlayerName}
+=======
+                      key={`${b.PlayerName}-${b.TeamName}`}
+>>>>>>> origin/teju
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -997,7 +1094,11 @@ export default function LandingPage() {
                           />
                         </div>
                         <p className="text-[10px] text-[#7A7A7A] mt-2 font-mono">
+<<<<<<< HEAD
                           {b.TeamName} · HS <span className="text-[#D4FF00]/40">{b.HighestScore}</span> · SR <span className="text-[#D4FF00]/40">{b.StrikeRate}</span>
+=======
+                          {b.TeamName} Â· HS <span className="text-[#D4FF00]/40">{b.HighestScore}</span> Â· SR <span className="text-[#D4FF00]/40">{b.StrikeRate}</span>
+>>>>>>> origin/teju
                         </p>
                       </div>
                     </motion.div>
@@ -1039,7 +1140,11 @@ export default function LandingPage() {
                   const maxW = topBowlers[0].Wickets;
                   return (
                     <motion.div
+<<<<<<< HEAD
                       key={b.PlayerName}
+=======
+                      key={`${b.PlayerName}-${b.TeamName}`}
+>>>>>>> origin/teju
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -1068,7 +1173,11 @@ export default function LandingPage() {
                           />
                         </div>
                         <p className="text-[10px] text-[#7A7A7A] mt-2 font-mono">
+<<<<<<< HEAD
                           {b.TeamName} · Eco <span className="text-[#f43f5e]/40">{b.Economy}</span> · SR <span className="text-[#f43f5e]/40">{b.StrikeRate}</span>
+=======
+                          {b.TeamName} Â· Eco <span className="text-[#f43f5e]/40">{b.Economy}</span> Â· SR <span className="text-[#f43f5e]/40">{b.StrikeRate}</span>
+>>>>>>> origin/teju
                         </p>
                       </div>
                     </motion.div>
@@ -1080,6 +1189,7 @@ export default function LandingPage() {
         </div>
       </SplitReveal>
 
+<<<<<<< HEAD
       {/* ── Footer (parallax text reveal) ────── */}
       <footer className="bg-[#050505] border-t border-white/[0.06] relative overflow-hidden">
         <ParallaxReveal className="">
@@ -1111,6 +1221,114 @@ export default function LandingPage() {
                   <p className="text-sm text-[#7A7A7A]">2024-25 Tournament</p>
                   <p className="text-sm text-[#7A7A7A] mt-1">KSCA Inter Club Tournament</p>
                   <p className="text-sm text-[#7A7A7A] mt-1">Under-19 Category</p>
+=======
+      {/* â”€â”€ Footer (parallax text reveal) â”€â”€â”€â”€â”€â”€ */}
+      <footer className="cv-auto bg-[#050505] border-t border-white/[0.06] relative overflow-hidden">
+        <ParallaxReveal className="">
+          <div className="max-w-[1440px] mx-auto px-6 sm:px-8 py-16">
+            <div className="relative z-10">
+              <div className="mb-16">
+                <div className="max-w-3xl">
+                  <p className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.3em] text-[#525252]">
+                    <span className="h-px w-10 bg-white/[0.15]" aria-hidden="true" />
+                    Credits
+                  </p>
+                  <div className="mt-5 h-[90px] sm:h-[120px] xl:h-[150px] w-full">
+                    <TextPressure
+                      text="Developed By"
+                      fontFamily="var(--font-flex)"
+                      textColor="#ffffff"
+                      minFontSize={20}
+                      italic={false}
+                    />
+                  </div>
+                  <p
+                    className="mt-6 text-lg sm:text-xl font-semibold uppercase text-white/80"
+                    style={{
+                      fontFamily: 'var(--font-flex)',
+                      fontVariationSettings: "'wdth' 110, 'wght' 600",
+                    }}
+                  >
+                    N. Tejaswini <span className="text-[#525252]">&</span> Rakesh Kumar <span className="text-[#525252]">&</span> Janardhan <span className="text-[#525252]">&</span> Yasaswini
+                  </p>
+                </div>
+
+                <p className="mt-14 flex items-center justify-center gap-4 text-[10px] font-mono uppercase tracking-[0.3em] text-[#7A7A7A]">
+                  <span className="h-px w-10 sm:w-16 bg-white/[0.15]" aria-hidden="true" />
+                  <span className="text-[#D4FF00]/70">The Team</span>
+                  <span className="h-px w-10 sm:w-16 bg-white/[0.15]" aria-hidden="true" />
+                </p>
+
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-8">
+                  <ProfileCard
+                    className="footer-card"
+                    name="N.Tejaswini"
+                    title="FullStack Developer"
+                    handle="tejaswini"
+                    status="Online"
+                    contactText="Contact Me"
+                    avatarUrl="/tejaswini-avatar.jpeg"
+                    showUserInfo={false}
+                    enableTilt={true}
+                    enableMobileTilt={false}
+                    onContactClick={() => console.log('Contact clicked')}
+                    behindGlowColor="rgba(125, 190, 255, 0.67)"
+                    iconUrl="/assets/demo/iconpattern.png"
+                    behindGlowEnabled
+                    innerGradient="linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)"
+                  />
+                  <ProfileCard
+                    className="footer-card"
+                    name="Rakesh Kumar"
+                    title="Full Stack Developer"
+                    handle="rakesh"
+                    status="Active"
+                    contactText="View Stats"
+                    avatarUrl="/rakesh-avatar.jpeg"
+                    showUserInfo={false}
+                    enableTilt={true}
+                    enableMobileTilt={false}
+                    onContactClick={() => console.log('View stats')}
+                    behindGlowColor="rgba(212, 255, 0, 0.67)"
+                    iconUrl="/assets/demo/iconpattern.png"
+                    behindGlowEnabled
+                    innerGradient="linear-gradient(145deg,#4a6e4e8c 0%,#D4FF0044 100%)"
+                  />
+                  <ProfileCard
+                    className="footer-card"
+                    name="Janardhan"
+                    title="Full Stack Developer"
+                    handle="janardhan"
+                    status="Online"
+                    contactText="Contact Me"
+                    avatarUrl="/janardhan-avatar.jpeg"
+                    showUserInfo={false}
+                    enableTilt={true}
+                    enableMobileTilt={false}
+                    onContactClick={() => console.log('Contact clicked')}
+                    behindGlowColor="rgba(56, 189, 248, 0.67)"
+                    iconUrl="/assets/demo/iconpattern.png"
+                    behindGlowEnabled
+                    innerGradient="linear-gradient(145deg,#3f6e8c8c 0%,#38BDF844 100%)"
+                  />
+                  <ProfileCard
+                    className="footer-card"
+                    name="Yasaswini"
+                    title="Full Stack Developer"
+                    handle="yasaswini"
+                    status="Active"
+                    contactText="Contact Me"
+                    avatarUrl="/developer-avatar.jpeg"
+                    showUserInfo={false}
+                    enableTilt={true}
+                    enableMobileTilt={false}
+                    onContactClick={() => console.log('Contact clicked')}
+                    behindGlowColor="rgba(167, 139, 250, 0.67)"
+                    iconUrl="/assets/demo/iconpattern.png"
+                    behindGlowEnabled
+                    innerGradient="linear-gradient(145deg,#6e5e8c8c 0%,#A78BFA44 100%)"
+                  />
+>>>>>>> origin/teju
                 </div>
               </div>
 
@@ -1118,7 +1336,11 @@ export default function LandingPage() {
 
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p className="text-[10px] text-[#525252] font-mono uppercase tracking-wider">
+<<<<<<< HEAD
                   Cricket Analytics Dashboard · Season 2024-25
+=======
+                  Cricket Analytics Dashboard Â· Season 2024-25
+>>>>>>> origin/teju
                 </p>
                 <p className="text-[10px] text-[#525252] font-mono uppercase tracking-wider">
                   KSCA U-19

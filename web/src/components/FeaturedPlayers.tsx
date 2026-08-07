@@ -117,7 +117,11 @@ export function FeaturedPlayers() {
   const cards = activeTab === "batting" ? battingCards : bowlingCards;
 
   return (
+<<<<<<< HEAD
     <section ref={sectionRef} className="relative bg-[#050505] py-20 sm:py-24 overflow-hidden">
+=======
+    <section ref={sectionRef} className="cv-auto relative bg-[#050505] py-20 sm:py-24 overflow-hidden">
+>>>>>>> origin/teju
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

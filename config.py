@@ -1,11 +1,38 @@
 # config.py
 import os
 
+<<<<<<< HEAD
+=======
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
+
+def _load_dotenv(path):
+    """Minimal .env loader (no third-party dependency)."""
+    if not os.path.exists(path):
+        return
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, value = line.partition("=")
+            os.environ.setdefault(key.strip(), value.strip())
+
+
+_load_dotenv(os.path.join(ROOT, ".env"))
+
+>>>>>>> origin/teju
 STATS_BASE = "https://d27i8b90nps4in.cloudfront.net/feed/stats/"
 FEED_BASE = "https://d27i8b90nps4in.cloudfront.net/feed/"
 
 GOOGLE_SHEET_ID = "1QFXWrSd1eUw1KgG-uKBNXq2GPvt4W-0ONUubPOk2BwA"
+<<<<<<< HEAD
 SERVICE_ACCOUNT_FILE = os.path.join(os.path.dirname(__file__), "service-account.json")
+=======
+SERVICE_ACCOUNT_FILE = os.environ.get(
+    "SERVICE_ACCOUNT_FILE", os.path.join(ROOT, "service-account.json")
+)
+>>>>>>> origin/teju
 
 DATA_SOURCE = "google"
 
@@ -32,7 +59,24 @@ SHEET_COLUMNS = [
 # Sheet tab name where keeper data goes
 SHEET_TAB = "Sheet1"
 
+<<<<<<< HEAD
 # Email config for daily report
 EMAIL_SENDER = "rakeshkumarirri28@gmail.com"
 EMAIL_PASSWORD = "tatn bbmq cwoq noty"
 EMAIL_RECIPIENT = "Sureshkutam@gmail.com"
+=======
+# Email config for daily report (secrets come from .env / environment)
+EMAIL_ENABLED = os.environ.get("EMAIL_ENABLED", "false").lower() == "true"
+EMAIL_SENDER = os.environ.get("EMAIL_SENDER", "")
+EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD", "")
+EMAIL_RECIPIENT = os.environ.get("EMAIL_RECIPIENT", "Sureshkutam@gmail.com")
+
+# MongoDB (Atlas) config (secret URI comes from .env / environment)
+MONGO_URI = os.environ.get("MONGO_URI", "")
+MONGO_DB_NAME = os.environ.get("MONGO_DB_NAME", "ksca_cricket")
+MONGO_COLLECTIONS = {
+    "batting": "player_batting",
+    "bowling": "player_bowling",
+    "keeper": "keeper_stats",
+}
+>>>>>>> origin/teju

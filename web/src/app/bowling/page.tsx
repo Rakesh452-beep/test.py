@@ -8,7 +8,11 @@ import { ChartCard } from "@/components/ChartCard";
 import { TeamFilter } from "@/components/TeamFilter";
 import ScrollFloat from "@/components/ScrollFloat";
 import "@/components/ScrollFloat.css";
+<<<<<<< HEAD
 import { MOCK_TEAMS, getBowlerStats, getTeamBowlingBreakdown } from "@/lib/mock-data";
+=======
+import { getTeams, getBowlerStats, getTeamBowlingBreakdown } from "@/lib/mock-data";
+>>>>>>> origin/teju
 import type { Bowler } from "@/lib/types";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
@@ -47,7 +51,11 @@ export default function BowlingPage() {
   const filtered = useMemo(() => {
     if (!teamFilter) return allBowlers;
     return allBowlers.filter((b) => {
+<<<<<<< HEAD
       const team = MOCK_TEAMS.find((t) => t.id === teamFilter);
+=======
+      const team = getTeams().find((t) => t.id === teamFilter);
+>>>>>>> origin/teju
       return team && b.TeamName === team.name;
     });
   }, [allBowlers, teamFilter]);
@@ -117,7 +125,11 @@ export default function BowlingPage() {
                 Complete bowling statistics across all teams
               </p>
             </div>
+<<<<<<< HEAD
             <TeamFilter teams={MOCK_TEAMS} value={teamFilter} onChange={setTeamFilter} className="w-full sm:w-64" />
+=======
+            <TeamFilter teams={getTeams()} value={teamFilter} onChange={setTeamFilter} className="w-full sm:w-64" />
+>>>>>>> origin/teju
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">

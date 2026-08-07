@@ -66,7 +66,11 @@ export default function CalendarPicker({
   return (
     <div
       ref={ref}
+<<<<<<< HEAD
       className="absolute top-full mt-2 left-1/2 -translate-x-1/2 z-50 w-[280px] bg-[#1a1a2e] border border-white/10 rounded-xl shadow-2xl p-4 backdrop-blur-xl"
+=======
+      className="absolute top-full mt-2 left-1/2 -translate-x-1/2 z-50 w-[280px] max-w-[calc(100vw-32px)] bg-[#1a1a2e] border border-white/10 rounded-xl shadow-2xl p-4 backdrop-blur-xl"
+>>>>>>> origin/teju
     >
       <div className="flex items-center justify-between mb-3">
         <button onClick={prevMonth} className="p-1 rounded hover:bg-white/10 text-gray-400 hover:text-white transition-colors">

@@ -6,8 +6,13 @@ import { Shield, Users, BarChart3, Target, Search } from "lucide-react";
 import {
   getAllTeams,
   getAllPlayers,
+<<<<<<< HEAD
   MOCK_BATTERS,
   MOCK_BOWLERS,
+=======
+  getBatterStats,
+  getBowlerStats,
+>>>>>>> origin/teju
 } from "@/lib/mock-data";
 import ScrollFloat from "@/components/ScrollFloat";
 import "@/components/ScrollFloat.css";
@@ -49,8 +54,13 @@ const teamColors: string[] = [
 ];
 
 function getTeamStats(teamName: string) {
+<<<<<<< HEAD
   const batters = MOCK_BATTERS.filter((b) => b.TeamName === teamName);
   const bowlers = MOCK_BOWLERS.filter((b) => b.TeamName === teamName);
+=======
+  const batters = getBatterStats().filter((b) => b.TeamName === teamName);
+  const bowlers = getBowlerStats().filter((b) => b.TeamName === teamName);
+>>>>>>> origin/teju
   const totalRuns = batters.reduce((s, b) => s + b.Runs, 0);
   const totalWickets = bowlers.reduce((s, b) => s + b.Wickets, 0);
   const playerCount = new Set([

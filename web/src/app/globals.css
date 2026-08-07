@@ -51,6 +51,16 @@
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
+=======
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+>>>>>>> origin/teju
 body {
   background: #050505;
   color: #B8B8B8;
@@ -61,10 +71,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+<<<<<<< HEAD
 }
 
 html {
   scroll-behavior: smooth;
+=======
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+>>>>>>> origin/teju
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -479,6 +494,15 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px;
 }
 
+<<<<<<< HEAD
+=======
+/* Skip rendering of far-off-screen sections so long pages scroll smoothly */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+>>>>>>> origin/teju
 .annotation {
   position: relative;
 }
@@ -643,15 +667,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .glass {
   background: rgba(13, 13, 13, 0.8);
+<<<<<<< HEAD
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
+=======
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+>>>>>>> origin/teju
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .glass-strong {
   background: rgba(5, 5, 5, 0.92);
+<<<<<<< HEAD
   backdrop-filter: blur(40px) saturate(200%);
   -webkit-backdrop-filter: blur(40px) saturate(200%);
+=======
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+>>>>>>> origin/teju
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
@@ -687,7 +721,11 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   border-radius: 24px;
   background: #0D0D0D;
+<<<<<<< HEAD
   backdrop-filter: blur(20px);
+=======
+  backdrop-filter: blur(12px);
+>>>>>>> origin/teju
 }
 
 .card-gradient-border::before {
@@ -888,3 +926,28 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: none;
   }
 }
+<<<<<<< HEAD
+=======
+
+.pc-card-wrapper.footer-card .pc-card {
+  height: 360px;
+  max-height: 360px;
+}
+
+/* ═══════════════════════════════════════════════
+   MOBILE UX REFINEMENTS
+   ═══════════════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  .sm-toggle {
+    min-height: 44px;
+  }
+}
+
+>>>>>>> origin/teju

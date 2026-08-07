@@ -29,7 +29,11 @@ export default function ScrollFloat({
   scrollStart = "center bottom+=50%",
   scrollEnd = "bottom bottom-=40%",
   stagger = 0.03,
+<<<<<<< HEAD
   as: Tag = "h2",
+=======
+  as: Tag = "span",
+>>>>>>> origin/teju
 }: ScrollFloatProps) {
   const containerRef = useRef<any>(null);
 

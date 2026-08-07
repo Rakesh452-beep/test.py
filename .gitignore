@@ -1,9 +1,28 @@
 service-account.json
+<<<<<<< HEAD
+=======
+.env
+>>>>>>> origin/teju
 processed_matches.db
 __pycache__/
 *.db
 opencode.json
 node_modules/
+<<<<<<< HEAD
 web/public/*.jpeg
 web/public/*.jpg
 web/public/*.png
+=======
+web/public/*.jpg
+web/public/*.png
+
+# Generated artifacts, logs, and local tooling (not source code)
+.playwright-mcp/
+*.log
+*.lock
+/*.png
+_check_*.py
+reports/*.xlsx
+reports/*.json
+.vercel
+>>>>>>> origin/teju

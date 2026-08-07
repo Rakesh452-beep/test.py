@@ -37,6 +37,10 @@ for _, row in df_k.iterrows():
         "stumps": int(row.get("Stumps", 0)) if pd.notna(row.get("Stumps")) else 0,
         "captain": str(row.get("Captain Yes\\No", "")),
         "summary": str(row.get("Match Summary", "")),
+<<<<<<< HEAD
+=======
+        "_match_id": str(row.get("_match_id", "")),
+>>>>>>> origin/teju
     })
 
 # --- BATTING DATA (top 50 by runs) ---
